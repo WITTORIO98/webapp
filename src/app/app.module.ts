@@ -8,7 +8,7 @@ import { SetUpComponent } from './set-up/set-up.component';
 import { FeedBackComponent } from './feed-back/feed-back.component';
 import { IlluminazioneEdgeComponent } from './privacyIndicators/illuminazione-edge/illuminazione-edge.component';
 import { ClassicComponent } from './privacyIndicators/classic/classic.component';
-import { SimleMathComponent } from './tasks/simle-math/simle-math.component';
+import { SimpleMathComponent } from './tasks/simple-math/simple-math.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { SimleMathComponent } from './tasks/simle-math/simle-math.component';
     FeedBackComponent,
     IlluminazioneEdgeComponent,
     ClassicComponent,
-    SimleMathComponent
+    SimpleMathComponent
   ],
   imports: [
     BrowserModule,

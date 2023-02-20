@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimleMathComponent } from './simle-math.component';
+import { SimpleMathComponent } from './simple-math.component';
 
-describe('SimleMathComponent', () => {
-  let component: SimleMathComponent;
-  let fixture: ComponentFixture<SimleMathComponent>;
+describe('SimpleMathComponent', () => {
+  let component: SimpleMathComponent;
+  let fixture: ComponentFixture<SimpleMathComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SimleMathComponent ]
+      declarations: [ SimpleMathComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SimleMathComponent);
+    fixture = TestBed.createComponent(SimpleMathComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
