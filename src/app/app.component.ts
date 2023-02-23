@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'webapp';
+
+  constructor(private router:Router) {
+    this.autoRedirect('setUp');
+  }
+  autoRedirect(pageName:String):void{
+    this.router.navigate([pageName]);
+  }
 }
