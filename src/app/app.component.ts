@@ -8,13 +8,22 @@ import {Router} from "@angular/router";
 })
 export class AppComponent implements OnInit {
   title = 'webapp';
+  tasks = new Map<string, boolean>();
+  indicators = new Map<string, boolean>();
 
-  constructor(private router:Router, private elementRef: ElementRef) {
+  constructor(private router: Router, private elementRef: ElementRef) {
     this.autoRedirect('setUp');
+
+    this.tasks.set('simpleMath', false);
+    this.tasks.set('simpleText', false);
+    this.indicators.set('illuminazioneEdge', false);
+    this.indicators.set('classic', false);
   }
-  autoRedirect(pageName:String):void{
+
+  autoRedirect(pageName: String): void {
     this.router.navigate([pageName]);
   }
+
   ngOnInit(): void {
     const elem = document.documentElement; // Ottiene l'elemento radice
     elem.requestFullscreen(); // Richiede la modalità fullscreen
