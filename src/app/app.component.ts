@@ -16,8 +16,30 @@ export class AppComponent implements OnInit {
 
     this.tasks.set('simpleMath', false);
     this.tasks.set('simpleText', false);
+
     this.indicators.set('illuminazioneEdge', false);
     this.indicators.set('classic', false);
+
+    this.spawnNewTask()
+  }
+
+  spawnNewTask(): void {
+    this.tasks.forEach((v, k) => {
+      this.tasks.set(k, false);
+    });//despowno tutto
+
+    let rand = Math.floor(Math.random() * this.tasks.size);
+
+    let i = 0
+    this.tasks.forEach((v, k) => {
+      if (i == rand) {
+        this.tasks.set(k, true);
+      }
+      i++;
+    });
+  }
+
+  spawnIndicators(): void {
   }
 
   autoRedirect(pageName: String): void {
