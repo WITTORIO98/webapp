@@ -11,6 +11,7 @@ import { ClassicComponent } from './privacyIndicators/classic/classic.component'
 import { SimpleMathComponent } from './tasks/simple-math/simple-math.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from "@angular/material/grid-list";
+import { SimpleTextComponent } from './tasks/simple-text/simple-text.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
     FeedBackComponent,
     IlluminazioneEdgeComponent,
     ClassicComponent,
-    SimpleMathComponent
+    SimpleMathComponent,
+    SimpleTextComponent
   ],
     imports: [
         BrowserModule,
