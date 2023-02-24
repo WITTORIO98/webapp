@@ -1,0 +1,24 @@
+.container {
+  background-color: #125699;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.text1, .text2 {
+  display: inline-block;
+  text-align: center;
+}
+
+.text1{
+  font-size: xx-large;
+}
+.text2{
+  font-size: xxx-large;
+}
+
+button{
+  background-color: rgba(0,0,0,0.30);
+}
