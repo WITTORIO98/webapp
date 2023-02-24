@@ -1,3 +1,5 @@
+<app-set-up *ngIf="setUp" class="absolute" (start)="start()"></app-set-up>
+
 <app-simple-math *ngIf="tasks.get('simpleMath')" class="absolute"></app-simple-math>
 <app-simple-text *ngIf="tasks.get('simpleText')" class="absolute"></app-simple-text>
 

@@ -8,22 +8,27 @@ import {Router} from "@angular/router";
 })
 export class AppComponent implements OnInit {
   title = 'webapp';
+
+  setUp = true;
   tasks = new Map<string, boolean>();
   indicators = new Map<string, boolean>();
 
   constructor(private router: Router, private elementRef: ElementRef) {
-    this.autoRedirect('setUp');
-
     this.tasks.set('simpleMath', false);
     this.tasks.set('simpleText', false);
 
     this.indicators.set('illuminazioneEdge', false);
     this.indicators.set('classic', false);
 
-    this.spawnNewTask()
+    //this.spawnNewTask()
+  }
+
+  public start() {
+    this.spawnNewTask();
   }
 
   spawnNewTask(): void {
+    this.setUp = false;
     this.tasks.forEach((v, k) => {
       this.tasks.set(k, false);
     });//despowno tutto
@@ -40,10 +45,8 @@ export class AppComponent implements OnInit {
   }
 
   spawnIndicators(): void {
-  }
-
-  autoRedirect(pageName: String): void {
-    this.router.navigate([pageName]);
+    //devo spawnare un indiator a cazzo, con un delay minimo tra 2 indicator.
+    //per fare le cose op, randomizzo anche colore posizione ec.
   }
 
   ngOnInit(): void {
