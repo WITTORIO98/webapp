@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from "@angular/material/grid-list";
 import { SimpleTextComponent } from './tasks/simple-text/simple-text.component';
 import { HttpServiceComponent } from './http-service/http-service.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -30,9 +31,12 @@ import { HttpServiceComponent } from './http-service/http-service.component';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatGridListModule
+        MatGridListModule,
+        HttpClientModule
     ],
-  providers: [],
+  providers: [
+    HttpServiceComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

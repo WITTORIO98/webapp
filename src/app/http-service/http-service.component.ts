@@ -1,8 +1,10 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpContext, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Component} from '@angular/core';
 
+const URL: string = "http://localhost:8080"
+
 export enum GET {
-  hello = 'hello'
+  hello = '/hello'
 }
 
 export enum POST {
@@ -15,13 +17,30 @@ export enum POST {
   styleUrls: ['./http-service.component.scss']
 })
 export class HttpServiceComponent {
-  private readonly URL: string = "http://localhost:8090/"
+
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+
+  private params = new HttpParams({
+    fromObject: {
+      param1: 'value1',
+      param2: 'value2'
+    }
+  });
+
+  private options = {
+    headers: this.headers,
+
+  };
+
+
 
   constructor(private http: HttpClient) {
   }
 
   public get(en: string) {
-    this.http.get(this.getUrl(en)).subscribe(data => {
+    this.http.get(this.getUrl(en),this.options).subscribe(data => {
       console.log(data);
     });
 
@@ -29,7 +48,8 @@ export class HttpServiceComponent {
 
   private getUrl(en: string): string {
     let out: string = "";
-    out.concat(this.URL, en);
+    out=out.concat(URL, en);
+    console.log(out);
 
     return out;
   }
