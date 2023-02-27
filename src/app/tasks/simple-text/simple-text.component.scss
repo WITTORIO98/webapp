@@ -1,0 +1,32 @@
+.pezzotto{
+  width: 100vw;
+  height: 1px; /* che pezzotto.. cosi non si sminchia il frame bha */
+  background-color: rgba(0,0,0,0);
+}
+
+.div{
+  border: 2px solid red; /* cancellami */
+  overflow: auto;
+  margin: 5vh auto;
+  height: 40vh;
+  width: 80vw;
+  background-color: rgba(0,0,0,0);
+}
+.sopra{
+  display: flex; /* Imposta il contenitore come contenitore flessibile */
+  align-items: center; /* Centra verticalmente gli elementi del contenitore */
+}
+
+.grande{
+  font-size: xxx-large;
+}
+
+mat-grid-tile {
+  background: lightblue;
+}
+button {
+  height: 100%;
+  width: 100%;
+  background: lightblue;
+}
+

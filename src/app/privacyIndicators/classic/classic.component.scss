@@ -1,0 +1,9 @@
+.cerchio {
+  position: absolute;
+  top: 6vw; //x
+  left: 81vw; //100 - x - width - spostamento laterale desiderato(10)
+  width: 3vw; /* Imposta la larghezza del cerchio */
+  height: 3vw; /* Imposta l'altezza del cerchio */
+  border-radius: 50%; /* Imposta il bordo come un cerchio */
+  background-color: red; /* Imposta il colore di sfondo come rosso */
+}

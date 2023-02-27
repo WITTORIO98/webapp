@@ -11,6 +11,9 @@ import { ClassicComponent } from './privacyIndicators/classic/classic.component'
 import { SimpleMathComponent } from './tasks/simple-math/simple-math.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from "@angular/material/grid-list";
+import { SimpleTextComponent } from './tasks/simple-text/simple-text.component';
+import { HttpServiceComponent } from './http-service/http-service.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,15 +23,20 @@ import {MatGridListModule} from "@angular/material/grid-list";
     FeedBackComponent,
     IlluminazioneEdgeComponent,
     ClassicComponent,
-    SimpleMathComponent
+    SimpleMathComponent,
+    SimpleTextComponent,
+    HttpServiceComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatGridListModule
+        MatGridListModule,
+        HttpClientModule
     ],
-  providers: [],
+  providers: [
+    HttpServiceComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

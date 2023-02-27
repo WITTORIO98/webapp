@@ -1,3 +1,7 @@
-<p class="noMargin">set-up works!</p>
-<button (click)="goToPage('angularHome')">angulaaaar</button>
-<!-- qui scelgo se sono smartphone/pc e inserisco/genero le informazioni come l' ID esperimento -->
+<div class="container">
+  <div class="text1">inserisci il codice sul pc!</div>
+  <div class="text2">1234.5678</div>
+
+  <button *ngIf="!codiceInserito" (click)="refresh()" class="text1">aggiorna</button>
+  <button *ngIf="codiceInserito" (click)="startSp()" class="text1">INIZIA</button>
+</div>
