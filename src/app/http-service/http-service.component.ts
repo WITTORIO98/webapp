@@ -1,6 +1,13 @@
 import {HttpClient} from "@angular/common/http";
 import {Component} from '@angular/core';
 
+export enum GET {
+  hello = 'hello'
+}
+
+export enum POST {
+  test = 'test'
+}
 
 @Component({
   selector: 'app-http-service',
