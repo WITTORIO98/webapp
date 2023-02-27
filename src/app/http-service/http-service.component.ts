@@ -1,14 +1,14 @@
 import {HttpClient, HttpContext, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Component} from '@angular/core';
-
+/*  usage: this.http.post(POST.example, "ciao caio");  */
 const URL: string = "http://localhost:8080"
 
 export enum GET {
-  hello = '/hello'
+  example = '/example'
 }
 
 export enum POST {
-  test = 'test'
+  example = '/example'
 }
 
 @Component({
@@ -34,21 +34,25 @@ export class HttpServiceComponent {
 
   };
 
-
-
   constructor(private http: HttpClient) {
   }
 
-  public get(en: string) {
-    this.http.get(this.getUrl(en),this.options).subscribe(data => {
+  public get(endpoint: string, useless?: any) {
+    this.http.get(this.getUrl(endpoint), this.options).subscribe(data => {
       console.log(data);
     });
 
   }
 
-  private getUrl(en: string): string {
+  public post(endpoint: string, body: any) {
+    this.http.post(this.getUrl(endpoint), body, this.options).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  private getUrl(endpoint: string): string {
     let out: string = "";
-    out=out.concat(URL, en);
+    out = out.concat(URL, endpoint);
     console.log(out);
 
     return out;
