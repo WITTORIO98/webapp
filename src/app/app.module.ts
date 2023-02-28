@@ -14,6 +14,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import { SimpleTextComponent } from './tasks/simple-text/simple-text.component';
 import { HttpServiceComponent } from './component/http-service/http-service.component';
 import {HttpClientModule} from "@angular/common/http";
+import { TaskComponent } from './component/task/task.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {HttpClientModule} from "@angular/common/http";
     ClassicComponent,
     SimpleMathComponent,
     SimpleTextComponent,
-    HttpServiceComponent
+    HttpServiceComponent,
+    TaskComponent
   ],
     imports: [
         BrowserModule,
