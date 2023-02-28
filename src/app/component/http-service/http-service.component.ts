@@ -8,7 +8,8 @@ export enum GET {
 }
 
 export enum POST {
-  example = '/example'
+  example = '/example',
+  newTask = '/newTask'
 }
 
 @Component({
@@ -37,17 +38,27 @@ export class HttpServiceComponent {
   constructor(private http: HttpClient) {
   }
 
-  public get(endpoint: string, useless?: any) {
+  public get(endpoint: string, useless?: any): any {
+    let out;
     this.http.get(this.getUrl(endpoint), this.options).subscribe(data => {
       console.log(data);
+      out = data;
     });
-
+    return out;
   }
 
-  public post(endpoint: string, body: any) {
-    this.http.post(this.getUrl(endpoint), body, this.options).subscribe(data => {
-      console.log(data);
+  public post(endpoint: string, body: any): any {
+    let out;
+    let finalBody = {
+      timestamp: new Date().getTime(),
+      body: body
+    };
+
+    this.http.post(this.getUrl(endpoint), finalBody, this.options).subscribe(data => {
+      console.debug(data);
+      out = data;
     });
+    return out;
   }
 
   private getUrl(endpoint: string): string {
