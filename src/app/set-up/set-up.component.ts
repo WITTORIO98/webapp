@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {AppComponent} from "../app.component";
+import {ChangePageService} from "../services/change-page.service";
 
 @Component({
   selector: 'app-set-up',
@@ -12,7 +13,7 @@ export class SetUpComponent {
   codiceInserito: boolean;
   idEsp: number;
 
-  constructor() {
+  constructor(private router: Router, private change: ChangePageService) {
     this.codiceInserito = false;
     //chiedo al back-end un nuovo id esperimento
     this.idEsp = 12346666
@@ -26,7 +27,7 @@ export class SetUpComponent {
   }
 
   startSp() {
-    this.start.emit();
+    this.router.navigate(this.change.getRandomPage());
   }
-  
+
 }

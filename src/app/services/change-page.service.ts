@@ -12,8 +12,8 @@ export class ChangePageService {
   constructor() {
   }
 
-  getRandomPage(): string {
+  getRandomPage(): [string] {
     let rand = Math.floor(Math.random() * this.tasks.length);
-    return this.tasks[rand];
+    return [this.tasks[rand]];
   }
 }
