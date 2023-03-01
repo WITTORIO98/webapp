@@ -1,6 +1,6 @@
-import {HttpClient, HttpContext, HttpHeaders, HttpParams} from "@angular/common/http";
-import {Component} from '@angular/core';
-/*  usage: this.http.post(POST.example, "ciao caio");  */
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+
 const URL: string = "http://localhost:8080"
 
 export enum GET {
@@ -12,12 +12,10 @@ export enum POST {
   newTask = '/newTask'
 }
 
-@Component({
-  selector: 'app-http-service',
-  templateUrl: './http-service.component.html',
-  styleUrls: ['./http-service.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class HttpServiceComponent {
+export class Http2Service {
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -68,6 +66,4 @@ export class HttpServiceComponent {
 
     return out;
   }
-
-
 }
