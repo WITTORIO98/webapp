@@ -13,7 +13,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {SimpleTextComponent} from './tasks/simple-text/simple-text.component';
 import {HttpClientModule} from "@angular/common/http";
-import {TaskComponent} from './component/task/task.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import {TaskComponent} from './component/task/task.component';
     IlluminazioneEdgeComponent,
     ClassicComponent,
     SimpleMathComponent,
-    SimpleTextComponent,
-    TaskComponent
+    SimpleTextComponent
   ],
   imports: [
     BrowserModule,
