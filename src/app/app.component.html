@@ -1,13 +1,7 @@
-<!--
-<app-set-up *ngIf="setUp" class="absolute" (start)="start()"></app-set-up>
+<div class="absolute noMargin"><!--frame-->
+  <router-outlet name="primary"></router-outlet>
+</div>
 
-<app-simple-math *ngIf="tasks.get('simpleMath')" class="absolute"></app-simple-math>
-<app-simple-text *ngIf="tasks.get('simpleText')" class="absolute"></app-simple-text>
-
-<app-illuminazione-edge *ngIf="indicators.get('illuminazioneEdge')" class="absolute overlay"></app-illuminazione-edge>
-<app-classic *ngIf="indicators.get('classic')" class="absolute overlay"></app-classic>
--->
-
-<router-outlet name="primary"></router-outlet>
-
-<router-outlet name="secondary"></router-outlet>
+<div class="absolute noMargin overlay"><!--overlay-->
+  <router-outlet name="secondary"></router-outlet>
+</div>
