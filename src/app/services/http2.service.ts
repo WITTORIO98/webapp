@@ -70,4 +70,18 @@ export class Http2Service {
 
     return out;
   }
+
+  public spawnTask(name: string) {
+  }
+
+  public despawnTask(name: string) {
+  }
+
+  public spawnPrivacy(name: string) {
+  }
+
+  public despawnPrivacy(name: string) {
+  }
+
+
 }
