@@ -15,6 +15,7 @@ const routes: Routes = [
   {path: 'simple-math', component: SimpleMathComponent, outlet: 'primary'},
 
   {path: '', component: EmptyComponent, outlet: 'secondary'},
+  {path: 'app-empty', component: EmptyComponent, outlet: 'secondary'},
   {path: 'classic', component: ClassicComponent, outlet: 'secondary'},
   {path: 'illuminazone-edge', component: IlluminazioneEdgeComponent, outlet: 'secondary'},
 ];
