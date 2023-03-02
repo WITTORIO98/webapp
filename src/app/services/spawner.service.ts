@@ -14,6 +14,12 @@ export class SpawnerService {
   constructor() {
   }
 
+  /**
+   * ritorna una pagina [string] compatibie con Router.navigate()
+   * la prima volta ritorna il setUp page.
+   * ogni pagina non si ripeterà mai.
+   * se le pagine sono finite riporta alla setUp page
+   */
   getRandomPage(): [string] {
     if (this.spawnedTasks.length == 0) {
       this.spawnedTasks.push('setUp');
