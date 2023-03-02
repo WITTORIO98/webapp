@@ -9,7 +9,11 @@ export enum GET {
 
 export enum POST {
   example = '/example',
-  newTask = '/newTask'
+  spawnTask = '/spawnTask',
+  despawnTask = '/despawnTask',
+  spawnPrivacy = '/spawnPrivacy',
+  despawnPrivacy = '/despawnPrivacy',
+  clickButton = '/clickButton',
 }
 
 @Injectable({
