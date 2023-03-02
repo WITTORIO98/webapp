@@ -20,7 +20,7 @@ export class SpawnerService {
    * ogni pagina non si ripeterà mai.
    * se le pagine sono finite riporta alla setUp page
    */
-  getRandomPage(): [string] {
+  public getRandomPage(): [string] {
     if (this.spawnedTasks.length == 0) {
       this.spawnedTasks.push('setUp');
       return ['setUp'];
@@ -47,4 +47,15 @@ export class SpawnerService {
     this.spawnedTasks.push(notSpawnedTasks[rand]);
     return [notSpawnedTasks[rand]];
   }
+
+  /**
+   *
+   * @param delay     -1=default=random   dopo quanto tempo appare
+   * @param duration  -1=default=random   quanto tempo dura
+   */
+  public getRandomPrivacy(delay: number, duration: number): [string] {
+
+    return ['classic'];
+  }
+
 }
