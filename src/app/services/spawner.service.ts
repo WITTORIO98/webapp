@@ -33,6 +33,10 @@ export class SpawnerService {
       }
     });
 
+    if (notSpawnedTasks.length == 0) {
+      return ['setUp'];
+    }
+
     let rand = Math.floor(Math.random() * notSpawnedTasks.length);
     this.spawnedTasks.push(notSpawnedTasks[rand]);
     return [notSpawnedTasks[rand]];
