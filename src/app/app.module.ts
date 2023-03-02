@@ -12,6 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {SimpleTextComponent} from './tasks/simple-text/simple-text.component';
 import {HttpClientModule} from "@angular/common/http";
+import { EmptyComponent } from './util/empty/empty.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {HttpClientModule} from "@angular/common/http";
     IlluminazioneEdgeComponent,
     ClassicComponent,
     SimpleMathComponent,
-    SimpleTextComponent
+    SimpleTextComponent,
+    EmptyComponent
   ],
   imports: [
     BrowserModule,
