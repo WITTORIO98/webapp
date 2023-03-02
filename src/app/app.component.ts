@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {ChangePageService} from "./services/change-page.service";
+import {SpawnerService} from "./services/spawner.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import {ChangePageService} from "./services/change-page.service";
 export class AppComponent implements OnInit {
   title = 'webapp';
 
-  constructor(private router: Router, private elementRef: ElementRef, private spawner: ChangePageService) {
+  constructor(private router: Router, private elementRef: ElementRef, private spawner: SpawnerService) {
   }
 
   spawnIndicators(): void {

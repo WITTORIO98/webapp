@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ChangePageService } from './change-page.service';
+import { SpawnerService } from './spawner.service';
 
-describe('ChangePageService', () => {
-  let service: ChangePageService;
+describe('SpawnerService', () => {
+  let service: SpawnerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ChangePageService);
+    service = TestBed.inject(SpawnerService);
   });
 
   it('should be created', () => {

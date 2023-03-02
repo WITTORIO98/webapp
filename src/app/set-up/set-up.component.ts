@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
-import {AppComponent} from "../app.component";
-import {ChangePageService} from "../services/change-page.service";
+import {SpawnerService} from "../services/spawner.service";
 
 @Component({
   selector: 'app-set-up',
@@ -13,7 +12,7 @@ export class SetUpComponent {
   codiceInserito: boolean;
   idEsp: number;
 
-  constructor(private router: Router, private change: ChangePageService) {
+  constructor(private router: Router, private change: SpawnerService) {
     this.codiceInserito = false;
     //chiedo al back-end un nuovo id esperimento
     this.idEsp = 12346666

@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ChangePageService {
+export class SpawnerService {
   private tasks: string[] = [
     'simple-math',
     'simple-text'
