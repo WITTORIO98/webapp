@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {SetUpComponent} from "./set-up/set-up.component";
 import {SimpleTextComponent} from "./tasks/simple-text/simple-text.component";
 import {SimpleMathComponent} from "./tasks/simple-math/simple-math.component";
@@ -24,4 +24,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
