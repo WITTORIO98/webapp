@@ -15,6 +15,8 @@ const indicators: string[] = [
   providedIn: 'root'
 })
 export class SpawnerService {
+  private readonly defaultDelay: number = 1;
+  private readonly defaultDuration: number = 1;
 
   private spawnedTasks: string[] = [];
   private spawnedIndicators: string[] = [];
@@ -63,9 +65,16 @@ export class SpawnerService {
    * @param delay     -1=default=random   dopo quanto tempo appare
    * @param duration  -1=default=random   quanto tempo dura
    */
-  public randomIndicator(delay: number, duration: number): [string] {
+  public randomIndicator(delay?: number, duration?: number): void {
+    if (delay == undefined) {
+      delay = this.defaultDelay;
+    }
+    if (duration == undefined) {
+      duration = this.defaultDuration;
+    }
 
-    return ['app-empty'];
+
+
   }
 
   public removeIndicator() {
