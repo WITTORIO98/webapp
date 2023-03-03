@@ -20,6 +20,7 @@ export class SpawnerService {
 
   private spawnedTasks: string[] = [];
   private spawnedIndicators: string[] = [];
+  private latest = {task: empty, indicator: empty};
 
   constructor(private router: Router) {
   }
@@ -32,7 +33,7 @@ export class SpawnerService {
   public randomPage(): void {
     if (this.spawnedTasks.length == 0) {
       this.spawnedTasks.push('setUp');
-      this.router.navigate(['setUp']);
+      this.routerNav(['setUp']);
     } else {
 
       let notSpawnedTasks: string[] = [];
@@ -49,11 +50,11 @@ export class SpawnerService {
       });
 
       if (notSpawnedTasks.length == 0) {
-        this.router.navigate(['setUp']);
+        this.routerNav(['setUp']);
       } else {
         let rand = Math.floor(Math.random() * notSpawnedTasks.length);
         this.spawnedTasks.push(notSpawnedTasks[rand]);
-        this.router.navigate([notSpawnedTasks[rand]]);
+        this.routerNav([notSpawnedTasks[rand]]);
       }
 
     }
@@ -108,11 +109,32 @@ export class SpawnerService {
   public scheduleIndicator(delay: number, duration: number, indicator: [string]) {
     //todo implementare delay e duration
     console.log("spawn indicators:  ", indicator);
-    this.router.navigate(['classic']);
+    this.routerNav(undefined, ['classic']);
   }
 
   public removeIndicator() {
-    this.router.navigate(empty);
+    this.routerNav(undefined, empty);
+  }
+
+  private routerNav(task?: [string], indicator?: [string]): void {
+    if (task == undefined) {
+      task = this.latest.task;
+    }
+    if (indicator == undefined) {
+      indicator = this.latest.indicator;
+    }
+
+    this.latest.task = task;
+    this.latest.indicator = indicator;
+
+    this.router.navigate([
+      {
+        outlets: {
+          outlet1: task,
+          outlet2: indicator
+        }
+      }
+    ]);
   }
 
 }
