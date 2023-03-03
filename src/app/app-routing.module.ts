@@ -14,10 +14,9 @@ const routes: Routes = [
   {path: 'simple-text', component: SimpleTextComponent, outlet: 'primary'},
   {path: 'simple-math', component: SimpleMathComponent, outlet: 'primary'},
 
-  {path: '', component: EmptyComponent, outlet: 'secondary'},
   {path: 'app-empty', component: EmptyComponent, outlet: 'secondary'},
   {path: 'classic', component: ClassicComponent, outlet: 'secondary'},
-  {path: 'illuminazone-edge', component: IlluminazioneEdgeComponent, outlet: 'secondary'},
+  {path: 'illuminazione-edge', component: IlluminazioneEdgeComponent, outlet: 'secondary'},
 ];
 
 @NgModule({
