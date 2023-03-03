@@ -105,6 +105,12 @@ export class SpawnerService {
 
   }
 
+  public scheduleIndicator(delay: number, duration: number, indicator: [string]) {
+    //todo implementare delay e duration
+    console.log("spawn indicators:  ", indicator);
+    this.router.navigate(['classic']);
+  }
+
   public removeIndicator() {
     this.router.navigate(empty);
   }
