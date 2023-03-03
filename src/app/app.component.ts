@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     const elem = document.documentElement; // Ottiene l'elemento radice
     elem.requestFullscreen(); // Richiede la modalità fullscreen
-    this.spawner.RandomPage();
+    this.spawner.randomPage();
     //this.router.navigate(this.spawner.getRandomPage());
   }
 }

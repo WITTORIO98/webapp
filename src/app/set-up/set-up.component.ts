@@ -24,7 +24,7 @@ export class SetUpComponent {
   }
 
   startSp() {
-    this.spawner.RandomPage();
+    this.spawner.randomPage();
   }
 
 }

@@ -1,21 +1,22 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 
+const tasks: string[] = [
+  'simple-math',
+  'simple-text'
+];
+const indicators: string[] = [
+  'classic',
+  'illuminazone-edge'
+];
+
 @Injectable({
   providedIn: 'root'
 })
 export class SpawnerService {
-  private tasks: string[] = [
-    'simple-math',
-    'simple-text'
-  ];
-  private indicators: string[] = [
-    'classic',
-    'illuminazone-edge'
-  ];
 
   private spawnedTasks: string[] = [];
-  private spawnedindicators: string[] = [];
+  private spawnedIndicators: string[] = [];
 
   constructor(private router: Router) {
   }
@@ -25,14 +26,14 @@ export class SpawnerService {
    * ogni pagina non si ripeterà mai.
    * se le pagine sono finite riporta alla setUp page
    */
-  public RandomPage(): void {
+  public randomPage(): void {
     if (this.spawnedTasks.length == 0) {
       this.spawnedTasks.push('setUp');
       this.router.navigate(['setUp']);
     } else {
 
       let notSpawnedTasks: string[] = [];
-      this.tasks.forEach(task => {
+      tasks.forEach(task => {
         let find: boolean = false;
         this.spawnedTasks.forEach(spawned => {
           if (task == spawned) {
@@ -61,7 +62,7 @@ export class SpawnerService {
    * @param delay     -1=default=random   dopo quanto tempo appare
    * @param duration  -1=default=random   quanto tempo dura
    */
-  public getRandomPrivacy(delay: number, duration: number): [string] {
+  public randomIndicator(delay: number, duration: number): [string] {
 
     return ['app-empty'];
   }
