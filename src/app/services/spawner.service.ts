@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 
+const empty: [string] = ['app-empty'];
 const tasks: string[] = [
   'simple-math',
   'simple-text'
@@ -65,6 +66,10 @@ export class SpawnerService {
   public randomIndicator(delay: number, duration: number): [string] {
 
     return ['app-empty'];
+  }
+
+  public removeIndicator() {
+    this.router.navigate(empty);
   }
 
 }
