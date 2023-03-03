@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
+import {Component} from '@angular/core';
 import {SpawnerService} from "../services/spawner.service";
 
 @Component({
@@ -8,11 +7,10 @@ import {SpawnerService} from "../services/spawner.service";
   styleUrls: ['./set-up.component.scss']
 })
 export class SetUpComponent {
-  @Output('start') start: EventEmitter<any> = new EventEmitter();
   codiceInserito: boolean;
   idEsp: number;
 
-  constructor(private router: Router, private change: SpawnerService) {
+  constructor(private spawner: SpawnerService) {
     this.codiceInserito = false;
     //chiedo al back-end un nuovo id esperimento
     this.idEsp = 12346666
@@ -26,7 +24,7 @@ export class SetUpComponent {
   }
 
   startSp() {
-    this.router.navigate(this.change.getRandomPage());
+    this.spawner.RandomPage();
   }
 
 }
