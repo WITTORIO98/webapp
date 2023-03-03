@@ -5,18 +5,16 @@ import {SimpleTextComponent} from "./tasks/simple-text/simple-text.component";
 import {SimpleMathComponent} from "./tasks/simple-math/simple-math.component";
 import {IlluminazioneEdgeComponent} from "./privacyIndicators/illuminazione-edge/illuminazione-edge.component";
 import {ClassicComponent} from "./privacyIndicators/classic/classic.component";
-import {AppComponent} from "./app.component";
 import {EmptyComponent} from "./util/empty/empty.component";
 
 const routes: Routes = [
-  {path: '', component: AppComponent, outlet: 'primary'},
-  {path: 'setUp', component: SetUpComponent, outlet: 'primary'},
-  {path: 'simple-text', component: SimpleTextComponent, outlet: 'primary'},
-  {path: 'simple-math', component: SimpleMathComponent, outlet: 'primary'},
+  {path: 'setUp', component: SetUpComponent, outlet: 'outlet1'},
+  {path: 'simple-text', component: SimpleTextComponent, outlet: 'outlet1'},
+  {path: 'simple-math', component: SimpleMathComponent, outlet: 'outlet1'},
 
-  {path: 'app-empty', component: EmptyComponent, outlet: 'secondary'},
-  {path: 'classic', component: ClassicComponent, outlet: 'secondary'},
-  {path: 'illuminazione-edge', component: IlluminazioneEdgeComponent, outlet: 'secondary'},
+  {path: 'app-empty', component: EmptyComponent, outlet: 'outlet2'},
+  {path: 'classic', component: ClassicComponent, outlet: 'outlet2'},
+  {path: 'illuminazione-edge', component: IlluminazioneEdgeComponent, outlet: 'outlet2'},
 ];
 
 @NgModule({
