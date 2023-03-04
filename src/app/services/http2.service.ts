@@ -4,11 +4,9 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 const URL: string = "http://localhost:8080"
 
 export enum GET {
-  example = '/example'
 }
 
 export enum POST {
-  example = '/example',
   spawnTask = '/spawnTask',
   despawnTask = '/despawnTask',
   spawnPrivacy = '/spawnPrivacy',
@@ -72,15 +70,19 @@ export class Http2Service {
   }
 
   public spawnTask(name: string) {
+    this.post(POST.spawnTask, name);
   }
 
   public despawnTask(name: string) {
+    this.post(POST.despawnTask, name);
   }
 
   public spawnPrivacy(name: string) {
+    this.post(POST.spawnPrivacy, name);
   }
 
   public despawnPrivacy(name: string) {
+    this.post(POST.despawnPrivacy, name);
   }
 
 
