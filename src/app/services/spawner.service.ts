@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
+import {timeout} from "rxjs";
 
 const empty: [string] = ['app-empty'];
 const tasks: string[] = [
@@ -15,8 +16,8 @@ const indicators: string[] = [
   providedIn: 'root'
 })
 export class SpawnerService {
-  private readonly delay = {default: 2, rMin: 1, rMax: 3};
-  private readonly duration = {default: 2, rMin: 1, rMax: 3};
+  private readonly delay = {default: 4000, rMin: 0, rMax: 30000};
+  private readonly duration = {default: 8000, rMin: 500, rMax: 30000};
 
   private spawnedTasks: string[] = [];
   private spawnedIndicators: string[] = [];
@@ -62,8 +63,8 @@ export class SpawnerService {
   }
 
   /**
-   * @param delay     '-1'=random
-   * @param duration  '-1'=random
+   * @param delay     ms    -1=random
+   * @param duration  ms    -1=random
    */
   public randomIndicator(delay?: number, duration?: number): void {
     if (delay == undefined) {
@@ -107,12 +108,16 @@ export class SpawnerService {
   }
 
   public scheduleIndicator(delay: number, duration: number, indicator: [string]) {
-    //todo implementare delay e duration
-    console.log("spawn indicators:  ", indicator);
-    this.routerNav(undefined, ['classic']);
+    console.log("scheduled", indicator, "delay", delay, "duration", duration);
+    setTimeout(() => {
+      this.routerNav(undefined, indicator);
+    }, delay);
+    setTimeout(() => {
+      this.removeIndicator();
+    }, delay + duration);
   }
 
-  public removeIndicator() {
+  private removeIndicator() {
     this.routerNav(undefined, empty);
   }
 

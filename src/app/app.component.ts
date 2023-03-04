@@ -17,5 +17,6 @@ export class AppComponent implements OnInit {
     elem.requestFullscreen(); //todo work?
 
     this.spawner.randomPage();
+    this.spawner.randomIndicator();
   }
 }
