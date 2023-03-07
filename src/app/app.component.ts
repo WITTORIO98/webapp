@@ -19,5 +19,6 @@ export class AppComponent implements OnInit {
 
     this.spawner.randomPage();
     this.spawner.randomIndicator();
+
   }
 }
