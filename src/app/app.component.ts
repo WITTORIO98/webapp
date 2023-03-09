@@ -1,6 +1,8 @@
+
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {SpawnerService} from "./services/spawner.service";
 import {Http2Service, POST} from "./services/http2.service";
+import webgazer from 'webgazer/dist/webgazer.js';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,9 @@ export class AppComponent implements OnInit {
   title = 'webapp';
 
   constructor(private elementRef: ElementRef, private spawner: SpawnerService, private http: Http2Service) {
+
   }
+
 
   ngOnInit(): void {
     const elem = document.documentElement; // Ottiene l'elemento radice
@@ -19,6 +23,7 @@ export class AppComponent implements OnInit {
 
     this.spawner.randomPage();
     this.spawner.randomIndicator();
+
 
   }
 }
