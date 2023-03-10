@@ -1,7 +1,9 @@
-
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {SpawnerService} from "./services/spawner.service";
-import {Http2Service, POST} from "./services/http2.service";
+import {Http2Service} from "./services/http2.service";
+
+// @ts-ignore
+const WebGazer: any = window.webgazer;
 
 @Component({
   selector: 'app-root',
@@ -23,6 +25,19 @@ export class AppComponent implements OnInit {
     this.spawner.randomPage();
     this.spawner.randomIndicator();
 
+    this.gazer();
+  }
+
+  private gazer() {
+    WebGazer.setGazeListener((data: any, elapsedTime: any) => {
+      if (data == null) {
+        return;
+      }
+      console.log("X: "+data.x);//these x coordinates are relative to the viewport
+      console.log("Y: "+data.y);//these y coordinates are relative to the viewport
+      console.log(elapsedTime); //elapsed time is based on time since begin was called
+    }).begin();
 
   }
+
 }
