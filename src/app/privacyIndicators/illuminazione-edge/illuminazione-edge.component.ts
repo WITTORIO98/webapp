@@ -49,5 +49,5 @@ export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.http.despawnPrivacy(this.constructor.name);
   }
-  
+
 }
