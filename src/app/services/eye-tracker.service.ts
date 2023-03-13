@@ -14,6 +14,8 @@ export class EyeTrackerService {
   private eyeCord: coordinates = {x: 100, y: 100}
   private initialized: boolean = false;
 
+  private clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
+
   constructor() {
   }
 
@@ -38,12 +40,17 @@ export class EyeTrackerService {
 
         webgazerGazeDotStyle.setProperty('opacity', '0');
         webgazerGazeDotStyle.setProperty('pointer-events', 'none');
+
+        this.initialized = !this.initialized;
       }
+
     }).begin();
 
     //mouseListener
     document.addEventListener('click', (event) => {
-      let mouseCord: coordinates = {x: event.clientX, y: event.clientY}
+      let mouseCord: coordinates = {x: event.clientX, y: event.clientY};
+      let timestamp: number = new Date().getTime();
+      this.clicks.push({mouseCord: mouseCord, eyeCord: this.eyeCord, timestamp: timestamp});
     });
 
   }
