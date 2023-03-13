@@ -1,9 +1,10 @@
-.variables{
+.variables {
   --spessore: 0.5vh;
   --y-altezza: 50vw;
   --x-larghezza: 50vw;
   --y-time: 8s;
   --x-time: 8s;
+  --delay: 2s;
 }
 
 .toDown {
@@ -14,7 +15,7 @@
 
   position: absolute;
   animation: down var(--y-time) linear infinite;
-  animation-delay: 2s;
+  animation-delay: calc(0*var(--delay));
 }
 
 .toRight {
@@ -26,7 +27,7 @@
   position: absolute;
   bottom: 0;
   animation: right var(--x-time) linear infinite;
-  animation-delay: 4s;
+  animation-delay: calc(1*var(--delay));
 }
 
 .toUp {
@@ -38,7 +39,7 @@
   position: absolute;
   right: 0;
   animation: up var(--y-time) linear infinite;
-  animation-delay: 6s;
+  animation-delay: calc(2*var(--delay));
 }
 
 .toLeft {
@@ -50,6 +51,7 @@
   position: absolute;
   top: 0;
   animation: left var(--x-time) linear infinite;
+  animation-delay: calc(3*var(--delay));
 }
 
 @keyframes down {
