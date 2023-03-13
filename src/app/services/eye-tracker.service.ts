@@ -39,6 +39,15 @@ export class EyeTrackerService {
         webgazerGazeDotStyle.setProperty('pointer-events', 'none');
       }
     }).begin();
+
+    //mouseListener
+    document.addEventListener('click', (event) => {
+      let mouseCord: coordinates = {x: event.clientX, y: event.clientY}
+    });
+
+  }
+
+
   }
 
   public getCoord() {
