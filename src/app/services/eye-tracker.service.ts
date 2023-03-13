@@ -55,16 +55,22 @@ export class EyeTrackerService {
 
   }
 
+  private toViewport(abs: coordinates): coordinates {
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    return {x: (abs.x / width) * 100, y: (abs.y / height) * 100};
+  }
+
   public getCoord() {
-    return this.eyeCord;
+    return this.toViewport(this.eyeCord);
   }
 
   public getX() {
-    return this.eyeCord.x;
+    return this.getCoord().x;
   }
 
   public getY() {
-    return this.eyeCord.y;
+    return this.getCoord().y;
   }
 
 
