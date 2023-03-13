@@ -61,17 +61,16 @@ export class EyeTrackerService {
     return {x: (abs.x / width) * 100, y: (abs.y / height) * 100};
   }
 
-  public getCoord() {
+  public getEyeCord() {
     return this.toViewport(this.eyeCord);
   }
 
   public getX() {
-    return this.getCoord().x;
+    return this.getEyeCord().x;
   }
 
   public getY() {
-    return this.getCoord().y;
+    return this.getEyeCord().y;
   }
-
 
 }
