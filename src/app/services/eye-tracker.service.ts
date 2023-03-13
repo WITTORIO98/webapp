@@ -51,8 +51,12 @@ export class EyeTrackerService {
       let mouseCord: coordinates = {x: event.clientX, y: event.clientY};
       let timestamp: number = new Date().getTime();
       this.clicks.push({mouseCord: mouseCord, eyeCord: this.eyeCord, timestamp: timestamp});
+      this.showPrecision(this.eyeCord, mouseCord);
     });
-
+  }
+  
+  private showPrecision(eye: coordinates, real: coordinates) {
+    console.log("Real.x-Eye.x :", real.x - eye.x, "  Real.y-Eye.y :", real.y - eye.y);
   }
 
   private toViewport(abs: coordinates): coordinates {
