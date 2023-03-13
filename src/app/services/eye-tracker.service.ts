@@ -23,8 +23,8 @@ export class EyeTrackerService {
       if (data == null) {
         return;
       }
-      this.eyeCord.x = data.x;    //these x coordinates are relative to the viewport
-      this.eyeCord.y = data.y;    //these y coordinates are relative to the viewport
+      this.eyeCord.x = data.x;
+      this.eyeCord.y = data.y;
       //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
       if (!this.initialized) {
@@ -45,9 +45,6 @@ export class EyeTrackerService {
     document.addEventListener('click', (event) => {
       let mouseCord: coordinates = {x: event.clientX, y: event.clientY}
     });
-
-  }
-
 
   }
 
