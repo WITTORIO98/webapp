@@ -15,7 +15,7 @@
 
   position: absolute;
   animation: down var(--y-time) linear infinite;
-  animation-delay: calc(0*var(--delay));
+  animation-delay: calc(0 * var(--delay));
 }
 
 .toRight {
@@ -27,7 +27,7 @@
   position: absolute;
   bottom: 0;
   animation: right var(--x-time) linear infinite;
-  animation-delay: calc(1*var(--delay));
+  animation-delay: calc(1 * var(--delay));
 }
 
 .toUp {
@@ -39,7 +39,7 @@
   position: absolute;
   right: 0;
   animation: up var(--y-time) linear infinite;
-  animation-delay: calc(2*var(--delay));
+  animation-delay: calc(2 * var(--delay));
 }
 
 .toLeft {
@@ -51,77 +51,77 @@
   position: absolute;
   top: 0;
   animation: left var(--x-time) linear infinite;
-  animation-delay: calc(3*var(--delay));
+  animation-delay: calc(3 * var(--delay));
 }
 
 @keyframes down {
   0% {
-    top: 0;
-    opacity: 0;
-  }
-  49.9% {
-    top: 0;
-    opacity: 0;
-  }
-  50% {
     top: calc(-1 * var(--y-altezza));
     opacity: 1;
   }
-  100% {
+  50% {
     top: 100vh;
     opacity: 1;
+  }
+  50.1% {
+    top: 0;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 0;
   }
 }
 
 @keyframes right {
   0% {
-    bottom: 0;
-    opacity: 0;
-  }
-  49.9% {
-    bottom: 0;
-    opacity: 0;
-  }
-  50% {
     left: calc(-1 * var(--x-larghezza));
     opacity: 1;
   }
-  100% {
+  50% {
     left: 100vw;
     opacity: 1;
+  }
+  50.1% {
+    bottom: 0;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    opacity: 0;
   }
 }
 
 @keyframes up {
   0% {
-    opacity: 0;
-  }
-  49.9% {
-    opacity: 0;
-  }
-  50% {
     top: calc(100vh);
     opacity: 1;
   }
-  100% {
+  50% {
     top: calc(-1 * var(--y-altezza));
     opacity: 1;
+  }
+  50.1% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
 @keyframes left {
   0% {
-    opacity: 0;
-  }
-  49.9% {
-    opacity: 0;
-  }
-  50% {
     left: 100vw;
     opacity: 1;
   }
-  100% {
+  50% {
     left: calc(-1 * var(--x-larghezza));
     opacity: 1;
+  }
+  50.1% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }
