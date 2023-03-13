@@ -11,19 +11,20 @@ type coordinates = {
   providedIn: 'root'
 })
 export class EyeTrackerService {
-  private coord: coordinates = {x: 100, y: 100}
+  private eyeCord: coordinates = {x: 100, y: 100}
   private initialized: boolean = false;
 
   constructor() {
   }
 
   public start() {
+    //gazeListener
     WebGazer.setGazeListener((data: any, elapsedTime: any) => {
       if (data == null) {
         return;
       }
-      this.coord.x = data.x;    //these x coordinates are relative to the viewport
-      this.coord.y = data.y;    //these y coordinates are relative to the viewport
+      this.eyeCord.x = data.x;    //these x coordinates are relative to the viewport
+      this.eyeCord.y = data.y;    //these y coordinates are relative to the viewport
       //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
       if (!this.initialized) {
@@ -51,15 +52,15 @@ export class EyeTrackerService {
   }
 
   public getCoord() {
-    return this.coord;
+    return this.eyeCord;
   }
 
   public getX() {
-    return this.coord.x;
+    return this.eyeCord.x;
   }
 
   public getY() {
-    return this.coord.y;
+    return this.eyeCord.y;
   }
 
 
