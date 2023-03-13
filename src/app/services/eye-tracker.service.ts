@@ -32,6 +32,7 @@ export class EyeTrackerService {
       if (!this.initialized) {
         EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
         EyeTrackerService.setGazeVisibility("webgazerGazeDot", false);
+        EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
 
         this.initialized = !this.initialized;
       }
