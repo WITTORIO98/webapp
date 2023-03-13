@@ -30,16 +30,8 @@ export class EyeTrackerService {
       //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
       if (!this.initialized) {
-        // @ts-ignore
-        let webgazerVideoContainerStyle = document.getElementById("webgazerVideoContainer").style;
-        // @ts-ignore
-        let webgazerGazeDotStyle = document.getElementById("webgazerGazeDot").style;
-
-        webgazerVideoContainerStyle.setProperty('opacity', '0');
-        webgazerVideoContainerStyle.setProperty('pointer-events', 'none');
-
-        webgazerGazeDotStyle.setProperty('opacity', '0');
-        webgazerGazeDotStyle.setProperty('pointer-events', 'none');
+        EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
+        EyeTrackerService.setGazeVisibility("webgazerGazeDot", false);
 
         this.initialized = !this.initialized;
       }
@@ -54,9 +46,32 @@ export class EyeTrackerService {
       this.showPrecision(this.eyeCord, mouseCord);
     });
   }
-  
-  private showPrecision(eye: coordinates, real: coordinates) {
+
+  private showPrecision(eye: coordinates, real: coordinates) {//todo migliorare
     console.log("Real.x-Eye.x :", real.x - eye.x, "  Real.y-Eye.y :", real.y - eye.y);
+  }
+
+  static setGazeVisibility(target: string, value: boolean): void {
+    if (target == "webgazerVideoContainer") {
+      // @ts-ignore
+      let webgazerVideoContainerStyle = document.getElementById("webgazerVideoContainer").style;
+      if (value == false) {
+        webgazerVideoContainerStyle.setProperty('opacity', '0');
+        webgazerVideoContainerStyle.setProperty('pointer-events', 'none');
+      } else {
+        webgazerVideoContainerStyle.setProperty('opacity', '1');
+      }
+    }
+    if (target == "webgazerGazeDot") {
+      // @ts-ignore
+      let webgazerGazeDotStyle = document.getElementById("webgazerGazeDot").style;
+      if (value == false) {
+        webgazerGazeDotStyle.setProperty('opacity', '0');
+        webgazerGazeDotStyle.setProperty('pointer-events', 'none');
+      } else {
+        webgazerGazeDotStyle.setProperty('opacity', '1');
+      }
+    }
   }
 
   private toViewport(abs: coordinates): coordinates {
