@@ -33,11 +33,14 @@ export class AppComponent implements OnInit {
       if (data == null) {
         return;
       }
-      console.log("X: "+data.x);//these x coordinates are relative to the viewport
-      console.log("Y: "+data.y);//these y coordinates are relative to the viewport
-      console.log(elapsedTime); //elapsed time is based on time since begin was called
-    }).begin();
+      //console.log("X: " + data.x);//these x coordinates are relative to the viewport
+      //console.log("Y: " + data.y);//these y coordinates are relative to the viewport
+      //console.log(elapsedTime); //elapsed time is based on time since begin was called
+      // @ts-ignore
+      //document.getElementById("webgazerVideoContainer").style.setProperty('opacity', '0');  pointer-events: none;
+      //document.getElementById("webgazerGazeDot").style.setProperty('opacity', '0');         pointer-events: none;
 
+    }).begin();
   }
 
 }
