@@ -8,42 +8,85 @@ import {Http2Service} from "../../services/http2.service";
 })
 export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
   private variables = document.querySelector('.variables');
+  private animations: string[] = ["toDown", "toRight", "toUp", "toLeft"];
+  private lastAnimation: number = 4;
 
   constructor(private http: Http2Service) {
   }
 
   ngOnInit(): void {
     this.http.spawnPrivacy(this.constructor.name);
-    this.setVariables();
+    this.manageAnimation();
   }
 
-  private setVariables() {
+  private manageAnimation() {
+    let velocity: number = 300; // px/s
+    let windowsHeight = window.innerHeight;
+    let windowsWidth = window.innerWidth;
+    let vw = windowsWidth * 0.01;
+    let length = 50 * vw;
+
+    let yPartialTime = (windowsHeight / velocity) * 1000;
+    let xPartialTime = (windowsWidth / velocity) * 1000;
+    let despawnDelay = (length / velocity) * 1000;
+    let yTotalTime = yPartialTime + despawnDelay;
+    let xTotalTime = xPartialTime + despawnDelay;
+
+
+    let nonGiudicarmi = true;
+    if (nonGiudicarmi) {
+      this.spawnNextAnimation(despawnDelay);
+      setTimeout(() => {
+        this.spawnNextAnimation(despawnDelay);
+        setTimeout(() => {
+          this.spawnNextAnimation(despawnDelay);
+          setTimeout(() => {
+            this.spawnNextAnimation(despawnDelay);
+          }, yPartialTime);
+        }, xPartialTime);
+      }, yPartialTime);
+      setInterval(() => {
+        this.spawnNextAnimation(despawnDelay);
+        setTimeout(() => {
+          this.spawnNextAnimation(despawnDelay);
+          setTimeout(() => {
+            this.spawnNextAnimation(despawnDelay);
+            setTimeout(() => {
+              this.spawnNextAnimation(despawnDelay);
+            }, yPartialTime);
+          }, xPartialTime);
+        }, yPartialTime);
+      }, (yPartialTime + xPartialTime) * 2);
+    }
+
+
     this.variables = document.querySelector('.variables');
-    let height = window.innerHeight;
-    let width = window.innerWidth;
-    let vw = width * 0.01;
+    // @ts-ignore
+    this.variables.style.setProperty('--y-time', yTotalTime / 1000 + "s");
+    // @ts-ignore
+    this.variables.style.setProperty('--x-time', xTotalTime / 1000 + "s");
+    // @ts-ignore
+    this.variables.style.setProperty('--length', length + "px");
+  }
 
-    let xxx = height / 50;
-    xxx = Math.floor(xxx);
+  private spawnNextAnimation(despawnDelay: number): void {
+    let next: number = this.lastAnimation + 1;
+    if (this.lastAnimation >= 3) {
+      next = 0;
+      this.lastAnimation = 3;
+    }
 
-    console.log();
+    console.log(this.lastAnimation, this.animations[this.lastAnimation], this.animations[next]);
 
-    let out: string = xxx.toString() + "px";
-    let lunghezzaY: number = 50 * vw;
-    let lunghezzaX: number = 50 * vw;
-    let yTime: number = 8;
-    let xTime: number = 8;
+    let elem = this.animations[this.lastAnimation];
+    setTimeout(() => {
+      // @ts-ignore
+      document.getElementById(elem).classList.remove(elem);
+    }, despawnDelay);
+    // @ts-ignore
+    document.getElementById(this.animations[next]).classList.add(this.animations[next]);
 
-    // @ts-ignore
-    this.variables.style.setProperty('--spessore', out);
-    // @ts-ignore
-    this.variables.style.setProperty('--y-altezza', lunghezzaY.toString() + "px");
-    // @ts-ignore
-    this.variables.style.setProperty('--x-larghezza', lunghezzaX.toString() + "px");
-    // @ts-ignore
-    this.variables.style.setProperty('--y-time', yTime.toString() + "s");
-    // @ts-ignore
-    this.variables.style.setProperty('--x-time', xTime.toString() + "s");
+    this.lastAnimation = next;
   }
 
   ngOnDestroy(): void {

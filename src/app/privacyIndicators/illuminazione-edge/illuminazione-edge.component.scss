@@ -1,16 +1,15 @@
 .variables {
   --spessore: 0.5vh;
-  --y-altezza: 50vw;
-  --x-larghezza: 50vw;
-  --y-time: 8s;
-  --x-time: 8s;
-  --delay: 2s;
+  --length: 50vw; //sovrascritta
+  --y-time: 8s; //sovrascritta
+  --x-time: 8s; //sovrascritta
+  --delay: 0s; //non utilizzata
 }
 
 .toDown {
   opacity: 0;
   width: var(--spessore);
-  height: var(--y-altezza);
+  height: var(--length);
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
 
   position: absolute;
@@ -20,7 +19,7 @@
 
 .toRight {
   opacity: 0;
-  width: var(--x-larghezza);
+  width: var(--length);
   height: var(--spessore);
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
 
@@ -33,7 +32,7 @@
 .toUp {
   opacity: 0;
   width: var(--spessore);
-  height: var(--y-altezza);
+  height: var(--length);
   background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
 
   position: absolute;
@@ -44,7 +43,7 @@
 
 .toLeft {
   opacity: 0;
-  width: var(--x-larghezza);
+  width: var(--length);
   height: var(--spessore);
   background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
 
@@ -56,7 +55,7 @@
 
 @keyframes down {
   0% {
-    top: calc(-1 * var(--y-altezza));
+    top: calc(-1 * var(--length));
     opacity: 1;
   }
   100% {
@@ -67,7 +66,7 @@
 
 @keyframes right {
   0% {
-    left: calc(-1 * var(--x-larghezza));
+    left: calc(-1 * var(--length));
     opacity: 1;
   }
   100% {
@@ -82,7 +81,7 @@
     opacity: 1;
   }
   100% {
-    top: calc(-1 * var(--y-altezza));
+    top: calc(-1 * var(--length));
     opacity: 1;
   }
 }
@@ -93,7 +92,7 @@
     opacity: 1;
   }
   100% {
-    left: calc(-1 * var(--x-larghezza));
+    left: calc(-1 * var(--length));
     opacity: 1;
   }
 }
