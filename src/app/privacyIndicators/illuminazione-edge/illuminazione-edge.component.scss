@@ -59,17 +59,9 @@
     top: calc(-1 * var(--y-altezza));
     opacity: 1;
   }
-  50% {
+  100% {
     top: 100vh;
     opacity: 1;
-  }
-  50.1% {
-    top: 0;
-    opacity: 0;
-  }
-  100% {
-    top: 0;
-    opacity: 0;
   }
 }
 
@@ -78,17 +70,9 @@
     left: calc(-1 * var(--x-larghezza));
     opacity: 1;
   }
-  50% {
+  100% {
     left: 100vw;
     opacity: 1;
-  }
-  50.1% {
-    bottom: 0;
-    opacity: 0;
-  }
-  100% {
-    bottom: 0;
-    opacity: 0;
   }
 }
 
@@ -97,15 +81,9 @@
     top: calc(100vh);
     opacity: 1;
   }
-  50% {
+  100% {
     top: calc(-1 * var(--y-altezza));
     opacity: 1;
-  }
-  50.1% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
   }
 }
 
@@ -114,14 +92,8 @@
     left: 100vw;
     opacity: 1;
   }
-  50% {
+  100% {
     left: calc(-1 * var(--x-larghezza));
     opacity: 1;
-  }
-  50.1% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
   }
 }
