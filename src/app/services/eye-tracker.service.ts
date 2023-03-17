@@ -19,7 +19,10 @@ export class EyeTrackerService {
   constructor() {
   }
 
-  public start() {
+  public start(gui?: boolean) {
+    if (gui) {
+      this.initialized = true;
+    }
     //gazeListener
     WebGazer.setGazeListener((data: any, elapsedTime: any) => {
       if (data == null) {
@@ -32,7 +35,6 @@ export class EyeTrackerService {
       if (!this.initialized) {
         EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
         EyeTrackerService.setGazeVisibility("webgazerGazeDot", false);
-        //EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
 
         this.initialized = !this.initialized;
       }
