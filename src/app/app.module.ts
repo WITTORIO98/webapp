@@ -13,6 +13,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {SimpleTextComponent} from './tasks/simple-text/simple-text.component';
 import {HttpClientModule} from "@angular/common/http";
 import { EmptyComponent } from './util/empty/empty.component';
+import { ClassicDiscoComponent } from './privacyIndicators/classic-disco/classic-disco.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EmptyComponent } from './util/empty/empty.component';
     ClassicComponent,
     SimpleMathComponent,
     SimpleTextComponent,
-    EmptyComponent
+    EmptyComponent,
+    ClassicDiscoComponent
   ],
   imports: [
     BrowserModule,
