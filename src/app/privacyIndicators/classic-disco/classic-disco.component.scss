@@ -1,20 +1,21 @@
 .classicDiscoVariables {
-  --diameter: 3vw;
+  --innerDiameter: 3vw;
   --top: 6vw;
   --right: 10vw;
   --color: red;
-  --border: 2px;
+  --border: 3vw;
 
+  --totalDiameter: calc(var(--innerDiameter) + var(--border));
 }
 
 .cerchio {
   position: absolute;
   top: 6vw; //x
-  left: calc(100vh - var(--top) - var(--diameter) - var(--right)); //100 - x - width - spostamento laterale desiderato(10)
-  width: var(--diameter);
-  height: var(--diameter);
+  left: calc(100vw - var(--top) - var(--totalDiameter) - var(--right)); //100 - x - width - spostamento laterale desiderato(10)
+  width: var(--innerDiameter);
+  height: var(--innerDiameter);
   border-radius: 50%;
-  border: var(--border) solid var(--color);
+  border: calc(var(--border) / 2) solid var(--color);
   background-color: transparent;
 }
 
