@@ -122,7 +122,7 @@ export class SpawnerService {
     this.routerNav(undefined, empty);
   }
 
-  private routerNav(task?: [string], indicator?: [string]): void {
+  public routerNav(task?: [string], indicator?: [string]): void {
     if (task == undefined) {
       task = this.latest.task;
     }

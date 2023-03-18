@@ -19,13 +19,14 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.eye.start();
+    //this.eye.start();
 
     const elem = document.documentElement; // Ottiene l'elemento radice
     elem.requestFullscreen(); //todo work?
 
-    this.spawner.randomPage();
-    this.spawner.randomIndicator(0, 600000);
+    //this.spawner.randomPage();
+    //this.spawner.randomIndicator();
+    this.spawner.routerNav(['setUp'],['classic-disco']);
   }
 
 
