@@ -97,7 +97,7 @@ export class SpawnerService {
     });
 
     if (notSpawnedIndicators.length == 0) {
-      console.log("TUtti gli indicator sono stati schedulati");
+      console.debug("TUtti gli indicator sono stati schedulati");
       this.scheduleIndicator(delay, duration, empty);
     } else {
       let rand = Math.floor(Math.random() * notSpawnedIndicators.length);
@@ -109,7 +109,6 @@ export class SpawnerService {
   }
 
   public scheduleIndicator(delay: number, duration: number, indicator: [string]) {
-    console.log("scheduled", indicator, "delay", delay, "duration", duration);
     setTimeout(() => {
       this.routerNav(undefined, indicator);
     }, delay);

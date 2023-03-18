@@ -76,8 +76,6 @@ export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
       this.lastAnimation = 3;
     }
 
-    console.log(this.lastAnimation, this.animations[this.lastAnimation], this.animations[next]);
-
     let elem = this.animations[this.lastAnimation];
     setTimeout(() => {
       // @ts-ignore

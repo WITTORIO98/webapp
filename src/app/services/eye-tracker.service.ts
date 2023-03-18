@@ -51,7 +51,7 @@ export class EyeTrackerService {
   }
 
   private showPrecision(eye: coordinates, real: coordinates) {//todo migliorare
-    console.log("Real.x-Eye.x :", real.x - eye.x, "  Real.y-Eye.y :", real.y - eye.y);
+    console.debug("Real.x-Eye.x :", real.x - eye.x, "  Real.y-Eye.y :", real.y - eye.y);
   }
 
   static setGazeVisibility(target: string, value: boolean): void {
