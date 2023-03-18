@@ -7,7 +7,7 @@ import {Http2Service} from "../../services/http2.service";
   styleUrls: ['./illuminazione-edge.component.scss']
 })
 export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
-  private variables = document.querySelector('.variables');
+  private variables = document.querySelector('.illuminazioneEdgeVariables');
   private animations: string[] = ["toDown", "toRight", "toUp", "toLeft"];
   private lastAnimation: number = 4;
 
@@ -60,7 +60,7 @@ export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
     }
 
 
-    this.variables = document.querySelector('.variables');
+    this.variables = document.querySelector('.illuminazioneEdgeVariables');
     // @ts-ignore
     this.variables.style.setProperty('--y-time', yTotalTime / 1000 + "s");
     // @ts-ignore
