@@ -14,6 +14,7 @@ import {SimpleTextComponent} from './tasks/simple-text/simple-text.component';
 import {HttpClientModule} from "@angular/common/http";
 import { EmptyComponent } from './util/empty/empty.component';
 import { ClassicDiscoComponent } from './privacyIndicators/classic-disco/classic-disco.component';
+import { SurveyComponent } from './pages/survey/survey.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ClassicDiscoComponent } from './privacyIndicators/classic-disco/classic
     SimpleMathComponent,
     SimpleTextComponent,
     EmptyComponent,
-    ClassicDiscoComponent
+    ClassicDiscoComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,
