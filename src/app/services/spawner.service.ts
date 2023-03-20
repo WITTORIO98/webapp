@@ -10,7 +10,8 @@ const tasks: string[] = [
 const indicators: string[] = [
   'classic',
   'illuminazione-edge',
-  'classic-disco'
+  'classic-disco',
+  'vibration'
 ];
 
 @Injectable({

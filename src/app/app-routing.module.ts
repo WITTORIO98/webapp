@@ -7,6 +7,7 @@ import {IlluminazioneEdgeComponent} from "./privacyIndicators/illuminazione-edge
 import {ClassicComponent} from "./privacyIndicators/classic/classic.component";
 import {EmptyComponent} from "./util/empty/empty.component";
 import {ClassicDiscoComponent} from "./privacyIndicators/classic-disco/classic-disco.component";
+import {VibrationComponent} from "./privacyIndicators/vibration/vibration.component";
 
 const routes: Routes = [
   {path: 'setUp', component: SetUpComponent, outlet: 'outlet1'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'classic', component: ClassicComponent, outlet: 'outlet2'},
   {path: 'illuminazione-edge', component: IlluminazioneEdgeComponent, outlet: 'outlet2'},
   {path: 'classic-disco', component: ClassicDiscoComponent, outlet: 'outlet2'},
+  {path: 'vibration', component: VibrationComponent, outlet: 'outlet2'},
 ];
 
 @NgModule({
