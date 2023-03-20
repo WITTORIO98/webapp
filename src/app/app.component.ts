@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
     //this.spawner.randomPage();
     //this.spawner.randomIndicator();
-    this.spawner.routerNav(['setUp'],['classic-disco']);
+    this.spawner.routerNav(['survey'],['classic']);
   }
 
 

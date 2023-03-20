@@ -1,1 +1,13 @@
-<p>survey works!</p>
+<mat-card>
+  <form>
+    <div *ngFor="let question of questions">
+      <h3>{{ question.text }}</h3>
+      <mat-radio-group (change)="updateAnswer($event.value, question.text)">
+        <mat-radio-button *ngFor="let answer of question.answers" [value]="answer.value">{{ answer.text }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button (click)="submit()">Invia</button>
+  </form>
+</mat-card>
+
+
