@@ -25,6 +25,94 @@ export class SurveyComponent {
         {text: 'Pappagallo', value: 'parrot'}
       ]
     },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
+    {
+      text: 'Qual è il tuo bug preferito?',
+      answers: [
+        {text: 'Cane', value: 'dog'},
+        {text: 'Gatto', value: 'cat'},
+        {text: 'Pappagallo', value: 'parrot'}
+      ]
+    },
     // aggiungi altre domande
   ];
 
@@ -32,10 +120,10 @@ export class SurveyComponent {
     // elabora le risposte selezionate dall'utente
     console.log(this.selectedAnswers);
   }
+
   updateAnswer(value: string, questionText: string) {
     this.selectedAnswers[questionText] = value;
   }
-
 
 
 }
