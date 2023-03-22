@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 const URL: string = "http://localhost:8080"
 
 export enum GET {
+  surveyQuestions = '/surveyQuestions',
 }
 
 export enum POST {
@@ -12,6 +13,7 @@ export enum POST {
   spawnPrivacy = '/spawnPrivacy',
   despawnPrivacy = '/despawnPrivacy',
   clickButton = '/clickButton',
+  surveyAnswers = '/surveyAnswers',
 }
 
 @Injectable({
