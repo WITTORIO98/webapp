@@ -1,6 +1,5 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {SpawnerService} from "./services/spawner.service";
-import {Http2Service} from "./services/http2.service";
 import {EyeTrackerService} from "./services/eye-tracker.service";
 
 @Component({
@@ -13,8 +12,8 @@ export class AppComponent implements OnInit {
 
   constructor(private elementRef: ElementRef,
               private spawner: SpawnerService,
-              private eye: EyeTrackerService) {
-
+              private eye: EyeTrackerService
+  ) {
   }
 
 
@@ -24,9 +23,8 @@ export class AppComponent implements OnInit {
     const elem = document.documentElement; // Ottiene l'elemento radice
     elem.requestFullscreen(); //todo work?
 
-    //this.spawner.randomPage();
-    //this.spawner.randomIndicator();
-    this.spawner.routerNav(['setUp'],['classic-disco']);
+    this.spawner.randomPage();
+    this.spawner.randomIndicator();
   }
 
 
