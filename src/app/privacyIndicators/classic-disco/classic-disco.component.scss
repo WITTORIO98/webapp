@@ -1,21 +1,48 @@
 .classicDiscoVariables {
-  --innerDiameter: 3vw;
-  --top: 6vw;
-  --right: 10vw;
-  --color: red;
-  --border: 3vw;
+  --top: 10vw;
+  --right: 12vw;
 
-  --totalDiameter: calc(var(--innerDiameter) + var(--border));
+  --animationTime: 5s;
+
+  --innerDiameter1: 3vw;
+  --innerDiameter2: 6vw;
+  --border1: 6vw;
+  --border2: 3vw;
+
+  --color1: green;
+  --color2: yellow;
 }
 
-.cerchio {
+.circle {
+  background-color: transparent; //pieno o vuoto
+  border-radius: 50%; //circle
   position: absolute;
-  top: 6vw; //x
-  left: calc(100vw - var(--top) - var(--totalDiameter) - var(--right)); //100 - x - width - spostamento laterale desiderato(10)
-  width: var(--innerDiameter);
-  height: var(--innerDiameter);
-  border-radius: 50%;
-  border: calc(var(--border) / 2) solid var(--color);
-  background-color: transparent;
+  top: var(--top);
+  left: calc(100vw - var(--right));
+  transform: translate(-50%, -50%);
+
+  animation: effect var(--animationTime) linear infinite;
+
+  width: var(--innerDiameter1);
+  height: var(--innerDiameter1);
+  border: calc(var(--border1) / 2) solid var(--color1);
+}
+
+@keyframes effect {
+  0% {
+    width: var(--innerDiameter1);
+    height: var(--innerDiameter1);
+    border: calc(var(--border1) / 2) solid var(--color1);
+  }
+  50% {
+    width: var(--innerDiameter2);
+    height: var(--innerDiameter2);
+    border: calc(var(--border2) / 2) solid var(--color2);
+  }
+  100% {
+    width: var(--innerDiameter1);
+    height: var(--innerDiameter1);
+    border: calc(var(--border1) / 2) solid var(--color1);
+  }
 }
 
