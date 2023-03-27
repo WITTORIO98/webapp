@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpContext, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 const URL: string = "http://localhost:8080"
 
@@ -32,22 +33,14 @@ export class Http2Service {
     }
   });
 
-  private options = {
+  public options = {
     headers: this.headers,
-
   };
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
   }
 
-  public get(endpoint: string, useless?: any): any {
-    let out;
-    this.http.get(this.getUrl(endpoint), this.options).subscribe(data => {
-      console.log(data);
-      out = data;
-    });
-    return out;
-  }
+  //get pezzotta in survey.component.ts constructor todo
 
   public post(endpoint: string, body: any): any {
     let out;
@@ -63,7 +56,7 @@ export class Http2Service {
     return out;
   }
 
-  private getUrl(endpoint: string): string {
+  public getUrl(endpoint: string): string {
     let out: string = "";
     out = out.concat(URL, endpoint);
     console.log(out);
