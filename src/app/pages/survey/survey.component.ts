@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GET, Http2Service, POST} from "../../services/http2.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-survey',
@@ -9,21 +10,21 @@ import {GET, Http2Service, POST} from "../../services/http2.service";
 export class SurveyComponent {
   public selectedAnswers: { [key: string]: string } = {};
 
+  public questions: any;// : { text: string, answers: { text: string, value: string }[] }[]
 
   constructor(private http: Http2Service) {
-  }
-
-  }
-
-  submit() {
-    // elabora le risposte selezionate dall'utente
-    console.log(this.selectedAnswers);
-    this.http.post(POST.surveyAnswers, this.selectedAnswers);
+    http.http.get(http.getUrl(GET.surveyQuestions), http.options).subscribe(data => {
+      this.questions = data;
+    });
   }
 
   updateAnswer(value: string, questionText: string) {
     this.selectedAnswers[questionText] = value;
   }
 
+  submit() {
+    console.log(this.selectedAnswers);
+    this.http.post(POST.surveyAnswers, this.selectedAnswers);
+  }
 
 }
