@@ -6,15 +6,12 @@ import {GET, Http2Service, POST} from "../../services/http2.service";
   templateUrl: './survey.component.html',
   styleUrls: ['./survey.component.scss']
 })
-export class SurveyComponent implements OnInit {
+export class SurveyComponent {
   public selectedAnswers: { [key: string]: string } = {};
 
 
   constructor(private http: Http2Service) {
   }
-
-  ngOnInit(): void {
-    //this.selectedAnswers = this.http.get(GET.surveyQuestions);
 
   }
 
