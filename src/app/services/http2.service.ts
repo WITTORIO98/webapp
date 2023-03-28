@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 const URL: string = "http://localhost:8080"
 
 export enum GET {
+  newRandomIDExperiment = '/newRandomIDExperiment',
   surveyQuestions = '/surveyQuestions',
 }
 
@@ -21,6 +22,7 @@ export enum POST {
   providedIn: 'root'
 })
 export class Http2Service {
+  public static idExperiment: string = "1";
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -48,9 +50,12 @@ export class Http2Service {
     }
 
     let finalBody = {
-      timestamp: new Date().getTime(),
-      component: component,
-      extra: extra
+      idExperiment: Http2Service.idExperiment,
+      body: {
+        timestamp: new Date().getTime(),
+        component: component,
+        extra: extra
+      }
     };
 
     let out;
