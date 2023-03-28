@@ -24,7 +24,7 @@ export class SetUpComponent {
   }
 
   refresh() {
-    //chiedo al back-end se il pc è collegato
+    //chiedo al back-end se il pc è collegato todo
     if (true) {
       this.codiceInserito = true;
     }

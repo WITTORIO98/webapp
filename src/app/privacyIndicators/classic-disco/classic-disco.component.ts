@@ -14,26 +14,33 @@ export class ClassicDiscoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     /*random?*/
-    let innerDiameter1: number = 3; //vw
-    let innerDiameter2: number = 6; //vw
-    let border1: number = 6; //vw
-    let border2: number = 3; //vw
-    let color1: string = 'green';
-    let color2: string = 'yellow';
+    let variables = {
+      style: {
+        innerDiameter1: 3, //vw
+        innerDiameter2: 6, //vw
+        border1: 6, //vw
+        border2: 3, //vw
+        color1: 'green',
+        color2: 'yellow',
+      }
+    }
     /*random?*/
     this.variables = document.querySelector('.classicDiscoVariables');
     // @ts-ignore
-    this.variables.style.setProperty('--innerDiameter1', innerDiameter1 + "vw");
+    this.variables.style.setProperty('--innerDiameter1', variables.style.innerDiameter1 + "vw");
     // @ts-ignore
-    this.variables.style.setProperty('--innerDiameter2', innerDiameter2 + "vw");
+    this.variables.style.setProperty('--innerDiameter2', variables.style.innerDiameter2 + "vw");
     // @ts-ignore
-    this.variables.style.setProperty('--border1', border1 + "vw");
+    this.variables.style.setProperty('--border1', variables.style.border1 + "vw");
     // @ts-ignore
-    this.variables.style.setProperty('--border2', border2 + "vw");
+    this.variables.style.setProperty('--border2', variables.style.border2 + "vw");
     // @ts-ignore
-    this.variables.style.setProperty('--color1', color1);
+    this.variables.style.setProperty('--color1', variables.style.color1);
     // @ts-ignore
-    this.variables.style.setProperty('--color2', color2);
+    this.variables.style.setProperty('--color2', variables.style.color2);
+
+    // @ts-ignore
+    console.log(this.variables.style);
 
     this.http.spawnPrivacy(this.constructor.name);
   }
