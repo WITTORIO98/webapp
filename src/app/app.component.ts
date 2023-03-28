@@ -12,8 +12,8 @@ export class AppComponent implements OnInit {
 
   constructor(private elementRef: ElementRef,
               private spawner: SpawnerService,
-              private eye: EyeTrackerService
-  ) {
+              private eye: EyeTrackerService) {
+
   }
 
 

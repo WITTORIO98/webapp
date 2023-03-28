@@ -14,6 +14,10 @@ import {SimpleTextComponent} from './tasks/simple-text/simple-text.component';
 import {HttpClientModule} from "@angular/common/http";
 import { EmptyComponent } from './util/empty/empty.component';
 import { ClassicDiscoComponent } from './privacyIndicators/classic-disco/classic-disco.component';
+import { SurveyComponent } from './pages/survey/survey.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatRadioModule} from "@angular/material/radio";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,14 +29,18 @@ import { ClassicDiscoComponent } from './privacyIndicators/classic-disco/classic
     SimpleMathComponent,
     SimpleTextComponent,
     EmptyComponent,
-    ClassicDiscoComponent
+    ClassicDiscoComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatRadioModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

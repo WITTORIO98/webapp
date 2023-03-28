@@ -1,0 +1,22 @@
+<div class="absolute noMargin">
+
+  <div class="center-survey">
+    <mat-card class="matCardColor">
+      <form>
+        <div *ngFor="let question of questions">
+          <h3>{{ question.text }}</h3>
+          <mat-radio-group (change)="updateAnswer($event.value, question.text)">
+            <mat-radio-button *ngFor="let answer of question.answers"
+                              [value]="answer.value">{{ answer.text }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+
+  <div class="center">
+    <button class="button" (click)="submit()">Invia</button>
+  </div>
+  <div class="useless"></div>
+
+</div>
