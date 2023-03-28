@@ -11,6 +11,9 @@ export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
   private animations: string[] = ["toDown", "toRight", "toUp", "toLeft"];
   private lastAnimation: number = 4;
 
+  private interval: any;
+  private timer: any;
+
   constructor(private http: Http2Service) {
   }
 
@@ -36,22 +39,22 @@ export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
     let nonGiudicarmi = true;
     if (nonGiudicarmi) {
       this.spawnNextAnimation(despawnDelay);
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         this.spawnNextAnimation(despawnDelay);
-        setTimeout(() => {
+        this.timer = setTimeout(() => {
           this.spawnNextAnimation(despawnDelay);
-          setTimeout(() => {
+          this.timer = setTimeout(() => {
             this.spawnNextAnimation(despawnDelay);
           }, yPartialTime);
         }, xPartialTime);
       }, yPartialTime);
-      setInterval(() => {
+      this.interval = setInterval(() => {
         this.spawnNextAnimation(despawnDelay);
-        setTimeout(() => {
+        this.timer = setTimeout(() => {
           this.spawnNextAnimation(despawnDelay);
-          setTimeout(() => {
+          this.timer = setTimeout(() => {
             this.spawnNextAnimation(despawnDelay);
-            setTimeout(() => {
+            this.timer = setTimeout(() => {
               this.spawnNextAnimation(despawnDelay);
             }, yPartialTime);
           }, xPartialTime);
@@ -88,6 +91,8 @@ export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    clearInterval(this.interval);
+    clearTimeout(this.timer);
     this.http.despawnPrivacy(this.constructor.name);
   }
 
