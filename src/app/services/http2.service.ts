@@ -1,9 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpContext, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 const URL: string = "http://localhost:8080"
 
 export enum GET {
+  newRandomIDExperiment = '/newRandomIDExperiment',
+  surveyQuestions = '/surveyQuestions',
 }
 
 export enum POST {
@@ -12,12 +15,14 @@ export enum POST {
   spawnPrivacy = '/spawnPrivacy',
   despawnPrivacy = '/despawnPrivacy',
   clickButton = '/clickButton',
+  surveyAnswers = '/surveyAnswers',
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class Http2Service {
+  public static idExperiment: string = "1";
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -30,30 +35,30 @@ export class Http2Service {
     }
   });
 
-  private options = {
+  public options = {
     headers: this.headers,
-
   };
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
   }
 
-  public get(endpoint: string, useless?: any): any {
-    let out;
-    this.http.get(this.getUrl(endpoint), this.options).subscribe(data => {
-      console.log(data);
-      out = data;
-    });
-    return out;
-  }
+  //get pezzotta in survey.component.ts constructor todo
 
-  public post(endpoint: string, body: any): any {
-    let out;
+  public post(endpoint: string, component: any, extra?: any): any {
+    if (extra == null) {
+      extra = {};
+    }
+
     let finalBody = {
-      timestamp: new Date().getTime(),
-      body: body
+      idExperiment: Http2Service.idExperiment,
+      body: {
+        timestamp: new Date().getTime(),
+        component: component,
+        extra: extra
+      }
     };
 
+    let out;
     this.http.post(this.getUrl(endpoint), finalBody, this.options).subscribe(data => {
       console.debug(data);
       out = data;
@@ -61,7 +66,7 @@ export class Http2Service {
     return out;
   }
 
-  private getUrl(endpoint: string): string {
+  public getUrl(endpoint: string): string {
     let out: string = "";
     out = out.concat(URL, endpoint);
     console.log(out);
@@ -69,20 +74,20 @@ export class Http2Service {
     return out;
   }
 
-  public spawnTask(name: string) {
-    this.post(POST.spawnTask, name);
+  public spawnTask(name: string, extra?: any) {
+    this.post(POST.spawnTask, name, extra);
   }
 
-  public despawnTask(name: string) {
-    this.post(POST.despawnTask, name);
+  public despawnTask(name: string, extra?: any) {
+    this.post(POST.despawnTask, name, extra);
   }
 
-  public spawnPrivacy(name: string) {
-    this.post(POST.spawnPrivacy, name);
+  public spawnPrivacy(name: string, extra?: any) {
+    this.post(POST.spawnPrivacy, name, extra);
   }
 
-  public despawnPrivacy(name: string) {
-    this.post(POST.despawnPrivacy, name);
+  public despawnPrivacy(name: string, extra?: any) {
+    this.post(POST.despawnPrivacy, name, extra);
   }
 
 
