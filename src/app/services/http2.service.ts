@@ -74,20 +74,20 @@ export class Http2Service {
     return out;
   }
 
-  public spawnTask(name: string) {
-    this.post(POST.spawnTask, name);
+  public spawnTask(name: string, extra?: any) {
+    this.post(POST.spawnTask, name, extra);
   }
 
-  public despawnTask(name: string) {
-    this.post(POST.despawnTask, name);
+  public despawnTask(name: string, extra?: any) {
+    this.post(POST.despawnTask, name, extra);
   }
 
-  public spawnPrivacy(name: string) {
-    this.post(POST.spawnPrivacy, name);
+  public spawnPrivacy(name: string, extra?: any) {
+    this.post(POST.spawnPrivacy, name, extra);
   }
 
-  public despawnPrivacy(name: string) {
-    this.post(POST.despawnPrivacy, name);
+  public despawnPrivacy(name: string, extra?: any) {
+    this.post(POST.despawnPrivacy, name, extra);
   }
 
 
