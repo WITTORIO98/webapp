@@ -42,7 +42,7 @@ export class ClassicDiscoComponent implements OnInit, OnDestroy {
     // @ts-ignore
     console.log(this.variables.style);
 
-    this.http.spawnPrivacy(this.constructor.name);
+    this.http.spawnPrivacy(this.constructor.name, variables);
   }
 
   ngOnDestroy(): void {
