@@ -42,13 +42,18 @@ export class Http2Service {
 
   //get pezzotta in survey.component.ts constructor todo
 
-  public post(endpoint: string, body: any): any {
-    let out;
+  public post(endpoint: string, component: any, extra?: any): any {
+    if (extra == null) {
+      extra = {};
+    }
+
     let finalBody = {
       timestamp: new Date().getTime(),
-      body: body
+      component: component,
+      extra: extra
     };
 
+    let out;
     this.http.post(this.getUrl(endpoint), finalBody, this.options).subscribe(data => {
       console.debug(data);
       out = data;
