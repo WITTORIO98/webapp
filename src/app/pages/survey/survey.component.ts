@@ -23,8 +23,11 @@ export class SurveyComponent {
   }
 
   submit() {
-    console.log(this.selectedAnswers);
-    this.http.post(POST.surveyAnswers, this.selectedAnswers);
+    let bodys = {
+      timestamp: new Date().getTime(),
+      questions: this.selectedAnswers
+    };
+    this.http.post(POST.surveyAnswers, this.constructor.name, this.selectedAnswers);
   }
 
 }
