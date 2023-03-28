@@ -24,6 +24,7 @@ export class ClassicDiscoComponent implements OnInit, OnDestroy {
         color2: 'yellow',
       }
     }
+    
     /*random?*/
     this.variables = document.querySelector('.classicDiscoVariables');
     // @ts-ignore
@@ -38,9 +39,6 @@ export class ClassicDiscoComponent implements OnInit, OnDestroy {
     this.variables.style.setProperty('--color1', variables.style.color1);
     // @ts-ignore
     this.variables.style.setProperty('--color2', variables.style.color2);
-
-    // @ts-ignore
-    console.log(this.variables.style);
 
     this.http.spawnPrivacy(this.constructor.name, variables);
   }
