@@ -36,37 +36,31 @@ export class SpawnerService {
   }
 
   /**
-   * la prima volta spawna il setUp page.
-   * ogni pagina non si ripeterà mai.
-   * se le pagine sono finite riporta alla setUp page
+   * spawna un task a caso.
+   * ogni task non si ripeterà mai.
+   * se i task sono finiti chiama nextStep()
    */
-    if (this.spawnedTasks.length == 0) {
-      this.spawnedTasks.push('setUp');
-      this.routerNav(['setUp']);
-    } else {
   public randomTask(): void {
 
-      let notSpawnedTasks: string[] = [];
-      tasks.forEach(task => {
-        let find: boolean = false;
-        this.spawnedTasks.forEach(spawned => {
-          if (task == spawned) {
-            find = true;
-          }
-        });
-        if (!find) {
-          notSpawnedTasks.push(task);
+    let notSpawnedTasks: string[] = [];
+    tasks.forEach(task => {
+      let find: boolean = false;
+      this.spawnedTasks.forEach(spawned => {
+        if (task == spawned) {
+          find = true;
         }
       });
-
-      if (notSpawnedTasks.length == 0) {
-        this.routerNav(['setUp']);
-      } else {
-        let rand = Math.floor(Math.random() * notSpawnedTasks.length);
-        this.spawnedTasks.push(notSpawnedTasks[rand]);
-        this.routerNav([notSpawnedTasks[rand]]);
+      if (!find) {
+        notSpawnedTasks.push(task);
       }
+    });
 
+    if (notSpawnedTasks.length == 0) {
+      this.nextStep();
+    } else {
+      let rand = Math.floor(Math.random() * notSpawnedTasks.length);
+      this.spawnedTasks.push(notSpawnedTasks[rand]);
+      this.routerNav([notSpawnedTasks[rand]]);
     }
 
   }
