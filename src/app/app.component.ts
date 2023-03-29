@@ -20,11 +20,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     //this.eye.start();
 
-    const elem = document.documentElement; // Ottiene l'elemento radice
-    elem.requestFullscreen(); //todo work?
+    //const elem = document.documentElement; // Ottiene l'elemento radice
+    //elem.requestFullscreen(); //todo work?
 
-    this.spawner.randomPage();
-    this.spawner.randomIndicator();
+    this.spawner.nextStep();
   }
 
 
