@@ -1,10 +1,13 @@
-.accuracyTestVars{
-  --time: 10s;
+.accuracyTestVars {
+  --time: 1s;
   --dimension: 3vw;
+
+  overflow: hidden;
+}
+
+.muvt {
   background-color: red;
 
-}
-.muvt {
   position: absolute;
   width: var(--dimension);
   height: var(--dimension);
@@ -41,4 +44,16 @@
     top: 0vh;
     left: 100vw;
   }
+}
+
+.testo {
+  margin-top: 20%;
+  text-align: center;
+}
+
+.button {
+  margin-top: 10%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -0%);
 }

@@ -1,5 +1,30 @@
-<div class="absolute noMargin">
+<div class="absolute noMargin accuracyTestVars">
 
-  <div class="accuracyTestVars muvt"></div>
+  <div *ngIf="test" class="muvt"></div>
+
+  <div *ngIf="!(test||testComplete)" class="absolute noMargin">
+    <div class="testo">
+      <div>
+        <h1>Verifica calibrazione</h1>
+        <p>Segui con attenzione il pallino durante tutto il suo percorso.</p>
+        <p>Ok, sei gia stufo, ma durerà solo {{animationTime / 1000}}s.</p>
+        <p>/</p>
+        <p>La palla {{color}} apparirà in alto a sinitra immediatamente</p>
+      </div>
+    </div>
+
+    <button class="button" (click)="startTest()">Inizia</button>
+  </div>
+
+  <div *ngIf="testComplete" class="absolute noMargin">
+    <div class="testo">
+      <div>
+        <h1>Mah, potevi fare meglio..</h1>
+        <p>Il tuo punteggio è di {{accuracyPoints}}!</p>
+      </div>
+    </div>
+
+    <button class="button" (click)="spawner.nextStep()">Continua</button>
+  </div>
 
 </div>
