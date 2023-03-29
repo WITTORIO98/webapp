@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {SpawnerService} from "../../services/spawner.service";
 
 @Component({
   selector: 'app-calibration',
@@ -22,7 +23,7 @@ export class CalibrationComponent {
   ]);
   public numClick: number = 1;
 
-  constructor() {
+  constructor(private spawner: SpawnerService) {
   }
 
 
@@ -37,6 +38,7 @@ export class CalibrationComponent {
 
     if (min >= this.numClick) {
       console.log("Calibration completed");
+      this.spawner.nextStep();
     }
 
   }
