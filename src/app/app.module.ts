@@ -19,6 +19,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatRadioModule} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
 import { CalibrationComponent } from './pages/calibration/calibration.component';
+import { AccuracyTestComponent } from './pages/accuracy-test/accuracy-test.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CalibrationComponent } from './pages/calibration/calibration.component'
     EmptyComponent,
     ClassicDiscoComponent,
     SurveyComponent,
-    CalibrationComponent
+    CalibrationComponent,
+    AccuracyTestComponent
   ],
   imports: [
     BrowserModule,
