@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'simple-text', component: SimpleTextComponent, outlet: 'outlet1'},
   {path: 'simple-math', component: SimpleMathComponent, outlet: 'outlet1'},
 
-  {path: 'app-empty', component: EmptyComponent, outlet: 'outlet2'},
+  {path: 'empty', component: EmptyComponent, outlet: 'outlet2'},
   {path: 'classic', component: ClassicComponent, outlet: 'outlet2'},
   {path: 'illuminazione-edge', component: IlluminazioneEdgeComponent, outlet: 'outlet2'},
   {path: 'classic-disco', component: ClassicDiscoComponent, outlet: 'outlet2'},

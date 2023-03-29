@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-empty',
+  selector: 'empty',
   templateUrl: './empty.component.html',
   styleUrls: ['./empty.component.scss']
 })
