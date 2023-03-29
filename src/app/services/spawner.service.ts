@@ -12,6 +12,14 @@ const indicators: string[] = [
   'classic-disco'
 ];
 
+const steps: string[] = [
+  'setUp',
+  'calibration',
+  'accuracyTest',
+  'survey',
+  'TASKS-INDICATORS',
+];
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +30,7 @@ export class SpawnerService {
   private spawnedTasks: string[] = [];
   private spawnedIndicators: string[] = [];
   private latest = {task: empty, indicator: empty};
+  private nexStep: string = steps[0];
 
   constructor(private router: Router) {
   }
