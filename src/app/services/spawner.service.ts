@@ -40,11 +40,11 @@ export class SpawnerService {
    * ogni pagina non si ripeterà mai.
    * se le pagine sono finite riporta alla setUp page
    */
-  public randomPage(): void {
     if (this.spawnedTasks.length == 0) {
       this.spawnedTasks.push('setUp');
       this.routerNav(['setUp']);
     } else {
+  public randomTask(): void {
 
       let notSpawnedTasks: string[] = [];
       tasks.forEach(task => {
