@@ -1,0 +1,82 @@
+.variables {
+  --borderDistance: 5vw;
+  --dimension: 5vw;
+
+}
+
+.calibration {
+  background-color: red;
+
+  position: absolute;
+  width: var(--dimension);
+  height: var(--dimension);
+  border-radius: 50%;
+  //animazionecolore??
+}
+
+//A, B, C, D left column
+.buttonA {
+  left: var(--borderDistance);
+  top: var(--borderDistance);
+}
+
+.buttonB {
+  left: var(--borderDistance);
+  top: calc((100vh - var(--borderDistance) * 2) / 3 + var(--borderDistance));
+}
+
+.buttonC {
+  left: var(--borderDistance);
+  top: calc((100vh - var(--borderDistance) * 2) * 2 / 3 + var(--borderDistance));
+}
+
+.buttonD {
+  left: var(--borderDistance);
+  bottom: var(--borderDistance);
+}
+
+//E, F, G central column
+.buttonE {
+  transform: translate(-50%, -0%);
+  left: 50vw;
+  top: var(--borderDistance);
+}
+
+.buttonF {
+  transform: translate(-50%, -50%);
+  left: 50vw;
+  top: 50vh;
+
+}
+
+.buttonG {
+  transform: translate(-50%, -0%);
+  left: 50vw;
+  bottom: var(--borderDistance);
+}
+
+//H, I, J, K right column
+.buttonH {
+  right: var(--borderDistance);
+  top: var(--borderDistance);
+}
+
+.buttonI {
+  right: var(--borderDistance);
+  top: calc((100vh - var(--borderDistance) * 2) / 3 + var(--borderDistance));
+}
+
+.buttonJ {
+  right: var(--borderDistance);
+  top: calc((100vh - var(--borderDistance) * 2) * 2 / 3 + var(--borderDistance));
+}
+
+.buttonK {
+  right: var(--borderDistance);
+  bottom: var(--borderDistance);
+}
+
+.testo{
+  margin-top: 20%;
+  text-align: center;
+}
