@@ -1,0 +1,44 @@
+.accuracyTestVars{
+  --time: 10s;
+  --dimension: 3vw;
+  background-color: red;
+
+}
+.muvt {
+  position: absolute;
+  width: var(--dimension);
+  height: var(--dimension);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: palla var(--time) linear;
+
+  top: 0vh;
+  left: 100vw;
+}
+
+@keyframes palla {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  20% {
+    top: 100vh;
+    left: 100vw;
+  }
+  40% {
+    top: 0;
+    left: 100vw;
+  }
+  60% {
+    top: 0;
+    left: 0;
+  }
+  80% {
+    top: 100vh;
+    left: 0;
+  }
+  100% {
+    top: 0vh;
+    left: 100vw;
+  }
+}
