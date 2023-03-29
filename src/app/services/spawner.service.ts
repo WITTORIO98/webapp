@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
-import {timeout} from "rxjs";
 
 const empty: [string] = ['app-empty'];
 const tasks: string[] = [

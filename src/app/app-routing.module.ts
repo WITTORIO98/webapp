@@ -8,9 +8,11 @@ import {ClassicComponent} from "./privacyIndicators/classic/classic.component";
 import {EmptyComponent} from "./util/empty/empty.component";
 import {ClassicDiscoComponent} from "./privacyIndicators/classic-disco/classic-disco.component";
 import {SurveyComponent} from "./pages/survey/survey.component";
+import {CalibrationComponent} from "./pages/calibration/calibration.component";
 
 const routes: Routes = [
   {path: 'setUp', component: SetUpComponent, outlet: 'outlet1'},
+  {path: 'calibration', component: CalibrationComponent, outlet: 'outlet1'},
   {path: 'survey', component: SurveyComponent, outlet: 'outlet1'},
   {path: 'simple-text', component: SimpleTextComponent, outlet: 'outlet1'},
   {path: 'simple-math', component: SimpleMathComponent, outlet: 'outlet1'},

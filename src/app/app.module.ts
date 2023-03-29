@@ -18,6 +18,7 @@ import { SurveyComponent } from './pages/survey/survey.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatRadioModule} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
+import { CalibrationComponent } from './pages/calibration/calibration.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {FormsModule} from "@angular/forms";
     SimpleTextComponent,
     EmptyComponent,
     ClassicDiscoComponent,
-    SurveyComponent
+    SurveyComponent,
+    CalibrationComponent
   ],
   imports: [
     BrowserModule,
