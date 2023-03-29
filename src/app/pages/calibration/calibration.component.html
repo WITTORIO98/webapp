@@ -1,0 +1,33 @@
+<div class="absolute noMargin">
+
+  <div class="variables">
+
+    <button (click)="click('A')" class="calibration buttonA">{{buttons.get("A")}}</button>
+    <button (click)="click('B')" class="calibration buttonB">{{buttons.get("B")}}</button>
+    <button (click)="click('C')" class="calibration buttonC">{{buttons.get("C")}}</button>
+    <button (click)="click('D')" class="calibration buttonD">{{buttons.get("D")}}</button>
+    <button (click)="click('E')" class="calibration buttonE">{{buttons.get("E")}}</button>
+    <button (click)="click('F')" class="calibration buttonF">{{buttons.get("F")}}</button>
+    <button (click)="click('G')" class="calibration buttonG">{{buttons.get("G")}}</button>
+    <button (click)="click('H')" class="calibration buttonH">{{buttons.get("H")}}</button>
+    <button (click)="click('I')" class="calibration buttonI">{{buttons.get("I")}}</button>
+    <button (click)="click('J')" class="calibration buttonJ">{{buttons.get("J")}}</button>
+    <button (click)="click('K')" class="calibration buttonK">{{buttons.get("K")}}</button>
+
+
+  </div>
+
+  <div class="absolute noMargin overlay">
+
+    <div class="testo">
+      <div>
+        <h1>Calibration</h1>
+        <p>Premi brevemente tutti i bottoni {{numClick}} volte.</p>
+        <p>Non premere due volte di fila lo stesso bottone.</p>
+        <p>IMPORTANTE: nel momento in cui tocchi il bottone, Devi guardare con precisione il bottone.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

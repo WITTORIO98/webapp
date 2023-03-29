@@ -31,7 +31,7 @@ export class SetUpComponent {
   }
 
   startSp() {
-    this.spawner.randomPage();
+    this.spawner.nextStep();
   }
 
 }

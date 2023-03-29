@@ -52,7 +52,7 @@ export class Http2Service {
     let finalBody = {
       idExperiment: Http2Service.idExperiment,
       body: {
-        timestamp: new Date().getTime(),
+        timestamp: Date.now(),
         component: component,
         extra: extra
       }

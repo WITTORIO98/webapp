@@ -44,7 +44,7 @@ export class EyeTrackerService {
     //mouseListener
     document.addEventListener('click', (event) => {
       let mouseCord: coordinates = {x: event.clientX, y: event.clientY};
-      let timestamp: number = new Date().getTime();
+      let timestamp: number = Date.now();
       this.clicks.push({mouseCord: mouseCord, eyeCord: this.eyeCord, timestamp: timestamp});
       this.showPrecision(this.eyeCord, mouseCord);
     });

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
-import {timeout} from "rxjs";
 
-const empty: [string] = ['app-empty'];
+const empty: [string] = ['empty'];
 const tasks: string[] = [
   'simple-math',
   'simple-text'
@@ -12,6 +11,14 @@ const indicators: string[] = [
   'illuminazione-edge',
   'classic-disco',
   'vibration'
+];
+
+const steps: string[] = [
+  'setUp',
+  'calibration',
+  'accuracyTest',
+  'survey',
+  'TASKS-INDICATORS',
 ];
 
 @Injectable({
@@ -24,42 +31,37 @@ export class SpawnerService {
   private spawnedTasks: string[] = [];
   private spawnedIndicators: string[] = [];
   private latest = {task: empty, indicator: empty};
+  private nexStep: string = steps[0];
 
   constructor(private router: Router) {
   }
 
   /**
-   * la prima volta spawna il setUp page.
-   * ogni pagina non si ripeterà mai.
-   * se le pagine sono finite riporta alla setUp page
+   * spawna un task a caso.
+   * ogni task non si ripeterà mai.
+   * se i task sono finiti chiama nextStep()
    */
-  public randomPage(): void {
-    if (this.spawnedTasks.length == 0) {
-      this.spawnedTasks.push('setUp');
-      this.routerNav(['setUp']);
-    } else {
+  public randomTask(): void {
 
-      let notSpawnedTasks: string[] = [];
-      tasks.forEach(task => {
-        let find: boolean = false;
-        this.spawnedTasks.forEach(spawned => {
-          if (task == spawned) {
-            find = true;
-          }
-        });
-        if (!find) {
-          notSpawnedTasks.push(task);
+    let notSpawnedTasks: string[] = [];
+    tasks.forEach(task => {
+      let find: boolean = false;
+      this.spawnedTasks.forEach(spawned => {
+        if (task == spawned) {
+          find = true;
         }
       });
-
-      if (notSpawnedTasks.length == 0) {
-        this.routerNav(['setUp']);
-      } else {
-        let rand = Math.floor(Math.random() * notSpawnedTasks.length);
-        this.spawnedTasks.push(notSpawnedTasks[rand]);
-        this.routerNav([notSpawnedTasks[rand]]);
+      if (!find) {
+        notSpawnedTasks.push(task);
       }
+    });
 
+    if (notSpawnedTasks.length == 0) {
+      this.nextStep();
+    } else {
+      let rand = Math.floor(Math.random() * notSpawnedTasks.length);
+      this.spawnedTasks.push(notSpawnedTasks[rand]);
+      this.routerNav([notSpawnedTasks[rand]]);
     }
 
   }
@@ -141,6 +143,20 @@ export class SpawnerService {
         }
       }
     ]);
+  }
+
+  public nextStep(step?: string): void {
+    if (step != undefined) {
+      this.nexStep = step;
+    }
+
+    if (this.nexStep == 'TASKS-INDICATORS') {
+      this.randomTask();
+      this.randomIndicator();
+    } else {
+      this.routerNav([this.nexStep], empty);
+      this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
+    }
   }
 
 }
