@@ -150,4 +150,14 @@ export class SpawnerService {
     ]);
   }
 
+  public nextStep() {
+    if (this.nexStep == 'TASKS-INDICATORS') {
+      this.randomTask();
+      this.randomIndicator();
+    } else {
+      this.routerNav([this.nexStep], empty);
+      this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
+    }
+  }
+
 }
