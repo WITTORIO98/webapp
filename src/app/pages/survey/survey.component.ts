@@ -31,7 +31,7 @@ export class SurveyComponent {
   submit() {
     if (this.selectedAnswers != undefined) {
       let bodys = {
-        timestamp: new Date().getTime(),
+        timestamp: Date.now(),
         questions: this.selectedAnswers
       };
       this.http.post(POST.surveyAnswers, this.constructor.name, this.selectedAnswers);

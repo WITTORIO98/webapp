@@ -25,7 +25,7 @@ export class AccuracyTestComponent implements OnInit {
   }
 
   startTest() {
-    this.startTime = new Date().getTime();
+    this.startTime = Date.now();
     //inizio a collezzionare i dati occhio todo
     this.test = true;
 
