@@ -4,7 +4,8 @@ import {Router} from "@angular/router";
 const empty: [string] = ['empty'];
 const tasks: string[] = [
   'simple-math',
-  'simple-text'
+  'simple-text',
+  'video'
 ];
 const indicators: string[] = [
   'classic',

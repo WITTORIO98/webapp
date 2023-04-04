@@ -21,6 +21,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {FormsModule} from "@angular/forms";
 import { CalibrationComponent } from './pages/calibration/calibration.component';
 import { AccuracyTestComponent } from './pages/accuracy-test/accuracy-test.component';
+import { VideoComponent } from './tasks/video/video.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AccuracyTestComponent } from './pages/accuracy-test/accuracy-test.compo
     SurveyComponent,
     VibrationComponent,
     CalibrationComponent,
-    AccuracyTestComponent
+    AccuracyTestComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
