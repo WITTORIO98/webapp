@@ -1,9 +1,36 @@
 <div class="absolute noMargin" style="position: fixed">
 
-
-  <div class="fit-content">
-    <video class="fit-content" src="assets\media\video-test-SD.mp4" autoplay></video>
+  <div *ngIf="briefing" class="center">
+    <p>Guarda attentamente il video, poi dovrai rispondere a domande come: quante auto gialle sono passate?</p>
+    <button class="button" (click)="briefing=false;video=true">inizia</button>
   </div>
 
+  <div *ngIf="video" class="fit-content">
+    <video class="fit-content" src="assets\media\video-test-SD.mp4"
+           autoplay (ended)="video=false;quests=true"></video>
+  </div>
+
+  <div *ngIf="quests">
+
+    <div class="center-survey">
+      <mat-card class="matCardColor">
+        <form>
+          <div *ngFor="let question of questions">
+            <h3>{{ question.text }}</h3>
+            <mat-radio-group (change)="updateAnswer($event.value, question.text)">
+              <mat-radio-button *ngFor="let answer of question.answers"
+                                [value]="answer.value">{{ answer.text }}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+
+    <div *ngIf="quests" class="center">
+      <button class="button" (click)="submit()">Invia</button>
+    </div>
+    <div class="useless"></div>
+
+  </div>
 
 </div>

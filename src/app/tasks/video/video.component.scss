@@ -3,3 +3,13 @@
   height: 100%;
   object-fit: cover;
 }
+
+.center-survey {
+  max-width: 80%;
+  margin: 5vh auto; // <--
+}
+
+.button {
+  color: black;
+  background-color: transparent;
+}
