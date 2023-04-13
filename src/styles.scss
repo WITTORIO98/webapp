@@ -54,7 +54,7 @@ p {
 }
 
 .absolute {
-  position: absolute;
+  position: absolute;   //todo provare fixed
   top: 0;
   left: 0;
   width: 100vw;
@@ -65,6 +65,13 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.relativeCenter{
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 html, body {

@@ -11,6 +11,7 @@ import {VibrationComponent} from "./privacyIndicators/vibration/vibration.compon
 import {SurveyComponent} from "./pages/survey/survey.component";
 import {CalibrationComponent} from "./pages/calibration/calibration.component";
 import {AccuracyTestComponent} from "./pages/accuracy-test/accuracy-test.component";
+import {VideoComponent} from "./tasks/video/video.component";
 
 const routes: Routes = [
   {path: 'setUp', component: SetUpComponent, outlet: 'outlet1'},
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path: 'survey', component: SurveyComponent, outlet: 'outlet1'},
   {path: 'simple-text', component: SimpleTextComponent, outlet: 'outlet1'},
   {path: 'simple-math', component: SimpleMathComponent, outlet: 'outlet1'},
-  {path: 'video', component: SimpleMathComponent, outlet: 'outlet1'},
+  {path: 'video', component: VideoComponent, outlet: 'outlet1'},
 
   {path: 'empty', component: EmptyComponent, outlet: 'outlet2'},
   {path: 'classic', component: ClassicComponent, outlet: 'outlet2'},
