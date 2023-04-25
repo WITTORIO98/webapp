@@ -7,6 +7,7 @@ const URL: string = "http://localhost:8080"
 export enum GET {
   newRandomIDExperiment = '/newRandomIDExperiment',
   surveyQuestions = '/surveyQuestions',
+  triviaQuestions = '/triviaQuestions',
 }
 
 export enum POST {
