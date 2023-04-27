@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
     const elem = document.documentElement; // Ottiene l'elemento radice
     elem.requestFullscreen(); //todo work?
 
-    this.spawner.nextStep();
+    //this.spawner.nextStep();
+    this.spawner.routerNav(['survey'],['illuminazione-edge']);
   }
 
 
