@@ -11,7 +11,6 @@ export class TriviaComponent implements OnInit, OnDestroy {
   questions: any;// : { text: string, answers: { text: string, value: string }[] }[]
   currentAnswers: any;
   currentQuestion: string = "";
-  //todo parse url {url, space, question}
   source: string = "";
   url: boolean = false;
   end: boolean = false;
@@ -29,12 +28,11 @@ export class TriviaComponent implements OnInit, OnDestroy {
       let quest = this.questions.shift();
       this.currentQuestion = quest.text;
       this.currentAnswers = quest.answers;
-      console.log(quest.answers);// todo
+      //console.log(quest.answers);// todo right and wrong answers indicator
     } else {
+      this.currentQuestion = "Fine";
       this.end = true;
     }
-
-    console.log(this.currentQuestion);
 
     if (this.currentQuestion.startsWith("http") || this.currentQuestion.startsWith("www") || this.currentQuestion.startsWith("assets")) {
       this.source = this.currentQuestion.split(" ", 1)[0];
