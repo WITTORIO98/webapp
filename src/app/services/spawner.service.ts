@@ -151,8 +151,6 @@ export class SpawnerService {
       this.nexStep = step;
     }
 
-    console.log(this.nexStep);
-
     if (this.nexStep == 'TASKS-INDICATORS') {
       this.randomTask();
       this.randomIndicator();

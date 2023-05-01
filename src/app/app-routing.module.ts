@@ -14,6 +14,7 @@ import {AccuracyTestComponent} from "./pages/accuracy-test/accuracy-test.compone
 import {TriviaComponent} from "./tasks/trivia/trivia.component";
 
 const routes: Routes = [
+  {path: 'empty', component: EmptyComponent, outlet: 'outlet1'},
   {path: 'setUp', component: SetUpComponent, outlet: 'outlet1'},
   {path: 'calibration', component: CalibrationComponent, outlet: 'outlet1'},
   {path: 'accuracyTest', component: AccuracyTestComponent, outlet: 'outlet1'},
