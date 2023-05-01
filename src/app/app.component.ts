@@ -20,11 +20,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.eye.start();
 
-    const elem = document.documentElement; // Ottiene l'elemento radice
-    elem.requestFullscreen(); //todo work?
+    //fullscreen todo
 
-    //this.spawner.nextStep();
-    this.spawner.routerNav(['survey'],['illuminazione-edge']);
+    this.spawner.nextStep();
   }
 
 
