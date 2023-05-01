@@ -1,0 +1,37 @@
+<div class="absolute noMargin">
+  <div class="pezzotto"></div>
+
+  <div *ngIf="!url">
+    <div class="sopra center">
+      <p class="grande">{{currentQuestion}}</p>
+    </div>
+  </div>
+
+  <div *ngIf="url">
+    <div class="sopra center">
+      <img [src]="source" class="img" alt="immagine">
+    </div>
+  </div>
+
+  <div *ngIf="!end">
+    <div class="sotto">
+      <div class="center-survey">
+
+        <mat-grid-list cols="2" rowHeight="2:1">
+          <mat-grid-tile *ngFor="let answer of currentAnswers">
+            <button [value]="answer.value" (click)="nextQuestion()">{{ answer.text }}</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="end">
+    <button (click)="nextStep()">Continua</button>
+  </div>
+
+
+</div>
+
+

@@ -7,6 +7,7 @@ const URL: string = "https://backend.wittorio.uk:4443"
 export enum GET {
   newRandomIDExperiment = '/newRandomIDExperiment',
   surveyQuestions = '/surveyQuestions',
+  triviaQuestions = '/triviaQuestions',
 }
 
 export enum POST {
