@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SpawnerService} from "../../services/spawner.service";
+import {coordinates, CoordType, EyeTrackerService} from "../../services/eye-tracker.service";
 
 @Component({
   selector: 'app-accuracy-test',
@@ -13,9 +14,10 @@ export class AccuracyTestComponent implements OnInit {
   public test: boolean = false;
   public testComplete: boolean = false;
   private startTime: number = 0;
-  public accuracyPoints: number = 69;
+  private errors: coordinates[] = [];
+  public accuracy: number = 69;
 
-  constructor(public spawner: SpawnerService) {
+  constructor(public spawner: SpawnerService, private eye: EyeTrackerService) {
   }
 
   ngOnInit(): void {
@@ -26,15 +28,46 @@ export class AccuracyTestComponent implements OnInit {
 
   startTest() {
     this.startTime = Date.now();
-    //inizio a collezzionare i dati occhio todo
     this.test = true;
 
+    const test = setInterval(() => {
+      const movingElement = document.getElementById('accuracyDot');
+      // @ts-ignore
+      const computedStyles = window.getComputedStyle(movingElement);
+
+      const dotPosition: coordinates = {
+        x: parseInt(computedStyles.getPropertyValue('left').split(".")[0]),
+        y: parseInt(computedStyles.getPropertyValue('top').split(".")[0])
+      };
+
+      const error = this.eye.getError(dotPosition);
+
+      this.errors.push(error);
+    }, 400);
+
     setTimeout(() => {
-      //prendo i dati dellocchio e faccio i calcoli todo
       this.test = !this.test;
       this.testComplete = true;
+      clearInterval(test);
+
+      this.calculateAccuracy();
     }, this.animationTime);
 
+  }
 
+  public calculateAccuracy() {
+    let x = 0;
+    let y = 0;
+
+    this.errors.forEach((error) => {
+      x += Math.abs(error.x);
+      y += Math.abs(error.y);
+    });
+
+    x /= this.errors.length;
+    y /= this.errors.length;
+
+    this.accuracy = 100 - (x + y) / 2;
+    this.accuracy = Math.floor(this.accuracy);
   }
 }
