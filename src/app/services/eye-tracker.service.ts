@@ -18,7 +18,7 @@ export enum GuiType {
 })
 export class EyeTrackerService {
   private eyeCord: coordinates = {x: 100, y: 100};
-  private gui: number = 0; //0 hidden, 1 dot, 2 full , >2 initialized
+  private gui: number = GuiType.HIDDEN; //<0 initialized
 
   private clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
 
@@ -30,14 +30,13 @@ export class EyeTrackerService {
 
     //gazeListener
     WebGazer.setGazeListener((data: any, elapsedTime: any) => {
-      if (data == null) {
-        return;
-      }
+      if (data == null) return;
+
       this.eyeCord.x = data.x;
       this.eyeCord.y = data.y;
       //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
-      if (this.gui <= (Object.keys(GuiType).length / 2)) {
+      if (this.gui >= 0) {
         if (this.gui == GuiType.HIDDEN) {
           EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
           EyeTrackerService.setGazeVisibility("webgazerGazeDot", false);
@@ -50,7 +49,7 @@ export class EyeTrackerService {
           EyeTrackerService.setGazeVisibility("webgazerVideoContainer", true);
           EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
         }
-        this.gui = (Object.keys(GuiType).length / 2) + 1;
+        this.gui = -1;
       }
 
     }).begin();
@@ -64,8 +63,19 @@ export class EyeTrackerService {
     });
   }
 
-  private showPrecision(eye: coordinates, real: coordinates) {//todo migliorare
-    console.debug("Real.x-Eye.x :", real.x - eye.x, "  Real.y-Eye.y :", real.y - eye.y);
+  private showPrecision(eye: coordinates, click: coordinates) {
+    let windowsHeight = window.innerHeight;
+    let windowsWidth = window.innerWidth;
+
+    let delta: coordinates = {x: click.x - eye.x, y: click.y - eye.y};
+    let precision: coordinates = {x: (delta.x / windowsWidth) * 100, y: (delta.y / windowsHeight) * 100};
+
+    console.debug("Precision.x :", precision.x, "%", " Precision.y :", precision.y, "%");
+
+    /*console.debug("WindowsHeight :", windowsHeight, " WindowsWidth :", windowsWidth);
+    console.debug("click.x-Eye.x :", delta.x, "  click.y-Eye.y :", delta.y);
+    console.debug("Eye.x :", eye.x, " Eye.y :", eye.y);
+    console.debug("Eye.x :", click.x, " Eye.y :", click.y);*/
   }
 
   static setGazeVisibility(target: string, value: boolean): void {
