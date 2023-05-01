@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpContext, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-const URL: string = "https://backend.wittorio.uk:4443"
+const URL: string = "http://localhost:4444"
 
 export enum GET {
   newRandomIDExperiment = '/newRandomIDExperiment',
