@@ -1,6 +1,6 @@
 <div class="absolute noMargin accuracyTestVars">
 
-  <div *ngIf="test" class="muvt"></div>
+  <div *ngIf="test" id="accuracyDot" class="muvt"></div>
 
   <div *ngIf="!(test||testComplete)" class="absolute noMargin">
     <div class="testo">
@@ -20,7 +20,7 @@
     <div class="testo">
       <div>
         <h1>Mah, potevi fare meglio..</h1>
-        <p>Il tuo punteggio è di {{accuracyPoints}}!</p>
+        <p>La tua accuratezza è del {{accuracy}}%</p>
       </div>
     </div>
 

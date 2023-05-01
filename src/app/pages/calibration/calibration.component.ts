@@ -37,7 +37,6 @@ export class CalibrationComponent {
     }
 
     if (min >= this.numClick) {
-      console.log("Calibration completed");
       this.spawner.nextStep();
     }
 

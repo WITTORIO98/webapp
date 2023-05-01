@@ -2,41 +2,59 @@ import {Injectable} from '@angular/core';
 
 // @ts-ignore
 const WebGazer: any = window.webgazer;
-type coordinates = {
+export type coordinates = {
   x: number,
   y: number
+}
+
+export enum GuiType {
+  HIDDEN,
+  DOT,
+  FULL
+}
+
+export enum CoordType {
+  ABSOLUTE,
+  ToWIEWPORT
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class EyeTrackerService {
-  private eyeCord: coordinates = {x: 100, y: 100}
-  private initialized: boolean = false;
+  private eyeCord: coordinates = {x: 100, y: 100};
+  private gui: number = GuiType.HIDDEN; //<0 initialized
 
   private clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
 
   constructor() {
   }
 
-  public start(gui?: boolean) {
-    if (gui) {
-      this.initialized = true;
-    }
+  public start(gui: number) {
+    this.gui = gui;
+
     //gazeListener
     WebGazer.setGazeListener((data: any, elapsedTime: any) => {
-      if (data == null) {
-        return;
-      }
+      if (data == null) return;
+
       this.eyeCord.x = data.x;
       this.eyeCord.y = data.y;
       //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
-      if (!this.initialized) {
-        EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
-        EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
-
-        this.initialized = !this.initialized;
+      if (this.gui >= 0) {
+        if (this.gui == GuiType.HIDDEN) {
+          EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
+          EyeTrackerService.setGazeVisibility("webgazerGazeDot", false);
+        }
+        if (this.gui == GuiType.DOT) {
+          EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
+          EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
+        }
+        if (this.gui == GuiType.FULL) {
+          EyeTrackerService.setGazeVisibility("webgazerVideoContainer", true);
+          EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
+        }
+        this.gui = -1;
       }
 
     }).begin();
@@ -46,12 +64,22 @@ export class EyeTrackerService {
       let mouseCord: coordinates = {x: event.clientX, y: event.clientY};
       let timestamp: number = Date.now();
       this.clicks.push({mouseCord: mouseCord, eyeCord: this.eyeCord, timestamp: timestamp});
-      this.showPrecision(this.eyeCord, mouseCord);
+      this.getError(mouseCord, this.eyeCord);
     });
   }
 
-  private showPrecision(eye: coordinates, real: coordinates) {//todo migliorare
-    console.debug("Real.x-Eye.x :", real.x - eye.x, "  Real.y-Eye.y :", real.y - eye.y);
+  public getError(click: coordinates, eye?: coordinates) {
+    if (eye == undefined) eye = this.eyeCord;
+
+    let windowsHeight = window.innerHeight;
+    let windowsWidth = window.innerWidth;
+
+    let delta: coordinates = {x: click.x - eye.x, y: click.y - eye.y};
+    let error: coordinates = {x: (delta.x / windowsWidth) * 100, y: (delta.y / windowsHeight) * 100};
+
+    console.debug(`error.x : ${error.x} %   error.y : ${error.y} %}`);
+
+    return error;
   }
 
   static setGazeVisibility(target: string, value: boolean): void {
@@ -83,16 +111,10 @@ export class EyeTrackerService {
     return {x: (abs.x / width) * 100, y: (abs.y / height) * 100};
   }
 
-  public getEyeCord() {
-    return this.toViewport(this.eyeCord);
-  }
+  public getEyeCord(format?: number) {
+    if (format == CoordType.ToWIEWPORT) return this.toViewport(this.eyeCord);
 
-  public getX() {
-    return this.getEyeCord().x;
-  }
-
-  public getY() {
-    return this.getEyeCord().y;
+    return this.eyeCord;
   }
 
 }

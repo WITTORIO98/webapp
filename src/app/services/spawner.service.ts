@@ -3,7 +3,8 @@ import {Router} from "@angular/router";
 
 const empty: [string] = ['empty'];
 const tasks: string[] = [
-  'trivia'
+  'trivia',
+  'stackGame',
 ];
 const indicators: string[] = [
   'classic',
@@ -18,6 +19,7 @@ const steps: string[] = [
   'accuracyTest',
   'survey',
   'TASKS-INDICATORS',
+  'END'
 ];
 
 @Injectable({
@@ -56,6 +58,7 @@ export class SpawnerService {
     });
 
     if (notSpawnedTasks.length == 0) {
+      this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
       this.nextStep();
     } else {
       let rand = Math.floor(Math.random() * notSpawnedTasks.length);
@@ -152,6 +155,8 @@ export class SpawnerService {
     if (this.nexStep == 'TASKS-INDICATORS') {
       this.randomTask();
       this.randomIndicator();
+    } else if (this.nexStep == 'END') {
+      this.routerNav(empty, empty);
     } else {
       this.routerNav([this.nexStep], empty);
       this.nexStep = steps[steps.indexOf(this.nexStep) + 1];

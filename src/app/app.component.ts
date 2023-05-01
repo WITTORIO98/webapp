@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {SpawnerService} from "./services/spawner.service";
-import {EyeTrackerService} from "./services/eye-tracker.service";
+import {EyeTrackerService, GuiType} from "./services/eye-tracker.service";
 
 @Component({
   selector: 'app-root',
@@ -18,13 +18,11 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.eye.start();
+    this.eye.start(GuiType.HIDDEN);
 
-    const elem = document.documentElement; // Ottiene l'elemento radice
-    elem.requestFullscreen(); //todo work?
+    //fullscreen todo
 
-    //this.spawner.nextStep();
-    this.spawner.routerNav(['survey'],['illuminazione-edge']);
+    this.spawner.nextStep();
   }
 
 
