@@ -3,7 +3,8 @@ import {Router} from "@angular/router";
 
 const empty: [string] = ['empty'];
 const tasks: string[] = [
-  'trivia'
+  'trivia',
+  'stackGame',
 ];
 const indicators: string[] = [
   'classic',

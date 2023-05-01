@@ -22,6 +22,7 @@ import {FormsModule} from "@angular/forms";
 import { CalibrationComponent } from './pages/calibration/calibration.component';
 import { AccuracyTestComponent } from './pages/accuracy-test/accuracy-test.component';
 import { TriviaComponent } from './tasks/trivia/trivia.component';
+import { StackGameComponent } from './tasks/stack-game/stack-game.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TriviaComponent } from './tasks/trivia/trivia.component';
     VibrationComponent,
     CalibrationComponent,
     AccuracyTestComponent,
-    TriviaComponent
+    TriviaComponent,
+    StackGameComponent
   ],
   imports: [
     BrowserModule,
