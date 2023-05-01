@@ -7,22 +7,27 @@ type coordinates = {
   y: number
 }
 
+export enum GuiType {
+  HIDDEN,
+  DOT,
+  FULL
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class EyeTrackerService {
-  private eyeCord: coordinates = {x: 100, y: 100}
-  private initialized: boolean = false;
+  private eyeCord: coordinates = {x: 100, y: 100};
+  private gui: number = 0; //0 hidden, 1 dot, 2 full , >2 initialized
 
   private clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
 
   constructor() {
   }
 
-  public start(gui?: boolean) {
-    if (gui) {
-      this.initialized = true;
-    }
+  public start(gui: number) {
+    this.gui = gui;
+
     //gazeListener
     WebGazer.setGazeListener((data: any, elapsedTime: any) => {
       if (data == null) {
@@ -32,11 +37,20 @@ export class EyeTrackerService {
       this.eyeCord.y = data.y;
       //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
-      if (!this.initialized) {
-        EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
-        EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
-
-        this.initialized = !this.initialized;
+      if (this.gui <= (Object.keys(GuiType).length / 2)) {
+        if (this.gui == GuiType.HIDDEN) {
+          EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
+          EyeTrackerService.setGazeVisibility("webgazerGazeDot", false);
+        }
+        if (this.gui == GuiType.DOT) {
+          EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
+          EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
+        }
+        if (this.gui == GuiType.FULL) {
+          EyeTrackerService.setGazeVisibility("webgazerVideoContainer", true);
+          EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
+        }
+        this.gui = (Object.keys(GuiType).length / 2) + 1;
       }
 
     }).begin();

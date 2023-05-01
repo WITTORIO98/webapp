@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {SpawnerService} from "./services/spawner.service";
-import {EyeTrackerService} from "./services/eye-tracker.service";
+import {EyeTrackerService, GuiType} from "./services/eye-tracker.service";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.eye.start();
+    this.eye.start(GuiType.HIDDEN);
 
     //fullscreen todo
 
