@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 // @ts-ignore
 const WebGazer: any = window.webgazer;
-type coordinates = {
+export type coordinates = {
   x: number,
   y: number
 }
@@ -11,6 +11,11 @@ export enum GuiType {
   HIDDEN,
   DOT,
   FULL
+}
+
+export enum CoordType {
+  ABSOLUTE,
+  ToWIEWPORT
 }
 
 @Injectable({
@@ -59,23 +64,22 @@ export class EyeTrackerService {
       let mouseCord: coordinates = {x: event.clientX, y: event.clientY};
       let timestamp: number = Date.now();
       this.clicks.push({mouseCord: mouseCord, eyeCord: this.eyeCord, timestamp: timestamp});
-      this.showPrecision(this.eyeCord, mouseCord);
+      this.getError(mouseCord, this.eyeCord);
     });
   }
 
-  private showPrecision(eye: coordinates, click: coordinates) {
+  public getError(click: coordinates, eye?: coordinates) {
+    if (eye == undefined) eye = this.eyeCord;
+
     let windowsHeight = window.innerHeight;
     let windowsWidth = window.innerWidth;
 
     let delta: coordinates = {x: click.x - eye.x, y: click.y - eye.y};
-    let precision: coordinates = {x: (delta.x / windowsWidth) * 100, y: (delta.y / windowsHeight) * 100};
+    let error: coordinates = {x: (delta.x / windowsWidth) * 100, y: (delta.y / windowsHeight) * 100};
 
-    console.debug("Precision.x :", precision.x, "%", " Precision.y :", precision.y, "%");
+    console.debug(`error.x : ${error.x} %   error.y : ${error.y} %}`);
 
-    /*console.debug("WindowsHeight :", windowsHeight, " WindowsWidth :", windowsWidth);
-    console.debug("click.x-Eye.x :", delta.x, "  click.y-Eye.y :", delta.y);
-    console.debug("Eye.x :", eye.x, " Eye.y :", eye.y);
-    console.debug("Eye.x :", click.x, " Eye.y :", click.y);*/
+    return error;
   }
 
   static setGazeVisibility(target: string, value: boolean): void {
@@ -107,16 +111,10 @@ export class EyeTrackerService {
     return {x: (abs.x / width) * 100, y: (abs.y / height) * 100};
   }
 
-  public getEyeCord() {
-    return this.toViewport(this.eyeCord);
-  }
+  public getEyeCord(format?: number) {
+    if (format == CoordType.ToWIEWPORT) return this.toViewport(this.eyeCord);
 
-  public getX() {
-    return this.getEyeCord().x;
-  }
-
-  public getY() {
-    return this.getEyeCord().y;
+    return this.eyeCord;
   }
 
 }
