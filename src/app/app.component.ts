@@ -20,8 +20,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.eye.start(GuiType.DOT);
 
-    //fullscreen todo
-
     this.spawner.nextStep();
   }
 
