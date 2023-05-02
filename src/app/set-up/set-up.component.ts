@@ -24,6 +24,7 @@ export class SetUpComponent {
   }
 
   refresh() {
+    this.launchIntoFullscreen(document.documentElement);
     //chiedo al back-end se il pc è collegato todo
     if (true) {
       this.codiceInserito = true;
@@ -32,6 +33,18 @@ export class SetUpComponent {
 
   startSp() {
     this.spawner.nextStep();
+  }
+
+  launchIntoFullscreen(element: any) {
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
   }
 
 }
