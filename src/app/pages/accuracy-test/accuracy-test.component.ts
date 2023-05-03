@@ -17,6 +17,9 @@ export class AccuracyTestComponent implements OnInit {
   private errors: coordinates[] = [];
   public accuracy: number = 69;
 
+  public minAccuracy: number = 70;
+  public restart: boolean = false;
+
   constructor(public spawner: SpawnerService, private eye: EyeTrackerService) {
   }
 
@@ -69,5 +72,15 @@ export class AccuracyTestComponent implements OnInit {
 
     this.accuracy = 100 - (x + y) / 2;
     this.accuracy = Math.floor(this.accuracy);
+
+    this.restart = this.accuracy < this.minAccuracy;
+  }
+
+  continue() {
+    if (this.restart) {
+      this.spawner.nextStep('calibration');
+    } else {
+      this.spawner.nextStep();
+    }
   }
 }

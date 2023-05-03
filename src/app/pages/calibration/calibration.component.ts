@@ -37,7 +37,7 @@ export class CalibrationComponent {
     }
 
     if (min >= this.numClick) {
-      this.spawner.nextStep();
+      this.spawner.nextStep('accuracyTest');
     }
 
   }

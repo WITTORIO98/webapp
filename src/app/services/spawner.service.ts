@@ -16,7 +16,6 @@ const indicators: string[] = [
 const steps: string[] = [
   'setUp',
   'calibration',
-  'accuracyTest',
   'survey',
   'TASKS-INDICATORS',
   'end',
@@ -162,19 +161,23 @@ export class SpawnerService {
   }
 
   public nextStep(step?: string): void {
-    if (step != undefined) {
-      this.nexStep = step;
+
+    if (step==undefined){
+
+      if (this.nexStep == 'TASKS-INDICATORS') {
+        this.randomTask();
+        this.randomIndicator();
+      } else if (this.nexStep == 'END') {
+        this.routerNav(empty, empty);
+      } else {
+        this.routerNav([this.nexStep], empty);
+        this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
+      }
+
+    }else {
+      this.routerNav([step], empty);
     }
 
-    if (this.nexStep == 'TASKS-INDICATORS') {
-      this.randomTask();
-      this.randomIndicator();
-    } else if (this.nexStep == 'END') {
-      this.routerNav(empty, empty);
-    } else {
-      this.routerNav([this.nexStep], empty);
-      this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
-    }
   }
 
 }

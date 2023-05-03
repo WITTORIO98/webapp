@@ -19,12 +19,15 @@
   <div *ngIf="testComplete" class="absolute noMargin">
     <div class="testo">
       <div>
-        <h1>Mah, potevi fare meglio..</h1>
+        <h1 *ngIf="!restart" >Mah, potevi fare meglio..</h1>
+        <h1 *ngIf="restart" >devi ottenere almeno {{minAccuracy}}%</h1>
         <p>La tua accuratezza è del {{accuracy}}%</p>
+        <p *ngIf="restart">ricominciamo..</p>
+
       </div>
     </div>
 
-    <button class="button" (click)="spawner.nextStep()">Continua</button>
+    <button class="button" (click)="continue()">Continua</button>
   </div>
 
 </div>
