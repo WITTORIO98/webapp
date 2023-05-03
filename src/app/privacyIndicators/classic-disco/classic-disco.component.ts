@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Http2Service} from "../../services/http2.service";
+import {AlertZone, coordinates, EyeTrackerService} from "../../services/eye-tracker.service";
 
 @Component({
   selector: 'app-classic-disco',
@@ -9,7 +10,7 @@ import {Http2Service} from "../../services/http2.service";
 export class ClassicDiscoComponent implements OnInit, OnDestroy {
   private variables = document.querySelector('.classicDiscoVariables');
 
-  constructor(private http: Http2Service) {
+  constructor(private http: Http2Service, private eye: EyeTrackerService) {
   }
 
   ngOnInit(): void {
@@ -24,7 +25,7 @@ export class ClassicDiscoComponent implements OnInit, OnDestroy {
         color2: 'yellow',
       }
     }
-    
+
     /*random?*/
     this.variables = document.querySelector('.classicDiscoVariables');
     // @ts-ignore
@@ -41,9 +42,11 @@ export class ClassicDiscoComponent implements OnInit, OnDestroy {
     this.variables.style.setProperty('--color2', variables.style.color2);
 
     this.http.spawnPrivacy(this.constructor.name, variables);
+    this.eye.setPrivacyIndicator(AlertZone.DEFAULT,'privacyIndicator');
   }
 
   ngOnDestroy(): void {
+    this.eye.removePrivacyIndicator();
     this.http.despawnPrivacy(this.constructor.name);
   }
 

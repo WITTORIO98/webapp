@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {VibrationComponent} from "../privacyIndicators/vibration/vibration.component";
 
 // @ts-ignore
 const WebGazer: any = window.webgazer;
@@ -18,13 +19,18 @@ export enum CoordType {
   ToWIEWPORT
 }
 
+export enum AlertZone {
+  DEFAULT = 100
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class EyeTrackerService {
   private eyeCord: coordinates = {x: 100, y: 100};
-  private gui: number = GuiType.HIDDEN; //<0 initialized
-
+  private initialized: boolean = false;
+  private gui: number = GuiType.HIDDEN;
+  private privacyIndicator: { radius: number, position: coordinates } | null = null;
   private clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
 
   constructor() {
@@ -41,7 +47,7 @@ export class EyeTrackerService {
       this.eyeCord.y = data.y;
       //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
-      if (this.gui >= 0) {
+      if (!this.initialized) {
         if (this.gui == GuiType.HIDDEN) {
           EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
           EyeTrackerService.setGazeVisibility("webgazerGazeDot", false);
@@ -54,7 +60,14 @@ export class EyeTrackerService {
           EyeTrackerService.setGazeVisibility("webgazerVideoContainer", true);
           EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
         }
-        this.gui = -1;
+        this.initialized = true;
+      }
+      if (this.privacyIndicator) {//cosi è solo per debug, salvare quando sto guardando il privacy indicator todo
+        let distance = Math.sqrt(Math.pow(this.eyeCord.x - this.privacyIndicator.position.x, 2) + Math.pow(this.eyeCord.y - this.privacyIndicator.position.y, 2));
+        if (distance < this.privacyIndicator.radius) {
+          console.log("hai guardato il privacy indicator");
+          VibrationComponent.vibrate();
+        }
       }
 
     }).begin();
@@ -66,6 +79,26 @@ export class EyeTrackerService {
       this.clicks.push({mouseCord: mouseCord, eyeCord: this.eyeCord, timestamp: timestamp});
       this.getError(mouseCord, this.eyeCord);
     });
+  }
+
+  public isInitialized(): boolean {
+    return this.initialized;
+  }
+
+  public setPrivacyIndicator(radius: number, privacyId: string) {
+    const privacyIndicator = document.getElementById(privacyId);
+    // @ts-ignore
+    const computedStyles = window.getComputedStyle(privacyIndicator);
+    const position: coordinates = {
+      x: parseInt(computedStyles.getPropertyValue('left').split(".")[0]),
+      y: parseInt(computedStyles.getPropertyValue('top').split(".")[0])
+    };
+
+    this.privacyIndicator = {radius: radius, position: position};
+  }
+
+  public removePrivacyIndicator() {
+    this.privacyIndicator = null;
   }
 
   public getError(click: coordinates, eye?: coordinates) {

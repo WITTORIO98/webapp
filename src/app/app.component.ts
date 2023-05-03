@@ -1,6 +1,5 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SpawnerService} from "./services/spawner.service";
-import {EyeTrackerService, GuiType} from "./services/eye-tracker.service";
 
 @Component({
   selector: 'app-root',
@@ -10,16 +9,11 @@ import {EyeTrackerService, GuiType} from "./services/eye-tracker.service";
 export class AppComponent implements OnInit {
   title = 'webapp';
 
-  constructor(private elementRef: ElementRef,
-              private spawner: SpawnerService,
-              private eye: EyeTrackerService) {
-
+  constructor(private spawner: SpawnerService) {
   }
 
 
   ngOnInit(): void {
-    this.eye.start(GuiType.DOT);
-
     this.spawner.nextStep();
   }
 

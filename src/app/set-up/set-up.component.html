@@ -1,7 +1,38 @@
 <div class="container">
-  <div class="text1">inserisci il codice sul pc!</div>
-  <div class="text2">{{idEsp}}</div>
+  <div *ngIf="!initialized">
+    <button *ngIf="!loading" (click)="startLoading()" class="text2">START</button>
 
-  <button *ngIf="!codiceInserito" (click)="refresh()" class="text1">aggiorna</button>
-  <button *ngIf="codiceInserito" (click)="startSp()" class="text1">INIZIA</button>
+    <div *ngIf="loading" class="center">
+      <div>
+        <h1>Loading..</h1>
+        <h2>Guarare frontalmente lo smartphone puo accelerare il processo</h2>
+      </div>
+      <div class="loader loader--style2" title="1">
+        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px"
+             width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;"
+             xml:space="preserve">
+            <path fill="#000"
+                  d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+              <animateTransform attributeType="xml"
+                                attributeName="transform"
+                                type="rotate"
+                                from="0 25 25"
+                                to="360 25 25"
+                                dur="2.2s"
+                                repeatCount="indefinite"/>
+            </path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="initialized">
+    <div class="text1">inserisci il codice sul pc!</div>
+    <div class="text2">{{idEsp}}</div>
+
+    <button *ngIf="!codiceInserito" (click)="refresh()" class="text1">aggiorna</button>
+    <button *ngIf="codiceInserito" (click)="startSp()" class="text1">INIZIA</button>
+  </div>
+
 </div>

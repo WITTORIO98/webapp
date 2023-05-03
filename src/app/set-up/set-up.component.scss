@@ -12,13 +12,34 @@
   text-align: center;
 }
 
-.text1{
+.text1 {
   font-size: xx-large;
 }
-.text2{
+
+.text2 {
   font-size: xxx-large;
 }
 
-button{
-  background-color: rgba(0,0,0,0.30);
+button {
+  background-color: rgba(0, 0, 0, 0.30);
+}
+
+.loader {
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+svg path,
+svg rect {
+  fill: orangered;
+}
+
+.scale{
+  transform: scale(3);
 }
