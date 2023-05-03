@@ -10,6 +10,7 @@ import {EyeTrackerService, GuiType} from "../services/eye-tracker.service";
 })
 export class SetUpComponent {
   public initialized: boolean = false;
+  public loading: boolean = false;
 
   codiceInserito: boolean = false;
   idEsp: string | undefined;
@@ -27,13 +28,14 @@ export class SetUpComponent {
   }
 
   startLoading() {
-    //logo caricamento
+    this.loading = true;
     this.launchIntoFullscreen(document.documentElement);
     this.eye.start(GuiType.DOT);
 
     const check = setInterval(() => {
       if (this.eye.isInitialized()) {
         this.initialized = true;
+        this.loading = false;
         clearInterval(check);
       }
     }, 200);
