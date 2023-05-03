@@ -23,7 +23,8 @@ export enum CoordType {
 })
 export class EyeTrackerService {
   private eyeCord: coordinates = {x: 100, y: 100};
-  private gui: number = GuiType.HIDDEN; //<0 initialized
+  private initialized: boolean = false;
+  private gui: number = GuiType.HIDDEN;
 
   private clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
 
@@ -41,7 +42,7 @@ export class EyeTrackerService {
       this.eyeCord.y = data.y;
       //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
-      if (this.gui >= 0) {
+      if (!this.initialized) {
         if (this.gui == GuiType.HIDDEN) {
           EyeTrackerService.setGazeVisibility("webgazerVideoContainer", false);
           EyeTrackerService.setGazeVisibility("webgazerGazeDot", false);
@@ -54,7 +55,7 @@ export class EyeTrackerService {
           EyeTrackerService.setGazeVisibility("webgazerVideoContainer", true);
           EyeTrackerService.setGazeVisibility("webgazerGazeDot", true);
         }
-        this.gui = -1;
+        this.initialized = true;
       }
 
     }).begin();
@@ -66,6 +67,10 @@ export class EyeTrackerService {
       this.clicks.push({mouseCord: mouseCord, eyeCord: this.eyeCord, timestamp: timestamp});
       this.getError(mouseCord, this.eyeCord);
     });
+  }
+
+  public isInitialized(): boolean {
+    return this.initialized;
   }
 
   public getError(click: coordinates, eye?: coordinates) {
