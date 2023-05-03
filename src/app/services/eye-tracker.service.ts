@@ -85,7 +85,15 @@ export class EyeTrackerService {
     return this.initialized;
   }
 
-  public setPrivacyIndicator(radius: number, position: coordinates) {
+  public setPrivacyIndicator(radius: number, privacyId: string) {
+    const privacyIndicator = document.getElementById(privacyId);
+    // @ts-ignore
+    const computedStyles = window.getComputedStyle(privacyIndicator);
+    const position: coordinates = {
+      x: parseInt(computedStyles.getPropertyValue('left').split(".")[0]),
+      y: parseInt(computedStyles.getPropertyValue('top').split(".")[0])
+    };
+
     this.privacyIndicator = {radius: radius, position: position};
   }
 
