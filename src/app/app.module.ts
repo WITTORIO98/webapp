@@ -23,6 +23,7 @@ import { CalibrationComponent } from './pages/calibration/calibration.component'
 import { AccuracyTestComponent } from './pages/accuracy-test/accuracy-test.component';
 import { TriviaComponent } from './tasks/trivia/trivia.component';
 import { StackGameComponent } from './tasks/stack-game/stack-game.component';
+import { EndComponent } from './pages/end/end.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { StackGameComponent } from './tasks/stack-game/stack-game.component';
     CalibrationComponent,
     AccuracyTestComponent,
     TriviaComponent,
-    StackGameComponent
+    StackGameComponent,
+    EndComponent
   ],
   imports: [
     BrowserModule,

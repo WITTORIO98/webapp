@@ -19,6 +19,7 @@ const steps: string[] = [
   'accuracyTest',
   'survey',
   'TASKS-INDICATORS',
+  'end',
   'END'
 ];
 

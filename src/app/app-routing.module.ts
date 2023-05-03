@@ -13,6 +13,7 @@ import {CalibrationComponent} from "./pages/calibration/calibration.component";
 import {AccuracyTestComponent} from "./pages/accuracy-test/accuracy-test.component";
 import {TriviaComponent} from "./tasks/trivia/trivia.component";
 import {StackGameComponent} from "./tasks/stack-game/stack-game.component";
+import {EndComponent} from "./pages/end/end.component";
 
 const routes: Routes = [
   {path: 'empty', component: EmptyComponent, outlet: 'outlet1'},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'simple-math', component: SimpleMathComponent, outlet: 'outlet1'},
   {path: 'trivia', component: TriviaComponent, outlet: 'outlet1'},
   {path: 'stackGame', component: StackGameComponent, outlet: 'outlet1'},
+  {path: 'end', component: EndComponent, outlet: 'outlet1'},
 
   {path: 'empty', component: EmptyComponent, outlet: 'outlet2'},
   {path: 'classic', component: ClassicComponent, outlet: 'outlet2'},

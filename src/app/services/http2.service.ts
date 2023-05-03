@@ -61,7 +61,6 @@ export class Http2Service {
 
     let out;
     this.http.post(this.getUrl(endpoint), finalBody, this.options).subscribe(data => {
-      console.debug(data);
       out = data;
     });
     return out;
@@ -70,7 +69,6 @@ export class Http2Service {
   public getUrl(endpoint: string): string {
     let out: string = "";
     out = out.concat(URL, endpoint);
-    console.log(out);
 
     return out;
   }
