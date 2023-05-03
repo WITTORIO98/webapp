@@ -8,6 +8,9 @@ export enum GET {
   newRandomIDExperiment = '/newRandomIDExperiment',
   surveyQuestions = '/surveyQuestions',
   triviaQuestions = '/triviaQuestions',
+  engineer1 = '/engineer1',
+  engineer2 = '/engineer2',
+  engineer3 = '/engineer3',
 }
 
 export enum POST {
@@ -17,6 +20,7 @@ export enum POST {
   despawnPrivacy = '/despawnPrivacy',
   clickButton = '/clickButton',
   surveyAnswers = '/surveyAnswers',
+  engineerAnswers = '/engineerAnswers',
 }
 
 @Injectable({

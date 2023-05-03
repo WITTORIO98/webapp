@@ -24,6 +24,9 @@ import { AccuracyTestComponent } from './pages/accuracy-test/accuracy-test.compo
 import { TriviaComponent } from './tasks/trivia/trivia.component';
 import { StackGameComponent } from './tasks/stack-game/stack-game.component';
 import { EndComponent } from './pages/end/end.component';
+import { Engineer1Component } from './tasks/softwareEngineering/engineer1/engineer1.component';
+import { Engineer2Component } from './tasks/softwareEngineering/engineer2/engineer2.component';
+import { Engineer3Component } from './tasks/softwareEngineering/engineer3/engineer3.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { EndComponent } from './pages/end/end.component';
     AccuracyTestComponent,
     TriviaComponent,
     StackGameComponent,
-    EndComponent
+    EndComponent,
+    Engineer1Component,
+    Engineer2Component,
+    Engineer3Component
   ],
   imports: [
     BrowserModule,

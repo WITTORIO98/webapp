@@ -14,6 +14,9 @@ import {AccuracyTestComponent} from "./pages/accuracy-test/accuracy-test.compone
 import {TriviaComponent} from "./tasks/trivia/trivia.component";
 import {StackGameComponent} from "./tasks/stack-game/stack-game.component";
 import {EndComponent} from "./pages/end/end.component";
+import {Engineer1Component} from "./tasks/softwareEngineering/engineer1/engineer1.component";
+import {Engineer2Component} from "./tasks/softwareEngineering/engineer2/engineer2.component";
+import {Engineer3Component} from "./tasks/softwareEngineering/engineer3/engineer3.component";
 
 const routes: Routes = [
   {path: 'empty', component: EmptyComponent, outlet: 'outlet1'},
@@ -26,6 +29,9 @@ const routes: Routes = [
   {path: 'trivia', component: TriviaComponent, outlet: 'outlet1'},
   {path: 'stackGame', component: StackGameComponent, outlet: 'outlet1'},
   {path: 'end', component: EndComponent, outlet: 'outlet1'},
+  {path: 'engineer1', component: Engineer1Component, outlet: 'outlet1'},
+  {path: 'engineer2', component: Engineer2Component, outlet: 'outlet1'},
+  {path: 'engineer3', component: Engineer3Component, outlet: 'outlet1'},
 
   {path: 'empty', component: EmptyComponent, outlet: 'outlet2'},
   {path: 'classic', component: ClassicComponent, outlet: 'outlet2'},

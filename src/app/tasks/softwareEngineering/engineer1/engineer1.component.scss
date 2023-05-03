@@ -1,0 +1,41 @@
+.pezzotto {
+  width: 100vw;
+  height: 1px; /* che pezzotto.. cosi non si sminchia il frame bha */
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.sopra {
+  overflow: auto;
+  margin: 5vh auto;
+  height: 60vh;
+  width: 80vw;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex; /* Imposta il contenitore come contenitore flessibile */
+  align-items: center; /* Centra verticalmente gli elementi del contenitore */
+}
+
+.sotto {
+  overflow: auto;
+  margin: 5vh auto;
+  height: 24vh;
+  width: 80vw;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.grande {
+  height: inherit;
+  width: inherit;
+  overflow: auto;
+  font-size: xxx-large;
+}
+
+mat-grid-tile {
+  background: lightblue;
+}
+
+button {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+}
+
