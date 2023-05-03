@@ -110,7 +110,7 @@ export class EyeTrackerService {
     let delta: coordinates = {x: click.x - eye.x, y: click.y - eye.y};
     let error: coordinates = {x: (delta.x / windowsWidth) * 100, y: (delta.y / windowsHeight) * 100};
 
-    console.debug(`error.x : ${error.x} %   error.y : ${error.y} %}`);
+    //console.debug(`error.x : ${error.x} %   error.y : ${error.y} %}`);
 
     return error;
   }

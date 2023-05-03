@@ -3,7 +3,9 @@ import {Router} from "@angular/router";
 
 const empty: [string] = ['empty'];
 const tasks: string[] = [
-  'trivia',
+  'engineer1',
+  'engineer2',
+  'engineer3',
   'stackGame',
 ];
 const indicators: string[] = [
@@ -16,9 +18,9 @@ const indicators: string[] = [
 const steps: string[] = [
   'setUp',
   'calibration',
-  'accuracyTest',
   'survey',
   'TASKS-INDICATORS',
+  'end',
   'END'
 ];
 
@@ -43,28 +45,41 @@ export class SpawnerService {
    * se i task sono finiti chiama nextStep()
    */
   public randomTask(): void {
-
-    let notSpawnedTasks: string[] = [];
-    tasks.forEach(task => {
-      let find: boolean = false;
-      this.spawnedTasks.forEach(spawned => {
-        if (task == spawned) {
-          find = true;
+    const random = false;
+    if (random) {
+      let notSpawnedTasks: string[] = [];
+      tasks.forEach(task => {
+        let find: boolean = false;
+        this.spawnedTasks.forEach(spawned => {
+          if (task == spawned) {
+            find = true;
+          }
+        });
+        if (!find) {
+          notSpawnedTasks.push(task);
         }
       });
-      if (!find) {
-        notSpawnedTasks.push(task);
-      }
-    });
 
-    if (notSpawnedTasks.length == 0) {
-      this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
-      this.nextStep();
+      if (notSpawnedTasks.length == 0) {
+        this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
+        this.nextStep();
+      } else {
+        let rand = Math.floor(Math.random() * notSpawnedTasks.length);
+        this.spawnedTasks.push(notSpawnedTasks[rand]);
+        this.routerNav([notSpawnedTasks[rand]]);
+      }
     } else {
-      let rand = Math.floor(Math.random() * notSpawnedTasks.length);
-      this.spawnedTasks.push(notSpawnedTasks[rand]);
-      this.routerNav([notSpawnedTasks[rand]]);
+
+      if (this.spawnedTasks.length == tasks.length) {
+        this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
+        this.nextStep();
+      } else {
+        this.routerNav([tasks[this.spawnedTasks.length]]);
+        this.spawnedTasks.push(tasks[this.spawnedTasks.length]);
+      }
+
     }
+
 
   }
 
@@ -148,19 +163,23 @@ export class SpawnerService {
   }
 
   public nextStep(step?: string): void {
-    if (step != undefined) {
-      this.nexStep = step;
+
+    if (step==undefined){
+
+      if (this.nexStep == 'TASKS-INDICATORS') {
+        this.randomTask();
+        this.randomIndicator();
+      } else if (this.nexStep == 'END') {
+        this.routerNav(empty, empty);
+      } else {
+        this.routerNav([this.nexStep], empty);
+        this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
+      }
+
+    }else {
+      this.routerNav([step], empty);
     }
 
-    if (this.nexStep == 'TASKS-INDICATORS') {
-      this.randomTask();
-      this.randomIndicator();
-    } else if (this.nexStep == 'END') {
-      this.routerNav(empty, empty);
-    } else {
-      this.routerNav([this.nexStep], empty);
-      this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
-    }
   }
 
 }

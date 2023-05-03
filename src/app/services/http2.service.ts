@@ -8,6 +8,9 @@ export enum GET {
   newRandomIDExperiment = '/newRandomIDExperiment',
   surveyQuestions = '/surveyQuestions',
   triviaQuestions = '/triviaQuestions',
+  engineer1 = '/engineer1',
+  engineer2 = '/engineer2',
+  engineer3 = '/engineer3',
 }
 
 export enum POST {
@@ -17,6 +20,7 @@ export enum POST {
   despawnPrivacy = '/despawnPrivacy',
   clickButton = '/clickButton',
   surveyAnswers = '/surveyAnswers',
+  engineerAnswers = '/engineerAnswers',
 }
 
 @Injectable({
@@ -61,7 +65,6 @@ export class Http2Service {
 
     let out;
     this.http.post(this.getUrl(endpoint), finalBody, this.options).subscribe(data => {
-      console.debug(data);
       out = data;
     });
     return out;
@@ -70,7 +73,6 @@ export class Http2Service {
   public getUrl(endpoint: string): string {
     let out: string = "";
     out = out.concat(URL, endpoint);
-    console.log(out);
 
     return out;
   }

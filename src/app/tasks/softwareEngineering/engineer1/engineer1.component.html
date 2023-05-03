@@ -1,0 +1,23 @@
+<div class="absolute noMargin">
+  <div class="pezzotto"></div>
+
+  <div class="sopra center">
+    <p class="grande">{{currentQuestion}}</p>
+  </div>
+
+
+  <div class="sotto">
+    <div class="center-survey">
+
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile *ngFor="let answer of currentAnswers">
+          <button [value]="answer.value" (click)="nextQuestion(answer.text)">{{ answer.text }}</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+    </div>
+  </div>
+
+</div>
+
+
