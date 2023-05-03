@@ -15,7 +15,10 @@ export class ClassicComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.http.spawnPrivacy(this.constructor.name);
 
-
+    this.setPrivacyIndicator();
+  }
+  
+  private setPrivacyIndicator(){
     const privacyIndicator = document.getElementById('privacyIndicator');
     // @ts-ignore
     const computedStyles = window.getComputedStyle(privacyIndicator);
