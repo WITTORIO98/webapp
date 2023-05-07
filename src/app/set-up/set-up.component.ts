@@ -20,6 +20,8 @@ export class SetUpComponent {
         console.log("ERROR: idEsp is null");
         const randomNum = Math.floor(Math.random() * (600000 - 400000 + 1)) + 400000;
         this.idEsp = randomNum.toString();
+      } else {
+        console.log("idEsp: " + this.idEsp);
       }
       Http2Service.idExperiment = this.idEsp.toString();
     });
