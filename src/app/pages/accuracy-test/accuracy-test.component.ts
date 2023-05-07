@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SpawnerService} from "../../services/spawner.service";
-import {coordinates, CoordType, EyeTrackerService} from "../../services/eye-tracker.service";
+import {coordinates, EyeTrackerService} from "../../services/eye-tracker.service";
+import {Http2Service, POST} from "../../services/http2.service";
 
 @Component({
   selector: 'app-accuracy-test',
@@ -20,7 +21,7 @@ export class AccuracyTestComponent implements OnInit {
   public minAccuracy: number = 70;
   public restart: boolean = false;
 
-  constructor(public spawner: SpawnerService, private eye: EyeTrackerService) {
+  constructor(public spawner: SpawnerService, private eye: EyeTrackerService, public http: Http2Service) {
   }
 
   ngOnInit(): void {
@@ -73,7 +74,12 @@ export class AccuracyTestComponent implements OnInit {
     this.accuracy = 100 - (x + y) / 2;
     this.accuracy = Math.floor(this.accuracy);
 
-    this.restart = this.accuracy < this.minAccuracy;
+    if (this.accuracy < this.minAccuracy) {
+      this.restart = true;
+    } else {
+      this.restart = false;
+      Http2Service.experiment.accuracy.push({value: this.accuracy});
+    }
   }
 
   continue() {
