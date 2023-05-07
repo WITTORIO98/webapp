@@ -24,6 +24,7 @@ export class SetUpComponent {
         console.log("idEsp: " + this.idEsp);
       }
       Http2Service.idExperiment = this.idEsp.toString();
+      Http2Service.experiment.idExp = this.idEsp.toString();
     });
   }
 
