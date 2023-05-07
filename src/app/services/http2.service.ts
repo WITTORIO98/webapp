@@ -18,7 +18,6 @@ export enum POST {
   despawnTask = '/despawnTask',
   spawnPrivacy = '/spawnPrivacy',
   despawnPrivacy = '/despawnPrivacy',
-  clickButton = '/clickButton',
   surveyAnswers = '/surveyAnswers',
   engineerAnswers = '/engineerAnswers',
 }
@@ -49,7 +48,7 @@ export class Http2Service {
 
   //get pezzotta in survey.component.ts constructor todo
 
-  public post(endpoint: string, component: any, extra?: any): any {
+  public post(endpoint: string, name: any, extra: any): any {
     if (extra == null) {
       extra = {};
     }
@@ -58,7 +57,7 @@ export class Http2Service {
       idExperiment: Http2Service.idExperiment,
       body: {
         timestamp: Date.now(),
-        component: component,
+        name: name,
         extra: extra
       }
     };
