@@ -9,10 +9,7 @@ import {EyeTrackerService, GuiType} from "../services/eye-tracker.service";
   styleUrls: ['./set-up.component.scss']
 })
 export class SetUpComponent {
-  public initialized: boolean = false;
   public loading: boolean = false;
-
-  codiceInserito: boolean = false;
   idEsp: string | undefined;
 
   constructor(private spawner: SpawnerService, private http: Http2Service, private eye: EyeTrackerService) {
@@ -21,7 +18,8 @@ export class SetUpComponent {
       this.idEsp = data.id.toString();
       if (this.idEsp == null) {
         console.log("ERROR: idEsp is null");
-        this.idEsp = "696969";
+        const randomNum = Math.floor(Math.random() * (600000 - 400000 + 1)) + 400000;
+        this.idEsp = randomNum.toString();
       }
       Http2Service.idExperiment = this.idEsp.toString();
     });
@@ -34,22 +32,13 @@ export class SetUpComponent {
 
     const check = setInterval(() => {
       if (this.eye.isInitialized()) {
-        this.initialized = true;
+
+        this.spawner.nextStep();
+
         this.loading = false;
         clearInterval(check);
       }
     }, 200);
-  }
-
-  refresh() {
-    //chiedo al back-end se il pc è collegato todo
-    if (true) {
-      this.codiceInserito = true;
-    }
-  }
-
-  startSp() {
-    this.spawner.nextStep();
   }
 
   launchIntoFullscreen(element: any) {
