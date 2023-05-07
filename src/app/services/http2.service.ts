@@ -27,6 +27,30 @@ export enum POST {
 })
 export class Http2Service {
   public static idExperiment: string = "1";
+  public static experiment: any = {
+    idExp: Http2Service.idExperiment,
+    ended: false,
+    tasks: [{
+      name: null,
+      start: null,
+      end: null,
+      extra: {
+        quiz: [{
+          question: null,
+          answer: null
+        }],
+        score: null
+      }
+    }],
+    indicators: [{
+      name: null,
+      start: null,
+      end: null,
+      eyeData: {},
+      extra: {}
+    }],
+    eyeData: {}
+  }
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
