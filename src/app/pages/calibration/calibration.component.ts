@@ -7,7 +7,6 @@ import {SpawnerService} from "../../services/spawner.service";
   styleUrls: ['./calibration.component.scss']
 })
 export class CalibrationComponent {
-  //declare an hashmap key-value whit integer value
   public buttons: Map<string, number> = new Map([
     ['A', 0],
     ['B', 0],
@@ -25,7 +24,6 @@ export class CalibrationComponent {
 
   constructor(private spawner: SpawnerService) {
   }
-
 
   click(key: string) {
     // @ts-ignore
