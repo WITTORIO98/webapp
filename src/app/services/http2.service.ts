@@ -46,10 +46,14 @@ export class Http2Service {
       name: null,
       start: null,
       end: null,
-      eyeData: {},
+      observed: [{
+        timestamp: null,
+      }],
       extra: {}
     }],
-    eyeData: {}
+    accuracy: [{
+      value: null,
+    }]
   }
 
   private headers = new HttpHeaders({
