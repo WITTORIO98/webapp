@@ -28,7 +28,7 @@ export enum POST {
   providedIn: 'root'
 })
 export class Http2Service {
-  public static idExperiment: string = "1";
+  public static idExperiment: string = "69";
   public static experiment: any = {
     idExp: Http2Service.idExperiment,
     ended: false,
