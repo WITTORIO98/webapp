@@ -20,6 +20,8 @@ export enum POST {
   despawnPrivacy = '/despawnPrivacy',
   surveyAnswers = '/surveyAnswers',
   engineerAnswers = '/engineerAnswers',
+
+  endExperiment = '/endExperiment',
 }
 
 @Injectable({
@@ -30,7 +32,7 @@ export class Http2Service {
   public static experiment: any = {
     idExp: Http2Service.idExperiment,
     ended: false,
-    tasks: [{
+    tasks: [/*{
       name: null,
       start: null,
       end: null,
@@ -40,18 +42,18 @@ export class Http2Service {
           answer: null
         }]
       }
-    }],
-    indicators: [{
+    }*/],
+    indicators: [/*{
       name: null,
       start: null,
       end: null,
       observed: [{
         timestamp: null,
       }]
-    }],
-    accuracy: [{
+    }*/],
+    accuracy: [/*{
       value: null,
-    }]
+    }*/]
   }
 
   private headers = new HttpHeaders({
@@ -73,7 +75,14 @@ export class Http2Service {
   }
 
   public sendData() {
+    let finalBody = Http2Service.experiment;
+    let endpoint = POST.endExperiment;
 
+    let out;
+    this.http.post(this.getUrl(endpoint), finalBody, this.options).subscribe(data => {
+      out = data;
+    });
+    return out;
   }
 
   public post(endpoint: string, name: any, extra: any): any {
