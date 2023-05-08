@@ -67,9 +67,9 @@ export class EyeTrackerService {
       if (this.privacyIndicator) {//cosi è solo per debug, salvare quando sto guardando il privacy indicator todo
         let distance = Math.sqrt(Math.pow(this.eyeCord.x - this.privacyIndicator.position.x, 2) + Math.pow(this.eyeCord.y - this.privacyIndicator.position.y, 2));
         if (distance < this.privacyIndicator.radius) {
-          console.log("hai guardato il privacy indicator");
+          //console.log("hai guardato il privacy indicator");
           this.observed.push({timestamp: Date.now()});
-          VibrationComponent.vibrate();
+          //VibrationComponent.vibrate();
         }
       }
 
