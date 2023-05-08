@@ -9,7 +9,7 @@ import {Http2Service, POST} from "../../services/http2.service";
   styleUrls: ['./accuracy-test.component.scss']
 })
 export class AccuracyTestComponent implements OnInit {
-  public animationTime: number = 10000;  //ms
+  public animationTime: number = 14000;  //ms
   public color: string = "red";
 
   public test: boolean = false;
