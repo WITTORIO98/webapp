@@ -48,7 +48,7 @@ export class Engineer2Component implements OnInit, OnDestroy {
       start: this.timestamp,
       end: Date.now(),
       extra: {
-        quiz: [this.selectedAnswers],
+        quiz: this.selectedAnswers,
       }
     });
   }
