@@ -1,6 +1,12 @@
 <div class="container">
 
-  <button *ngIf="!loading" (click)="startLoading()" class="text2">START</button>
+  <div *ngIf="!loading">
+    <div *ngIf="!mat">
+      <p>inserisci la tua matricola</p>
+      <input type="text" id="campo-testo">
+    </div>
+    <button *ngIf="mat" (click)="startLoading()" class="text2">START</button>
+  </div>
 
   <div *ngIf="loading" class="center">
     <div>

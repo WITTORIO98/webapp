@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {SpawnerService} from "../services/spawner.service";
 import {GET, Http2Service} from "../services/http2.service";
 import {EyeTrackerService, GuiType} from "../services/eye-tracker.service";
@@ -8,7 +8,8 @@ import {EyeTrackerService, GuiType} from "../services/eye-tracker.service";
   templateUrl: './set-up.component.html',
   styleUrls: ['./set-up.component.scss']
 })
-export class SetUpComponent {
+export class SetUpComponent implements AfterViewInit {
+  public mat: boolean = false;
   public loading: boolean = false;
   idEsp: string | undefined;
 
@@ -25,6 +26,15 @@ export class SetUpComponent {
       }
       Http2Service.idExperiment = this.idEsp.toString();
       Http2Service.experiment.idExp = this.idEsp.toString();
+    });
+  }
+
+  ngAfterViewInit(): void {
+    let campoTesto = document.getElementById("campo-testo") as HTMLInputElement;
+    campoTesto.addEventListener("change", () => {
+      this.mat = true;
+      this.idEsp = campoTesto.value;
+      console.log("Hai inserito il seguente testo:", this.idEsp);
     });
   }
 
