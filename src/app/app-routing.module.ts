@@ -17,6 +17,7 @@ import {EndComponent} from "./pages/end/end.component";
 import {Engineer1Component} from "./tasks/softwareEngineering/engineer1/engineer1.component";
 import {Engineer2Component} from "./tasks/softwareEngineering/engineer2/engineer2.component";
 import {Engineer3Component} from "./tasks/softwareEngineering/engineer3/engineer3.component";
+import {TopEdgeComponent} from "./privacyIndicators/top-edge/top-edge.component";
 
 const routes: Routes = [
   {path: 'empty', component: EmptyComponent, outlet: 'outlet1'},
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'illuminazione-edge', component: IlluminazioneEdgeComponent, outlet: 'outlet2'},
   {path: 'classic-disco', component: ClassicDiscoComponent, outlet: 'outlet2'},
   {path: 'vibration', component: VibrationComponent, outlet: 'outlet2'},
+  {path: 'topEdge', component: TopEdgeComponent, outlet: 'outlet2'},
 ];
 
 @NgModule({

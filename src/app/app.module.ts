@@ -27,6 +27,7 @@ import { EndComponent } from './pages/end/end.component';
 import { Engineer1Component } from './tasks/softwareEngineering/engineer1/engineer1.component';
 import { Engineer2Component } from './tasks/softwareEngineering/engineer2/engineer2.component';
 import { Engineer3Component } from './tasks/softwareEngineering/engineer3/engineer3.component';
+import { TopEdgeComponent } from './privacyIndicators/top-edge/top-edge.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { Engineer3Component } from './tasks/softwareEngineering/engineer3/engine
     EndComponent,
     Engineer1Component,
     Engineer2Component,
-    Engineer3Component
+    Engineer3Component,
+    TopEdgeComponent
   ],
   imports: [
     BrowserModule,

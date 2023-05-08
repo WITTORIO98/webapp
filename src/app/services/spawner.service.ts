@@ -12,7 +12,7 @@ const tasks: string[] = [
 ];
 const indicators: string[] = [
   'classic',
-  'illuminazione-edge',
+  'topEdge',
   'classic-disco'
 ];
 
