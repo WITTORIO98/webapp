@@ -4,15 +4,16 @@ import {Router} from "@angular/router";
 const empty: [string] = ['empty'];
 const tasks: string[] = [
   'engineer1',
+  'stackGame',
   'engineer2',
+  'stackGame',
   'engineer3',
   'stackGame',
 ];
 const indicators: string[] = [
   'classic',
   'illuminazione-edge',
-  'classic-disco',
-  'vibration'
+  'classic-disco'
 ];
 
 const steps: string[] = [
