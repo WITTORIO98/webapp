@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {SpawnerService} from "../services/spawner.service";
 import {GET, Http2Service} from "../services/http2.service";
 import {EyeTrackerService, GuiType} from "../services/eye-tracker.service";
@@ -8,11 +8,9 @@ import {EyeTrackerService, GuiType} from "../services/eye-tracker.service";
   templateUrl: './set-up.component.html',
   styleUrls: ['./set-up.component.scss']
 })
-export class SetUpComponent {
-  public initialized: boolean = false;
+export class SetUpComponent implements AfterViewInit {
+  public mat: boolean = false;
   public loading: boolean = false;
-
-  codiceInserito: boolean = false;
   idEsp: string | undefined;
 
   constructor(private spawner: SpawnerService, private http: Http2Service, private eye: EyeTrackerService) {
@@ -21,35 +19,39 @@ export class SetUpComponent {
       this.idEsp = data.id.toString();
       if (this.idEsp == null) {
         console.log("ERROR: idEsp is null");
-        this.idEsp = "696969";
+        const randomNum = Math.floor(Math.random() * (600000 - 400000 + 1)) + 400000;
+        this.idEsp = randomNum.toString();
+      } else {
+        console.log("idEsp: " + this.idEsp);
       }
       Http2Service.idExperiment = this.idEsp.toString();
+      Http2Service.experiment.idExp = this.idEsp.toString();
+    });
+  }
+
+  ngAfterViewInit(): void {
+    let campoTesto = document.getElementById("campo-testo") as HTMLInputElement;
+    campoTesto.addEventListener("change", () => {
+      this.mat = true;
+      this.idEsp = campoTesto.value;
+      console.log("Hai inserito il seguente testo:", this.idEsp);
     });
   }
 
   startLoading() {
     this.loading = true;
     this.launchIntoFullscreen(document.documentElement);
-    this.eye.start(GuiType.DOT);
+    this.eye.start(GuiType.HIDDEN);
 
     const check = setInterval(() => {
       if (this.eye.isInitialized()) {
-        this.initialized = true;
+
+        this.spawner.nextStep();
+
         this.loading = false;
         clearInterval(check);
       }
     }, 200);
-  }
-
-  refresh() {
-    //chiedo al back-end se il pc è collegato todo
-    if (true) {
-      this.codiceInserito = true;
-    }
-  }
-
-  startSp() {
-    this.spawner.nextStep();
   }
 
   launchIntoFullscreen(element: any) {

@@ -18,9 +18,10 @@ export enum POST {
   despawnTask = '/despawnTask',
   spawnPrivacy = '/spawnPrivacy',
   despawnPrivacy = '/despawnPrivacy',
-  clickButton = '/clickButton',
   surveyAnswers = '/surveyAnswers',
   engineerAnswers = '/engineerAnswers',
+
+  endExperiment = '/endExperiment',
 }
 
 @Injectable({
@@ -28,6 +29,32 @@ export enum POST {
 })
 export class Http2Service {
   public static idExperiment: string = "1";
+  public static experiment: any = {
+    idExp: Http2Service.idExperiment,
+    ended: false,
+    tasks: [/*{
+      name: null,
+      start: null,
+      end: null,
+      extra: {
+        quiz: [{
+          question: null,
+          answer: null
+        }]
+      }
+    }*/],
+    indicators: [/*{
+      name: null,
+      start: null,
+      end: null,
+      observed: [{
+        timestamp: null,
+      }]
+    }*/],
+    accuracys: [/*{
+      value: null,
+    }*/]
+  }
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -47,9 +74,18 @@ export class Http2Service {
   constructor(public http: HttpClient) {
   }
 
-  //get pezzotta in survey.component.ts constructor todo
+  public sendData() {
+    let finalBody = Http2Service.experiment;
+    let endpoint = POST.endExperiment;
 
-  public post(endpoint: string, component: any, extra?: any): any {
+    let out;
+    this.http.post(this.getUrl(endpoint), finalBody, this.options).subscribe(data => {
+      out = data;
+    });
+    return out;
+  }
+
+  public post(endpoint: string, name: any, extra: any): any {
     if (extra == null) {
       extra = {};
     }
@@ -58,7 +94,7 @@ export class Http2Service {
       idExperiment: Http2Service.idExperiment,
       body: {
         timestamp: Date.now(),
-        component: component,
+        name: name,
         extra: extra
       }
     };

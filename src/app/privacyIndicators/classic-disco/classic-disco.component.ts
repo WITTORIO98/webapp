@@ -8,6 +8,7 @@ import {AlertZone, coordinates, EyeTrackerService} from "../../services/eye-trac
   styleUrls: ['./classic-disco.component.scss']
 })
 export class ClassicDiscoComponent implements OnInit, OnDestroy {
+  timestamp: number = Date.now();
   private variables = document.querySelector('.classicDiscoVariables');
 
   constructor(private http: Http2Service, private eye: EyeTrackerService) {
@@ -46,8 +47,14 @@ export class ClassicDiscoComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.eye.removePrivacyIndicator();
     this.http.despawnPrivacy(this.constructor.name);
+    let observed = this.eye.removePrivacyIndicator();
+    Http2Service.experiment.indicators.push({
+      name: this.constructor.name,
+      start: this.timestamp,
+      end: Date.now(),
+      observed: observed
+    });
   }
 
 }

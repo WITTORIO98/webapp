@@ -8,6 +8,7 @@ import {SpawnerService} from "../../services/spawner.service";
   styleUrls: ['./stack-game.component.scss']
 })
 export class StackGameComponent implements OnInit, OnDestroy {
+  timestamp: number = Date.now();
 
   constructor(private http: Http2Service, private spawner: SpawnerService) {
   }
@@ -22,6 +23,11 @@ export class StackGameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.http.despawnTask(this.constructor.name);
+    Http2Service.experiment.tasks.push({
+      name: this.constructor.name,
+      start: this.timestamp,
+      end: Date.now()
+    });
   }
 
 }

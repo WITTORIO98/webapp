@@ -1,11 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Http2Service} from "../../services/http2.service";
 
 @Component({
   selector: 'app-end',
   templateUrl: './end.component.html',
   styleUrls: ['./end.component.scss']
 })
-export class EndComponent {
+export class EndComponent implements OnInit {
+
+  constructor(private http: Http2Service) {}
 
   exitFullScreen() {
     let element: any = document;
@@ -17,5 +20,10 @@ export class EndComponent {
     } else if (element.webkitExitFullscreen) {
       element.webkitExitFullscreen();
     }
+  }
+
+  ngOnInit(): void {
+    Http2Service.experiment.ended = true;
+    this.http.sendData();
   }
 }

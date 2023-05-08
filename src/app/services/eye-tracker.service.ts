@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {VibrationComponent} from "../privacyIndicators/vibration/vibration.component";
+import {Http2Service} from "./http2.service";
 
 // @ts-ignore
 const WebGazer: any = window.webgazer;
@@ -19,8 +20,8 @@ export enum CoordType {
   ToWIEWPORT
 }
 
-export enum AlertZone {
-  DEFAULT = 100
+export enum AlertZone { //inteso in percentuale sulla larchezza dello schermo
+  DEFAULT = 30
 }
 
 @Injectable({
@@ -31,6 +32,7 @@ export class EyeTrackerService {
   private initialized: boolean = false;
   private gui: number = GuiType.HIDDEN;
   private privacyIndicator: { radius: number, position: coordinates } | null = null;
+  public observed: { timestamp: number }[] = []
   private clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
 
   constructor() {
@@ -66,7 +68,8 @@ export class EyeTrackerService {
         let distance = Math.sqrt(Math.pow(this.eyeCord.x - this.privacyIndicator.position.x, 2) + Math.pow(this.eyeCord.y - this.privacyIndicator.position.y, 2));
         if (distance < this.privacyIndicator.radius) {
           console.log("hai guardato il privacy indicator");
-          VibrationComponent.vibrate();
+          this.observed.push({timestamp: Date.now()});
+          //VibrationComponent.vibrate();
         }
       }
 
@@ -94,11 +97,15 @@ export class EyeTrackerService {
       y: parseInt(computedStyles.getPropertyValue('top').split(".")[0])
     };
 
+    radius = radius / 100 * window.innerWidth;
+
     this.privacyIndicator = {radius: radius, position: position};
+    this.observed = [];
   }
 
   public removePrivacyIndicator() {
     this.privacyIndicator = null;
+    return this.observed;
   }
 
   public getError(click: coordinates, eye?: coordinates) {
