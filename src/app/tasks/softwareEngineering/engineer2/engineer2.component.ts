@@ -8,6 +8,7 @@ import {SpawnerService} from "../../../services/spawner.service";
   styleUrls: ['./engineer2.component.scss']
 })
 export class Engineer2Component implements OnInit, OnDestroy {
+  timestamp: number = Date.now();
   questions: any;// : { text: string, answers: { text: string, value: string }[] }[]
   currentAnswers: any;
   currentQuestion: string = "";
@@ -42,6 +43,14 @@ export class Engineer2Component implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.http.post(POST.engineerAnswers, this.constructor.name, this.selectedAnswers);
     this.http.despawnTask(this.constructor.name);
+    Http2Service.experiment.tasks.push({
+      name: this.constructor.name,
+      start: this.timestamp,
+      end: Date.now(),
+      extra: {
+        quiz: [this.selectedAnswers],
+      }
+    });
   }
 
 }

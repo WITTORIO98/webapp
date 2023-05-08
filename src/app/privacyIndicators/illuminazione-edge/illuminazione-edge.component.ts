@@ -7,6 +7,7 @@ import {Http2Service} from "../../services/http2.service";
   styleUrls: ['./illuminazione-edge.component.scss']
 })
 export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
+  timestamp: number = Date.now();
   private variables = document.querySelector('.illuminazioneEdgeVariables');
   private animations: string[] = ["toDown", "toRight", "toUp", "toLeft"];
   private lastAnimation: number = 4;
@@ -94,6 +95,11 @@ export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
     clearInterval(this.interval);
     clearTimeout(this.timer);
     this.http.despawnPrivacy(this.constructor.name);
+    Http2Service.experiment.indicators.push({
+      name: this.constructor.name,
+      start: this.timestamp,
+      end: Date.now(),
+    });
   }
 
 }

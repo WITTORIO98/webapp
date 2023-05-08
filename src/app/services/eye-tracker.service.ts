@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {VibrationComponent} from "../privacyIndicators/vibration/vibration.component";
+import {Http2Service} from "./http2.service";
 
 // @ts-ignore
 const WebGazer: any = window.webgazer;
@@ -31,6 +32,7 @@ export class EyeTrackerService {
   private initialized: boolean = false;
   private gui: number = GuiType.HIDDEN;
   private privacyIndicator: { radius: number, position: coordinates } | null = null;
+  public observed: { timestamp: number }[] = []
   private clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
 
   constructor() {
@@ -95,10 +97,12 @@ export class EyeTrackerService {
     };
 
     this.privacyIndicator = {radius: radius, position: position};
+    this.observed = [];
   }
 
   public removePrivacyIndicator() {
     this.privacyIndicator = null;
+    return this.observed;
   }
 
   public getError(click: coordinates, eye?: coordinates) {

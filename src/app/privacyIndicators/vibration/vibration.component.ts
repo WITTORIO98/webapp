@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Http2Service} from "../../services/http2.service";
 
 @Component({
   selector: 'app-vibration',
   templateUrl: './vibration.component.html',
   styleUrls: ['./vibration.component.scss']
 })
-export class VibrationComponent implements OnInit {
-
+export class VibrationComponent implements OnInit, OnDestroy {
+  timestamp: number = Date.now();
 
   ngOnInit(): void {
     if ('vibrate' in navigator) {
@@ -23,6 +24,14 @@ export class VibrationComponent implements OnInit {
     } else {
       console.log('API Web Vibration non supportata dal browser');
     }
+  }
+
+  ngOnDestroy(): void {
+    Http2Service.experiment.indicators.push({
+      name: this.constructor.name,
+      start: this.timestamp,
+      end: Date.now(),
+    });
   }
 
 }

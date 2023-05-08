@@ -8,6 +8,7 @@ import {AlertZone, coordinates, EyeTrackerService} from "../../services/eye-trac
   styleUrls: ['./classic.component.scss']
 })
 export class ClassicComponent implements OnInit, OnDestroy {
+  timestamp: number = Date.now();
 
   constructor(private http: Http2Service, private eye: EyeTrackerService) {
   }
@@ -15,12 +16,18 @@ export class ClassicComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.http.spawnPrivacy(this.constructor.name);
 
-    this.eye.setPrivacyIndicator(AlertZone.DEFAULT,'privacyIndicator');
+    this.eye.setPrivacyIndicator(AlertZone.DEFAULT, 'privacyIndicator');
   }
 
   ngOnDestroy(): void {
-    this.eye.removePrivacyIndicator();
     this.http.despawnPrivacy(this.constructor.name);
+    let observed = this.eye.removePrivacyIndicator();
+    Http2Service.experiment.indicators.push({
+      name: this.constructor.name,
+      start: this.timestamp,
+      end: Date.now(),
+      observed: observed
+    });
   }
 
 }

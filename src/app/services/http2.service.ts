@@ -38,8 +38,7 @@ export class Http2Service {
         quiz: [{
           question: null,
           answer: null
-        }],
-        score: null
+        }]
       }
     }],
     indicators: [{
@@ -48,8 +47,7 @@ export class Http2Service {
       end: null,
       observed: [{
         timestamp: null,
-      }],
-      extra: {}
+      }]
     }],
     accuracy: [{
       value: null,
@@ -74,7 +72,9 @@ export class Http2Service {
   constructor(public http: HttpClient) {
   }
 
-  //get pezzotta in survey.component.ts constructor todo
+  public sendData() {
+
+  }
 
   public post(endpoint: string, name: any, extra: any): any {
     if (extra == null) {
