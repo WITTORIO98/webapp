@@ -46,8 +46,7 @@ export class SetUpComponent implements AfterViewInit {
     const check = setInterval(() => {
       if (this.eye.isInitialized()) {
 
-        //this.spawner.nextStep();
-        this.spawner.routerNav(['simple-text'],["topEdge"]);
+        this.spawner.nextStep();
 
         this.loading = false;
         clearInterval(check);

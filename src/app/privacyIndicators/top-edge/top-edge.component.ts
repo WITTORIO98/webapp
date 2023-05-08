@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import {Http2Service} from "../../services/http2.service";
-import {AlertZone, EyeTrackerService} from "../../services/eye-tracker.service";
+import {AlertZone, coordinates, EyeTrackerService} from "../../services/eye-tracker.service";
 
 @Component({
   selector: 'app-top-edge',

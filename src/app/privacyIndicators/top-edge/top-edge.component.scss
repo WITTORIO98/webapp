@@ -1,0 +1,18 @@
+.sfumato {
+  width: 20vw;
+  height: 1vh;
+  background: linear-gradient(to right, rgba(50,205,50, 0), rgba(50,205,50, 1));
+  position: absolute;
+  left: 0;
+  animation: move 3s linear infinite;
+}
+
+@keyframes move {
+  from {
+    left: -20vw;
+  }
+  to {
+    left: 100vw;
+  }
+}
+
