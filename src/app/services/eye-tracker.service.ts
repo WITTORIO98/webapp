@@ -20,8 +20,8 @@ export enum CoordType {
   ToWIEWPORT
 }
 
-export enum AlertZone {
-  DEFAULT = 100
+export enum AlertZone { //inteso in percentuale sulla larchezza dello schermo
+  DEFAULT = 30
 }
 
 @Injectable({
@@ -96,6 +96,8 @@ export class EyeTrackerService {
       x: parseInt(computedStyles.getPropertyValue('left').split(".")[0]),
       y: parseInt(computedStyles.getPropertyValue('top').split(".")[0])
     };
+
+    radius = radius / 100 * window.innerWidth;
 
     this.privacyIndicator = {radius: radius, position: position};
     this.observed = [];
