@@ -51,7 +51,7 @@ export class Http2Service {
         timestamp: null,
       }]
     }*/],
-    accuracy: [/*{
+    accuracys: [/*{
       value: null,
     }*/]
   }

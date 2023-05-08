@@ -78,7 +78,7 @@ export class AccuracyTestComponent implements OnInit {
       this.restart = true;
     } else {
       this.restart = false;
-      Http2Service.experiment.accuracy.push({value: this.accuracy});
+      Http2Service.experiment.accuracys.push({value: this.accuracy});
     }
   }
 
