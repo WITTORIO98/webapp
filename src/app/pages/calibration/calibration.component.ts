@@ -20,7 +20,7 @@ export class CalibrationComponent {
     ['J', 0],
     ['K', 0]
   ]);
-  public numClick: number = 1;
+  public numClick: number = 2;
 
   constructor(private spawner: SpawnerService) {
   }
