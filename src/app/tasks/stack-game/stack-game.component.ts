@@ -14,7 +14,7 @@ export class StackGameComponent implements OnInit, OnDestroy {
   }
 
   nextStep(): void {
-    this.spawner.nextStep();
+    this.spawner.nextStep('calibration');
   }
 
   ngOnInit(): void {
