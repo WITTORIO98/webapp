@@ -13,7 +13,10 @@ const tasks: string[] = [
 const indicators: string[] = [
   'classic',
   'topEdge',
-  'classic-disco'
+  'classic-disco',
+  'classic',
+  'topEdge',
+  'classic-disco',
 ];
 
 const steps: string[] = [
@@ -168,6 +171,7 @@ export class SpawnerService {
 
       if (this.nexStep == 'TASKS-INDICATORS') {
         this.randomTask();
+
         this.randomIndicator();
       } else if (this.nexStep == 'END') {
         this.routerNav(empty, empty);
