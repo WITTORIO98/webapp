@@ -8,7 +8,7 @@ import {EyeTrackerService, GuiType} from "../services/eye-tracker.service";
   templateUrl: './set-up.component.html',
   styleUrls: ['./set-up.component.scss']
 })
-export class SetUpComponent implements AfterViewInit {
+export class SetUpComponent implements AfterViewInit, OnInit {
   public mat: boolean = false;
   public loading: boolean = false;
   idEsp: string | undefined;
@@ -27,6 +27,16 @@ export class SetUpComponent implements AfterViewInit {
       Http2Service.idExperiment = this.idEsp.toString();
       Http2Service.experiment.idExp = this.idEsp.toString();
     });
+  }
+
+  ngOnInit(): void {
+    navigator.mediaDevices.getUserMedia({video: true})
+      .then(stream => {
+        console.log("Permesso concesso");
+      })
+      .catch(error => {
+        console.log("Permesso negato");
+      });
   }
 
   ngAfterViewInit(): void {
