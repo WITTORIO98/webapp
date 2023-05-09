@@ -31,7 +31,7 @@ const steps: string[] = [
   providedIn: 'root'
 })
 export class SpawnerService {
-  private readonly delay = {default: 4000, rMin: 0, rMax: 30000};
+  private readonly delay = {default: 2000, rMin: 0, rMax: 30000};
   private readonly duration = {default: 8000, rMin: 500, rMax: 30000};
 
   private spawnedTasks: string[] = [];
