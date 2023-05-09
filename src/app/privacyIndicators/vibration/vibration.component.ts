@@ -28,7 +28,7 @@ export class VibrationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     Http2Service.experiment.indicators.push({
-      name: this.constructor.name,
+      name: "VibrationComponent",
       start: this.timestamp,
       end: Date.now(),
     });

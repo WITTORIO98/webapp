@@ -18,13 +18,13 @@ export class StackGameComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.http.spawnTask(this.constructor.name);
+    this.http.spawnTask("StackGameComponent");
   }
 
   ngOnDestroy(): void {
-    this.http.despawnTask(this.constructor.name);
+    this.http.despawnTask("StackGameComponent");
     Http2Service.experiment.tasks.push({
-      name: this.constructor.name,
+      name: "StackGameComponent",
       start: this.timestamp,
       end: Date.now()
     });

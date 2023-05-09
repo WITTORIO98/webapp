@@ -36,14 +36,14 @@ export class Engineer1Component implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.http.spawnTask(this.constructor.name);
+    this.http.spawnTask("Engineer1Component");
   }
 
   ngOnDestroy(): void {
-    this.http.post(POST.engineerAnswers, this.constructor.name, this.selectedAnswers);
-    this.http.despawnTask(this.constructor.name);
+    this.http.post(POST.engineerAnswers, "Engineer1Component", this.selectedAnswers);
+    this.http.despawnTask("Engineer1Component");
     Http2Service.experiment.tasks.push({
-      name: this.constructor.name,
+      name: "Engineer1Component",
       start: this.timestamp,
       end: Date.now(),
       extra: {

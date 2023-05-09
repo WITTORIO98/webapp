@@ -19,7 +19,7 @@ export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.http.spawnPrivacy(this.constructor.name);
+    this.http.spawnPrivacy("IlluminazioneEdgeComponent");
     this.manageAnimation();
   }
 
@@ -94,9 +94,9 @@ export class IlluminazioneEdgeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     clearInterval(this.interval);
     clearTimeout(this.timer);
-    this.http.despawnPrivacy(this.constructor.name);
+    this.http.despawnPrivacy("IlluminazioneEdgeComponent");
     Http2Service.experiment.indicators.push({
-      name: this.constructor.name,
+      name: "IlluminazioneEdgeComponent",
       start: this.timestamp,
       end: Date.now(),
     });
