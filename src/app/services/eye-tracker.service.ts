@@ -21,7 +21,7 @@ export enum CoordType {
 }
 
 export enum AlertZone { //inteso in percentuale sulla larchezza dello schermo
-  DEFAULT = 30
+  DEFAULT = 35
 }
 
 @Injectable({

@@ -18,7 +18,7 @@ export class AccuracyTestComponent implements OnInit {
   private errors: coordinates[] = [];
   public accuracy: number = 69;
 
-  public minAccuracy: number = 70;
+  public minAccuracy: number = 75;
   public restart: boolean = false;
 
   constructor(public spawner: SpawnerService, private eye: EyeTrackerService, public http: Http2Service) {
