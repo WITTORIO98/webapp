@@ -32,7 +32,7 @@ export class Engineer2Component implements OnInit, OnDestroy {
       this.currentQuestion = quest.text;
       this.currentAnswers = quest.answers;
     } else {
-      this.spawner.nextStep('calibration');
+      this.spawner.nextStep();
     }
   }
 
