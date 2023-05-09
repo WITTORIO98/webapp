@@ -19,7 +19,6 @@ const indicators: string[] = [
 const steps: string[] = [
   'setUp',
   'calibration',
-  'survey',
   'TASKS-INDICATORS',
   'end',
   'END'

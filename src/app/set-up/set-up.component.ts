@@ -33,8 +33,7 @@ export class SetUpComponent implements AfterViewInit {
     let campoTesto = document.getElementById("campo-testo") as HTMLInputElement;
     campoTesto.addEventListener("change", () => {
       this.mat = true;
-      this.idEsp = campoTesto.value;
-      console.log("Hai inserito il seguente testo:", this.idEsp);
+      Http2Service.experiment.idExp = campoTesto.value;
     });
   }
 
