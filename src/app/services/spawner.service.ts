@@ -13,10 +13,7 @@ const tasks: string[] = [
 const indicators: string[] = [
   'classic',
   'topEdge',
-  'classic-disco',
-  'classic',
-  'topEdge',
-  'classic-disco',
+  'classic-disco'
 ];
 
 const steps: string[] = [
@@ -31,13 +28,15 @@ const steps: string[] = [
   providedIn: 'root'
 })
 export class SpawnerService {
-  private readonly delay = {default: 2000, rMin: 0, rMax: 30000};
+  private readonly delay = {default: 2500, rMin: 0, rMax: 30000};
   private readonly duration = {default: 8000, rMin: 500, rMax: 30000};
 
   private spawnedTasks: string[] = [];
   private spawnedIndicators: string[] = [];
   private latest = {task: empty, indicator: empty};
   private nexStep: string = steps[0];
+
+  private indicatorIndex: number = 0;
 
   constructor(private router: Router) {
   }
@@ -105,7 +104,7 @@ export class SpawnerService {
       duration = Math.floor(Math.random() *
         (this.duration.rMax - this.duration.rMin + 1)) + this.duration.rMin;
     }
-
+    /*
     let notSpawnedIndicators: string[] = [];
     indicators.forEach(indicator => {
       let find: boolean = false;
@@ -127,8 +126,13 @@ export class SpawnerService {
       this.spawnedIndicators.push(notSpawnedIndicators[rand]);
       this.scheduleIndicator(delay, duration, [notSpawnedIndicators[rand]]);
     }
+    */
 
-
+    this.scheduleIndicator(delay, duration, [indicators[this.indicatorIndex]]);
+    this.indicatorIndex++;
+    if (this.indicatorIndex >= indicators.length) {
+      this.indicatorIndex = 0;
+    }
   }
 
   public scheduleIndicator(delay: number, duration: number, indicator: [string]) {
@@ -167,11 +171,10 @@ export class SpawnerService {
 
   public nextStep(step?: string): void {
 
-    if (step==undefined){
+    if (step == undefined) {
 
       if (this.nexStep == 'TASKS-INDICATORS') {
         this.randomTask();
-
         this.randomIndicator();
       } else if (this.nexStep == 'END') {
         this.routerNav(empty, empty);
@@ -180,7 +183,7 @@ export class SpawnerService {
         this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
       }
 
-    }else {
+    } else {
       this.routerNav([step], empty);
     }
 
