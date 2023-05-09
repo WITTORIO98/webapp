@@ -3,6 +3,7 @@
   <div *ngIf="!loading">
     <div *ngIf="!mat">
       <p>inserisci la tua matricola</p>
+      <p *ngIf="!validMat">INSERISCI UNA MATRICOLA VALIDA</p>
       <input type="text" id="campo-testo">
     </div>
     <button *ngIf="mat" (click)="startLoading()" class="text2">START</button>

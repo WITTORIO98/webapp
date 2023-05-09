@@ -12,6 +12,7 @@ export class SetUpComponent implements AfterViewInit, OnInit {
   public mat: boolean = false;
   public loading: boolean = false;
   idEsp: string | undefined;
+  public validMat: boolean = true;
 
   constructor(private spawner: SpawnerService, private http: Http2Service, private eye: EyeTrackerService) {
     http.http.get(http.getUrl(GET.newRandomIDExperiment), http.options).subscribe(data => {
@@ -42,9 +43,21 @@ export class SetUpComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     let campoTesto = document.getElementById("campo-testo") as HTMLInputElement;
     campoTesto.addEventListener("change", () => {
-      this.mat = true;
+      if (this.isMatricolaValid(campoTesto.value)) {
+        this.mat = true;
+        this.validMat = true;
+      } else {
+        this.mat = false;
+        this.validMat = false;
+      }
+
       Http2Service.experiment.idExp = campoTesto.value;
     });
+  }
+
+  private isMatricolaValid(matricola: string): boolean {
+    matricola = matricola.trim();
+    return /^\d+$/.test(matricola);
   }
 
   startLoading() {
