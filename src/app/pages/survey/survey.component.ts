@@ -34,7 +34,7 @@ export class SurveyComponent {
         timestamp: Date.now(),
         questions: this.selectedAnswers
       };
-      this.http.post(POST.surveyAnswers, this.constructor.name, this.selectedAnswers);
+      this.http.post(POST.surveyAnswers, "SurveyComponent", this.selectedAnswers);
       this.spawner.nextStep();
     }
 

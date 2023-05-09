@@ -42,15 +42,15 @@ export class ClassicDiscoComponent implements OnInit, OnDestroy {
     // @ts-ignore
     this.variables.style.setProperty('--color2', variables.style.color2);
 
-    this.http.spawnPrivacy(this.constructor.name, variables);
+    this.http.spawnPrivacy("ClassicDiscoComponent", variables);
     this.eye.setPrivacyIndicator(AlertZone.DEFAULT,'privacyIndicator');
   }
 
   ngOnDestroy(): void {
-    this.http.despawnPrivacy(this.constructor.name);
+    this.http.despawnPrivacy("ClassicDiscoComponent");
     let observed = this.eye.removePrivacyIndicator();
     Http2Service.experiment.indicators.push({
-      name: this.constructor.name,
+      name: "ClassicDiscoComponent",
       start: this.timestamp,
       end: Date.now(),
       observed: observed

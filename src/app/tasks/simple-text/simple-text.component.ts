@@ -12,11 +12,11 @@ export class SimpleTextComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.http.spawnTask(this.constructor.name);
+    this.http.spawnTask("SimpleTextComponent");
   }
 
   ngOnDestroy(): void {
-    this.http.despawnTask(this.constructor.name);
+    this.http.despawnTask("SimpleTextComponent");
   }
 
 }

@@ -14,16 +14,16 @@ export class ClassicComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.http.spawnPrivacy(this.constructor.name);
+    this.http.spawnPrivacy("ClassicComponent");
 
     this.eye.setPrivacyIndicator(AlertZone.DEFAULT, 'privacyIndicator');
   }
 
   ngOnDestroy(): void {
-    this.http.despawnPrivacy(this.constructor.name);
+    this.http.despawnPrivacy("ClassicComponent");
     let observed = this.eye.removePrivacyIndicator();
     Http2Service.experiment.indicators.push({
-      name: this.constructor.name,
+      name: "ClassicComponent",
       start: this.timestamp,
       end: Date.now(),
       observed: observed

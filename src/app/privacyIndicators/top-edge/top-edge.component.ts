@@ -25,7 +25,7 @@ export class TopEdgeComponent implements AfterViewInit, OnDestroy {
     clearInterval(this.updatePosition);
     let observed = this.eye.removePrivacyIndicator();
     Http2Service.experiment.indicators.push({
-      name: this.constructor.name,
+      name: "TopEdgeComponent",
       start: this.timestamp,
       end: Date.now(),
       observed: observed
