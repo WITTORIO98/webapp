@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Http2Service} from "../../services/http2.service";
+import {EyeTrackerService} from "../../services/eye-tracker.service";
 
 @Component({
   selector: 'app-end',
@@ -8,7 +9,8 @@ import {Http2Service} from "../../services/http2.service";
 })
 export class EndComponent implements OnInit {
 
-  constructor(private http: Http2Service) {}
+  constructor(private http: Http2Service, private eye: EyeTrackerService) {
+  }
 
   exitFullScreen() {
     let element: any = document;
@@ -24,6 +26,7 @@ export class EndComponent implements OnInit {
 
   ngOnInit(): void {
     Http2Service.experiment.ended = true;
+    Http2Service.experiment.clicks = this.eye.clicks;
     this.http.sendData();
   }
 }

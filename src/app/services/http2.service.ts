@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpContext, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-const URL: string = "https://backend.wittorio.uk:4443" //
+const URL: string = "http://localhost:4444" //
 
 export enum GET {
   newRandomIDExperiment = '/newRandomIDExperiment',
@@ -53,6 +53,11 @@ export class Http2Service {
     }*/],
     accuracys: [/*{
       value: null,
+    }*/],
+    clicks: [/*{
+      mouseCord: {x: 66, y: 43},
+      eyeCord: {x: 23.23, y: 56.88},
+      timestamp: 12345678
     }*/]
   }
 
