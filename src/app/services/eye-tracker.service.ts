@@ -33,7 +33,7 @@ export class EyeTrackerService {
   private gui: number = GuiType.HIDDEN;
   private privacyIndicator: { radius: number, position: coordinates } | null = null;
   public observed: { timestamp: number }[] = []
-  private clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
+  public clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
 
   constructor() {
   }
