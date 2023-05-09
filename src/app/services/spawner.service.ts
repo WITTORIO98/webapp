@@ -13,7 +13,10 @@ const tasks: string[] = [
 const indicators: string[] = [
   'classic',
   'topEdge',
-  'classic-disco'
+  'classic-disco',
+  'classic',
+  'topEdge',
+  'classic-disco',
 ];
 
 const steps: string[] = [
@@ -28,7 +31,7 @@ const steps: string[] = [
   providedIn: 'root'
 })
 export class SpawnerService {
-  private readonly delay = {default: 4000, rMin: 0, rMax: 30000};
+  private readonly delay = {default: 2000, rMin: 0, rMax: 30000};
   private readonly duration = {default: 8000, rMin: 500, rMax: 30000};
 
   private spawnedTasks: string[] = [];
@@ -168,6 +171,7 @@ export class SpawnerService {
 
       if (this.nexStep == 'TASKS-INDICATORS') {
         this.randomTask();
+
         this.randomIndicator();
       } else if (this.nexStep == 'END') {
         this.routerNav(empty, empty);
