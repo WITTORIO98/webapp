@@ -77,10 +77,11 @@ export class EyeTrackerService {
 
     //mouseListener
     document.addEventListener('click', (event) => {
+      let eyeCord: coordinates = {x: this.eyeCord.x, y: this.eyeCord.y}
       let mouseCord: coordinates = {x: event.clientX, y: event.clientY};
       let timestamp: number = Date.now();
-      this.clicks.push({mouseCord: mouseCord, eyeCord: this.eyeCord, timestamp: timestamp});
-      this.getError(mouseCord, this.eyeCord);
+      this.clicks.push({mouseCord: mouseCord, eyeCord: eyeCord, timestamp: timestamp});
+      this.getError(mouseCord, eyeCord);
     });
   }
 
@@ -109,7 +110,7 @@ export class EyeTrackerService {
   }
 
   public getError(click: coordinates, eye?: coordinates) {
-    if (eye == undefined) eye = this.eyeCord;
+    if (eye == undefined) eye = {x: this.eyeCord.x, y: this.eyeCord.y};
 
     let windowsHeight = window.innerHeight;
     let windowsWidth = window.innerWidth;
@@ -118,6 +119,10 @@ export class EyeTrackerService {
     let error: coordinates = {x: (delta.x / windowsWidth) * 100, y: (delta.y / windowsHeight) * 100};
 
     //console.debug(`error.x : ${error.x} %   error.y : ${error.y} %}`);
+    //console.debug(`eye.x : ${eye.x}   eye.y : ${eye.y} }`);
+    //console.debug(`click.x : ${click.x}    click.y : ${click.y} }`);
+    console.debug(this.clicks[this.clicks.length - 1]);
+    //console.debug(this.clicks)
 
     return error;
   }
@@ -149,12 +154,6 @@ export class EyeTrackerService {
     let width = window.innerWidth;
     let height = window.innerHeight;
     return {x: (abs.x / width) * 100, y: (abs.y / height) * 100};
-  }
-
-  public getEyeCord(format?: number) {
-    if (format == CoordType.ToWIEWPORT) return this.toViewport(this.eyeCord);
-
-    return this.eyeCord;
   }
 
 }

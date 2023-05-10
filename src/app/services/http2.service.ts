@@ -91,6 +91,7 @@ export class Http2Service {
   }
 
   public post(endpoint: string, name: any, extra: any): any {
+    return undefined;
     if (extra == null) {
       extra = {};
     }
