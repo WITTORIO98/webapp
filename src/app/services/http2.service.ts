@@ -58,6 +58,10 @@ export class Http2Service {
       mouseCord: {x: 66, y: 43},
       eyeCord: {x: 23.23, y: 56.88},
       timestamp: 12345678
+    }*/],
+    survey: [/*{
+      question:"classic",
+      answer:"non lho visto"
     }*/]
   }
 

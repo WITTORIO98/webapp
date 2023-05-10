@@ -1,0 +1,46 @@
+<div class="absolute noMargin">
+  <div>
+
+    <div class="top">
+      <h1>Durante l'esperimento, hai notato l'elemento qui sopra?</h1>
+
+    </div>
+
+    <div *ngIf="one">
+
+      <div>
+        <mat-radio-group (change)="updateAnswer($event.value,'classic' )">
+          <mat-radio-button *ngFor="let answer of answers"
+                            [value]="answer">{{ answer }}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    </div>
+    <div *ngIf="two">
+      <mat-radio-group (change)="updateAnswer($event.value,'disco' )">
+        <mat-radio-button *ngFor="let answer of answers"
+                          [value]="answer">{{ answer }}</mat-radio-button>
+      </mat-radio-group>
+
+    </div>
+    <div *ngIf="three">
+      <mat-radio-group (change)="updateAnswer($event.value,'edge' )">
+        <mat-radio-button *ngFor="let answer of answers"
+                          [value]="answer">{{ answer }}</mat-radio-button>
+      </mat-radio-group>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="absolute noMargin overlay hidden">
+  <div *ngIf="one" class="cerchio"></div>
+
+  <div *ngIf="two" class="classicDiscoVariables">
+    <div class="circle"></div>
+  </div>
+
+  <div *ngIf="three" class="sfumato"></div>
+
+</div>

@@ -19,6 +19,7 @@ import {Engineer2Component} from "./tasks/softwareEngineering/engineer2/engineer
 import {Engineer3Component} from "./tasks/softwareEngineering/engineer3/engineer3.component";
 import {TopEdgeComponent} from "./privacyIndicators/top-edge/top-edge.component";
 import {AccuracyTestButtonComponent} from "./pages/accuracy-test-button/accuracy-test-button.component";
+import {PrivacySurveyComponent} from "./pages/privacy-survey/privacy-survey.component";
 
 const routes: Routes = [
   {path: 'empty', component: EmptyComponent, outlet: 'outlet1'},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'engineer1', component: Engineer1Component, outlet: 'outlet1'},
   {path: 'engineer2', component: Engineer2Component, outlet: 'outlet1'},
   {path: 'engineer3', component: Engineer3Component, outlet: 'outlet1'},
+  {path: 'privacySurvey', component: PrivacySurveyComponent, outlet: 'outlet1'},
 
   {path: 'empty', component: EmptyComponent, outlet: 'outlet2'},
   {path: 'classic', component: ClassicComponent, outlet: 'outlet2'},

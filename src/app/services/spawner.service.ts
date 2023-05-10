@@ -20,6 +20,7 @@ const steps: string[] = [
   'setUp',
   'calibration',
   'TASKS-INDICATORS',
+  'privacySurvey',
   'end',
   'END'
 ];
