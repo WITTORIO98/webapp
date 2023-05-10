@@ -151,10 +151,4 @@ export class EyeTrackerService {
     return {x: (abs.x / width) * 100, y: (abs.y / height) * 100};
   }
 
-  public getEyeCord(format?: number) {
-    if (format == CoordType.ToWIEWPORT) return this.toViewport(this.eyeCord);
-
-    return this.eyeCord;
-  }
-
 }
