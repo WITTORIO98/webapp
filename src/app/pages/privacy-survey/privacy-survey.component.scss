@@ -1,0 +1,79 @@
+.cerchio {
+  position: absolute;
+  top: 6vw; //x
+  left: 81vw; //100 - x - width - spostamento laterale desiderato(10)
+  width: 3vw; /* Imposta la larghezza del cerchio */
+  height: 3vw; /* Imposta l'altezza del cerchio */
+  border-radius: 50%; /* Imposta il bordo come un cerchio */
+  background-color: green; /* Imposta il colore di sfondo come rosso */
+}
+
+.classicDiscoVariables {
+  --top: 10vw;
+  --right: 12vw;
+
+  --animationTime: 5s;
+
+  --innerDiameter1: 3vw;
+  --innerDiameter2: 6vw;
+  --border1: 6vw;
+  --border2: 3vw;
+
+  --color1: green;
+  --color2: yellow;
+}
+
+.circle {
+  background-color: transparent; //pieno o vuoto
+  border-radius: 50%; //circle
+  position: absolute;
+  top: var(--top);
+  left: calc(100vw - var(--right));
+  transform: translate(-50%, -50%);
+
+  animation: effect var(--animationTime) linear infinite;
+
+  width: var(--innerDiameter1);
+  height: var(--innerDiameter1);
+  border: calc(var(--border1) / 2) solid var(--color1);
+}
+
+@keyframes effect {
+  0% {
+    width: var(--innerDiameter1);
+    height: var(--innerDiameter1);
+    border: calc(var(--border1) / 2) solid var(--color1);
+  }
+  50% {
+    width: var(--innerDiameter2);
+    height: var(--innerDiameter2);
+    border: calc(var(--border2) / 2) solid var(--color2);
+  }
+  100% {
+    width: var(--innerDiameter1);
+    height: var(--innerDiameter1);
+    border: calc(var(--border1) / 2) solid var(--color1);
+  }
+}
+
+.sfumato {
+  width: 20vw;
+  height: 1vh;
+  background: linear-gradient(to right, rgba(50, 205, 50, 0), rgba(50, 205, 50, 1));
+  position: absolute;
+  left: 0;
+  animation: move 3s linear infinite;
+}
+
+@keyframes move {
+  from {
+    left: -20vw;
+  }
+  to {
+    left: 100vw;
+  }
+}
+
+.top {
+  margin-top: 25vh;
+}
