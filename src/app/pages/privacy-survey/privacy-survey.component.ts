@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {GET, Http2Service} from "../../services/http2.service";
+import {SpawnerService} from "../../services/spawner.service";
 
 @Component({
   selector: 'app-privacy-survey',
@@ -13,9 +15,12 @@ export class PrivacySurveyComponent {
 
   public questions: { question: string, answer: string }[] = [];
 
+  constructor(private http: Http2Service, private spawner: SpawnerService) {
+  }
+
   updateAnswer(risposta: string, privacy: string) {
     this.questions.push({question: privacy, answer: risposta});
-    
+
     if (this.three) {
       this.fine();
     }
@@ -30,6 +35,7 @@ export class PrivacySurveyComponent {
   }
 
   private fine() {
-    return;
+    Http2Service.experiment.survey=this.questions;
+    this.spawner.nextStep();
   }
 }
