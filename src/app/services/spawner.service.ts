@@ -73,13 +73,11 @@ export class SpawnerService {
       }
     } else {
 
-      if (this.spawnedTasks.length == tasks.length) {
+      if (this.spawnedTasks.length == (tasks.length - 1)) {
         this.nexStep = steps[steps.indexOf(this.nexStep) + 1];
-        this.nextStep();
-      } else {
-        this.routerNav([tasks[this.spawnedTasks.length]]);
-        this.spawnedTasks.push(tasks[this.spawnedTasks.length]);
       }
+      this.routerNav([tasks[this.spawnedTasks.length]]);
+      this.spawnedTasks.push(tasks[this.spawnedTasks.length]);
 
     }
 
