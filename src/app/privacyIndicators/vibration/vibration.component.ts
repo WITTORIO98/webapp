@@ -20,6 +20,7 @@ export class VibrationComponent implements OnInit, OnDestroy {
 
   public static vibrate() {
     if ('vibrate' in navigator) {
+      console.log('Vibrazione attivata');
       navigator.vibrate([200, 100, 200]); // specifica la durata della vibrazione in millisecondi
     } else {
       console.log('API Web Vibration non supportata dal browser');
