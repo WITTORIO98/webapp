@@ -18,12 +18,14 @@ import {Engineer1Component} from "./tasks/softwareEngineering/engineer1/engineer
 import {Engineer2Component} from "./tasks/softwareEngineering/engineer2/engineer2.component";
 import {Engineer3Component} from "./tasks/softwareEngineering/engineer3/engineer3.component";
 import {TopEdgeComponent} from "./privacyIndicators/top-edge/top-edge.component";
+import {AccuracyTestButtonComponent} from "./pages/accuracy-test-button/accuracy-test-button.component";
 
 const routes: Routes = [
   {path: 'empty', component: EmptyComponent, outlet: 'outlet1'},
   {path: 'setUp', component: SetUpComponent, outlet: 'outlet1'},
   {path: 'calibration', component: CalibrationComponent, outlet: 'outlet1'},
   {path: 'accuracyTest', component: AccuracyTestComponent, outlet: 'outlet1'},
+  {path: 'accuracyTestButton', component: AccuracyTestButtonComponent, outlet: 'outlet1'},
   {path: 'survey', component: SurveyComponent, outlet: 'outlet1'},
   {path: 'simple-text', component: SimpleTextComponent, outlet: 'outlet1'},
   {path: 'simple-math', component: SimpleMathComponent, outlet: 'outlet1'},

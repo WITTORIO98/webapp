@@ -28,6 +28,7 @@ import { Engineer1Component } from './tasks/softwareEngineering/engineer1/engine
 import { Engineer2Component } from './tasks/softwareEngineering/engineer2/engineer2.component';
 import { Engineer3Component } from './tasks/softwareEngineering/engineer3/engineer3.component';
 import { TopEdgeComponent } from './privacyIndicators/top-edge/top-edge.component';
+import { AccuracyTestButtonComponent } from './pages/accuracy-test-button/accuracy-test-button.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { TopEdgeComponent } from './privacyIndicators/top-edge/top-edge.componen
     Engineer1Component,
     Engineer2Component,
     Engineer3Component,
-    TopEdgeComponent
+    TopEdgeComponent,
+    AccuracyTestButtonComponent
   ],
   imports: [
     BrowserModule,
