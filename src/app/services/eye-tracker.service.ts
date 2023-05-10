@@ -69,7 +69,7 @@ export class EyeTrackerService {
         if (distance < this.privacyIndicator.radius) {
           console.log("hai guardato il privacy indicator");
           this.observed.push({timestamp: Date.now()});
-          //VibrationComponent.vibrate();
+          VibrationComponent.vibrate();//debug
         }
       }
 
@@ -81,7 +81,7 @@ export class EyeTrackerService {
       let mouseCord: coordinates = {x: event.clientX, y: event.clientY};
       let timestamp: number = Date.now();
       this.clicks.push({mouseCord: mouseCord, eyeCord: eyeCord, timestamp: timestamp});
-      this.getError(mouseCord, eyeCord);
+      //this.getError(mouseCord, eyeCord);
     });
   }
 
