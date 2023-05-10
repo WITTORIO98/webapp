@@ -29,6 +29,7 @@ import { Engineer2Component } from './tasks/softwareEngineering/engineer2/engine
 import { Engineer3Component } from './tasks/softwareEngineering/engineer3/engineer3.component';
 import { TopEdgeComponent } from './privacyIndicators/top-edge/top-edge.component';
 import { AccuracyTestButtonComponent } from './pages/accuracy-test-button/accuracy-test-button.component';
+import { PrivacySurveyComponent } from './pages/privacy-survey/privacy-survey.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AccuracyTestButtonComponent } from './pages/accuracy-test-button/accura
     Engineer2Component,
     Engineer3Component,
     TopEdgeComponent,
-    AccuracyTestButtonComponent
+    AccuracyTestButtonComponent,
+    PrivacySurveyComponent
   ],
   imports: [
     BrowserModule,
