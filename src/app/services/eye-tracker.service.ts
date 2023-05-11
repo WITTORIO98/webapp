@@ -69,7 +69,7 @@ export class EyeTrackerService {
         if (distance < this.privacyIndicator.radius) {
           console.log("hai guardato il privacy indicator");
           this.observed.push({timestamp: Date.now()});
-          VibrationComponent.vibrate();//debug
+          //VibrationComponent.vibrate();//debug
         }
       }
 

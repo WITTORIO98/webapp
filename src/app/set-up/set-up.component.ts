@@ -63,7 +63,7 @@ export class SetUpComponent implements AfterViewInit, OnInit {
   startLoading() {
     this.loading = true;
     this.launchIntoFullscreen(document.documentElement);
-    this.eye.start(GuiType.DOT);
+    this.eye.start(GuiType.HIDDEN);
 
     const check = setInterval(() => {
       if (this.eye.isInitialized()) {
