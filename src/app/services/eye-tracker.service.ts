@@ -21,7 +21,8 @@ export enum CoordType {
 }
 
 export enum AlertZone { //inteso in percentuale sulla larchezza dello schermo
-  DEFAULT = 35
+  DEFAULT = 40,
+  TOP = 25
 }
 
 @Injectable({
@@ -34,6 +35,7 @@ export class EyeTrackerService {
   private privacyIndicator: { radius: number, position: coordinates } | null = null;
   public observed: { timestamp: number }[] = []
   public clicks: { mouseCord: coordinates, eyeCord: coordinates, timestamp: number }[] = [];
+  private topEdge: boolean = false;
 
   constructor() {
   }
@@ -65,7 +67,12 @@ export class EyeTrackerService {
         this.initialized = true;
       }
       if (this.privacyIndicator) {//cosi è solo per debug, salvare quando sto guardando il privacy indicator todo
-        let distance = Math.sqrt(Math.pow(this.eyeCord.x - this.privacyIndicator.position.x, 2) + Math.pow(this.eyeCord.y - this.privacyIndicator.position.y, 2));
+        let distance = 999;
+        if (this.topEdge) {
+          distance = Math.abs(this.eyeCord.y - this.privacyIndicator.position.y);
+        } else {
+          distance = Math.sqrt(Math.pow(this.eyeCord.x - this.privacyIndicator.position.x, 2) + Math.pow(this.eyeCord.y - this.privacyIndicator.position.y, 2));
+        }
         if (distance < this.privacyIndicator.radius) {
           console.log("hai guardato il privacy indicator");
           this.observed.push({timestamp: Date.now()});
@@ -90,6 +97,10 @@ export class EyeTrackerService {
   }
 
   public setPrivacyIndicator(radius: number, privacyId: string) {
+    if (radius == AlertZone.TOP) {
+      this.topEdge = true;
+    }
+
     const privacyIndicator = document.getElementById(privacyId);
     // @ts-ignore
     const computedStyles = window.getComputedStyle(privacyIndicator);
@@ -106,6 +117,7 @@ export class EyeTrackerService {
 
   public removePrivacyIndicator() {
     this.privacyIndicator = null;
+    this.topEdge = false
     return this.observed;
   }
 
